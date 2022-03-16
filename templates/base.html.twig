@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block head %}{% endblock %}</title>
+        <title>{% block title %}WA Formation{% endblock %}</title>
+{# Bootstrap & css // templates/base.html.twig #}
+<link href="{{ asset('bootstrap.min.css')}}" rel="stylesheet">
+<link href="{{ asset('css/styles.css')}}" rel="stylesheet"> 
+</head>
+ <body>
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">WAFORMATION</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Utilisateurs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Produits</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Commandes</a>
+            </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            {% if app.user %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Compte</a>
+                </li>
+                        <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Déconnexion</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">S'inscrire</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Connexion</a>
+                </li>
+            {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+        {% block body %}{% endblock %}
+        {# bootstrap & js #}
+        <script src="{{ asset('bootstrap.bundle.min.js')}}" defer>
+        </script><script src="{{ asset('js/index.js')}}" defer></script>
+    </body>
+</html>
