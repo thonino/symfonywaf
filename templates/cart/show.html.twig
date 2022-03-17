@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} panier{% endblock %}
+
+{% block body %}
+<div class="container border border-light border-4 border-radius rounded-2 mt-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="fs-3">Votre Panier</th>
+                <th class="fs-3 text-warning">Prix</th>
+                <th class="fs-3 text-success">Quantité</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in cartLessons %}
+        <tr>
+            <td  class="fs-5">{{ row.lesson.name }}  <span  class="text-light fs-6">{{ row.lesson.title }}</span></td>
+            <td class="text-warning">{{ row.lesson.price }}</td>
+            <td class="text-success">{{ row.qty }}</td>
+        </tr>
+        {% else %}
+            <tr>
+                <td colspan="2"> Aucun article ajouté </td>            
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h4> Total : <span class="text-warning"> {{ total}} € </span></h4>
+</div>
+{% endblock %}
