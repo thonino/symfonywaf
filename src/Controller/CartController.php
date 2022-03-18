@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 ])]
 class CartController extends AbstractController
 {
+    // Fonction ADD
     #[Route([
         'en' => '/{lesson}/add',
         'fr' => '/{lesson}/ajouter',
@@ -26,8 +27,35 @@ class CartController extends AbstractController
         if (array_key_exists($id, $cart)){  $cart[$id]++;}
         else {  $cart[$id] =1; }
         $session->set('cart', $cart);
-        return $this->redirectToRoute('app_lesson_index', [ 'id'=>$id,]);
+        return $this->redirectToRoute('cart_show', [ 'id'=>$id,]);
     }
+    // Fonction LESS
+    #[Route([
+        'en' => '/{lesson}/less',
+        'fr' => '/{lesson}/moins',
+    ], name: 'cart_less')]
+    public function less(Lesson $lesson, SessionInterface $session): Response
+    {
+        $cart = $session->get('cart', []);
+        $id = $lesson->getId();
+        if (2 > $cart[$id]){unset($cart[$id]);} 
+        else { $cart[$id]--;}
+        $session->set('cart', $cart);
+        return $this->redirectToRoute('cart_show', [ 'id'=>$id,]);
+    }
+    // Fonction ssupprimer
+    #[Route([
+        'en' => '/{lesson}/del',
+        'fr' => '/{lesson}/suprimmer',
+    ], name: 'cart_del')]
+    public function remove(Lesson $lesson, SessionInterface $session): Response
+    {
+        $cart = $session->get('cart', []);
+        $id = $lesson->getId();
+        $session->set('cart', $cart);
+        return $this->redirectToRoute('cart_show', [ 'id'=>$id,]);
+    }
+    
     #[Route([
         'en' => '/show',
         'fr' => '/voir',

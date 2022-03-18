@@ -3,21 +3,28 @@
 {% block title %} panier{% endblock %}
 
 {% block body %}
-<div class="container border border-light border-4 border-radius rounded-2 mt-3">
+<div class="container  mt-3">
     <table class="table">
         <thead>
             <tr>
-                <th class="fs-3">Votre Panier</th>
-                <th class="fs-3 text-warning">Prix</th>
-                <th class="fs-3 text-success">Quantité</th>
+                <th class="fs-4 text-warning">Votre Panier</th>
+                <th class="fs-4 text-warning">Prix</th>
+                <th class="fs-4">Quantité</th>
             </tr>
         </thead>
         <tbody>
             {% for row in cartLessons %}
         <tr>
             <td  class="fs-5">{{ row.lesson.name }}  <span  class="text-light fs-6">{{ row.lesson.title }}</span></td>
-            <td class="text-warning">{{ row.lesson.price }}</td>
-            <td class="text-success">{{ row.qty }}</td>
+            <td class="fs-4">{{ row.lesson.price }} €</td>
+            <td class=" fs-4">
+                <a class=""href="{{ path('cart_less', {'lesson':row.lesson.id}) }}">
+                <i class="bi bi-file-minus-fill fs-4 mx-2 text-danger"></i></a>
+                    {{ row.qty }}
+                <a class="" href="{{ path('cart_add', {'lesson':row.lesson.id}) }}">
+                <i class="bi bi-plus-square-fill fs-4 mx-2 text-warning"></i></a>
+                <a class="" href="{{ path('cart_del', {'lesson':row.lesson.id}) }}">
+                <i class="bi bi-trash fs-4 mx-2 text-danger"></i></a></td>
         </tr>
         {% else %}
             <tr>
@@ -26,6 +33,9 @@
         {% endfor %}
         </tbody>
     </table>
-    <h4> Total : <span class="text-warning"> {{ total}} € </span></h4>
+    <a  class="fs-5 text-success rounded border border-success border-4 p-1 mx-2"style="float:right;text-decoration:none;"
+        href="#" style="text-decoration:none;"> Valider Panier </a>
+    <p class="fs-4 border border-4 rounded px-2 text-warning"style="float:right"> Total : 
+    <span class="text-white fs-4"> {{ total}} € </span></p>
 </div>
 {% endblock %}

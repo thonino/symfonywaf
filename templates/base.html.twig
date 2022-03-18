@@ -7,6 +7,7 @@
 {# Bootstrap & css // templates/base.html.twig #}
 <link href="{{ asset('bootstrap.min.css')}}" rel="stylesheet">
 <link href="{{ asset('css/styles.css')}}" rel="stylesheet"> 
+<link href="{{ asset('bootstrapIcons/bootstrap-icons.css')}}" rel="stylesheet"> 
 </head>
     <body>
 
@@ -27,11 +28,8 @@
             </li>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ path('cart_show') }}">Panier</a>
-                </li>
             {% if is_granted('ROLE_ADMIN') %}
-                <li class="nav-item">
+                <li class="nav-item" >
                     <a class="nav-link active" aria-current="page" href="{{ path('app_admin') }}">Admin</a>
                 </li>
                                 </li>
@@ -58,6 +56,11 @@
         </div>
     </div>
 </nav>
+{# PANIER #}
+<div class="text-warning text-center mt-2" style="float:right;text-decoration:none;">
+<a href="{{ path('cart_show') }}"style="text-decoration:none;">
+<span class="fs-5 m-3  text-warning">Panier</span><br><i class="bi-cart mx-2 fs-2 text-warning "></i></a>
+</div>
         {% block body %}{% endblock %}
         {# bootstrap & js #}
         <script src="{{ asset('bootstrap.bundle.min.js')}}" defer>
