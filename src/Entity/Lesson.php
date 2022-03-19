@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LessonRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LessonRepository::class)]
@@ -27,6 +29,12 @@ class Lesson
 
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
     private $image;
+
+
+    public function __construct()
+    {
+        $this->bookings = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -92,4 +100,5 @@ class Lesson
 
         return $this;
     }
+
 }

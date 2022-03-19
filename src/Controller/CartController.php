@@ -27,7 +27,7 @@ class CartController extends AbstractController
         if (array_key_exists($id, $cart)){  $cart[$id]++;}
         else {  $cart[$id] =1; }
         $session->set('cart', $cart);
-        return $this->redirectToRoute('cart_show', [ 'id'=>$id,]);
+        return $this->redirectToRoute('app_booking_new', [ 'id'=>$id,]);
     }
     // Fonction LESS
     #[Route([
@@ -43,7 +43,7 @@ class CartController extends AbstractController
         $session->set('cart', $cart);
         return $this->redirectToRoute('cart_show', [ 'id'=>$id,]);
     }
-    // Fonction ssupprimer
+    // Fonction supprimer
     #[Route([
         'en' => '/{lesson}/del',
         'fr' => '/{lesson}/suprimmer',
@@ -55,7 +55,7 @@ class CartController extends AbstractController
         $session->set('cart', $cart);
         return $this->redirectToRoute('cart_show', [ 'id'=>$id,]);
     }
-    
+
     #[Route([
         'en' => '/show',
         'fr' => '/voir',
@@ -70,7 +70,7 @@ class CartController extends AbstractController
             $fullCart[]= ['lesson' => $lesson,'qty' => $qty,];
             $total += $lesson->getPrice()*$qty;
         }
-        return $this->render('cart/show.html.twig', [
+        return $this->render('cart/cart.html.twig', [
             'cartLessons'=>$fullCart,
             'total' =>$total,
         ]);
