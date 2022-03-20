@@ -4,7 +4,7 @@
 {% endblock %}
 {% block body %}
     <div class="container">
-        <a class=" btn btn-primary m-3 " href="{{ path('app_booking_index')}}">Booking</a>
+        <a class=" btn btn-primary m-3 " href="{{ path('app_booking_index')}}">Reservations</a>
         <div class="container mb-2 mx-1" id="calendrier"></div>
     </div>
     <script>
@@ -19,7 +19,7 @@
             calendar.on('eventChange', (e) => {
                 let url = `/api/${e.event.id}/edit`
                 let donnees = {
-                    "firstname": e.event.start,
+                    "title": e.event.title,
                     "start": e.event.start,
                 }
                 let xhr = new XMLHttpRequest

@@ -13,9 +13,6 @@ class Booking
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 50)]
-    private $firstname;
-
     #[ORM\Column(type: 'datetime')]
     private $start;
 
@@ -25,18 +22,6 @@ class Booking
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getfirstname(): ?string
-    {
-        return $this->firstname;
-    }
-
-    public function setfirstname(string $firstname): self
-    {
-        $this->firstname = $firstname;
-
-        return $this;
     }
 
     public function getStart(): ?\DateTimeInterface

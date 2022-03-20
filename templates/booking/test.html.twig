@@ -9,7 +9,7 @@
 
 <tr>
     <td>{{ booking.id }}</td>
-    <td>{{ booking.firstname  }}</td>
+    <td>{{ booking.title  }}</td>
     <td>{{ booking.start ? booking.start|date('Y-m-d H:i:s') : '' }}</td>
     <td>
     <a class="btn btn-primary m-2"href="{{ path('app_booking_show', {'id': booking.id}) }}">Détail</a>

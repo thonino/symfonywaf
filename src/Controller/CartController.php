@@ -9,17 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route([
-    'en' => '/cart',
-    'fr' => '/panier',
-])]
+#[Route(['en' => '/cart','fr' => '/panier',])]
 class CartController extends AbstractController
 {
     // Fonction ADD
-    #[Route([
-        'en' => '/{lesson}/add',
-        'fr' => '/{lesson}/ajouter',
-    ], name: 'cart_add')]
+    #[Route(['en' => '/{lesson}/add','fr' => '/{lesson}/ajouter',], name: 'cart_add')]
     public function add(Lesson $lesson, SessionInterface $session): Response
     {
         $cart = $session->get('cart', []);
@@ -30,10 +24,7 @@ class CartController extends AbstractController
         return $this->redirectToRoute('app_booking_new', [ 'id'=>$id,]);
     }
     // Fonction LESS
-    #[Route([
-        'en' => '/{lesson}/less',
-        'fr' => '/{lesson}/moins',
-    ], name: 'cart_less')]
+    #[Route(['en' => '/{lesson}/less','fr' => '/{lesson}/moins',], name: 'cart_less')]
     public function less(Lesson $lesson, SessionInterface $session): Response
     {
         $cart = $session->get('cart', []);
@@ -44,22 +35,17 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart_show', [ 'id'=>$id,]);
     }
     // Fonction supprimer
-    #[Route([
-        'en' => '/{lesson}/del',
-        'fr' => '/{lesson}/suprimmer',
-    ], name: 'cart_del')]
+    #[Route(['en' => '/{lesson}/del','fr' => '/{lesson}/suprimmer',], name: 'cart_del')]
     public function remove(Lesson $lesson, SessionInterface $session): Response
     {
         $cart = $session->get('cart', []);
         $id = $lesson->getId();
+        unset($cart[$id]);
         $session->set('cart', $cart);
         return $this->redirectToRoute('cart_show', [ 'id'=>$id,]);
     }
 
-    #[Route([
-        'en' => '/show',
-        'fr' => '/voir',
-    ], name: 'cart_show')]
+    #[Route(['en' => '/show','fr' => '/voir',], name: 'cart_show')]
     public function show(SessionInterface $session, LessonRepository $lessonRepo): Response
     {
         $fullCart = [];
