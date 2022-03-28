@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Booking{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Nouveau RDV</h1>
+    {{ include('booking/_form.html.twig') }}
+    <a class="btn btn-primary" href="{{ path('app_booking_index') }}">retour</a>
+</div>
+{% endblock %}

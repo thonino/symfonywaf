@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Booking test{% endblock %}
+
+{% block body %}
+<div class="container">
+
+{% for booking in booking %}
+
+<tr>
+    <td>{{ booking.id }}</td>
+    <td>{{ booking.title  }}</td>
+    <td>{{ booking.start ? booking.start|date('Y-m-d H:i:s') : '' }}</td>
+    <td>
+    <a class="btn btn-primary m-2"href="{{ path('app_booking_show', {'id': booking.id}) }}">Détail</a>
+    </td>
+</tr><br>
+{% endfor %}
+
+
+
+
+</div>
+{% endblock %}
