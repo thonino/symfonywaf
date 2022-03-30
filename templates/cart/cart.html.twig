@@ -34,10 +34,10 @@
     <table class="table">
         <thead>
             <tr>
-                <th class="fs-4 text-warning mx-2">Numero Reservation</th>
+                <th class="fs-6 mx-2">Numero de réservation</th>
                 <th class="fs-4">Nom </th>
-                <th class="fs-4">RDV</th>
-                <th class="fs-4">actions</th>
+                <th class="fs-4">Date du RDV</th>
+                <th class="fs-4">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -47,7 +47,10 @@
                 <td>{{ booking.title  }}</td>
                 <td>{{ booking.start ? booking.start|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a class="btn btn-primary m-2"href="{{ path('app_booking_show', {'id': booking.id}) }}">Détail</a>
+                    <div class="d-flex">
+                        <a class="btn btn-success mt-1" href="{{ path('app_booking_edit', {'id': booking.id}) }}">Modifier</a>
+                        {{ include('booking/_delete_form.html.twig') }}
+                    </div>
                 </td>
             </tr>
         {% else %}

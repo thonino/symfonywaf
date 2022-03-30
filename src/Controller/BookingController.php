@@ -79,6 +79,6 @@ class BookingController extends AbstractController
             $bookingRepository->remove($booking);
         }
 
-        return $this->redirectToRoute('app_booking_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('cart_show', [], Response::HTTP_SEE_OTHER);
     }
 }
