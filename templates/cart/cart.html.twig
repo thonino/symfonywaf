@@ -31,6 +31,33 @@
         </tbody>
     </table>
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="fs-4 text-warning mx-2">Numero Reservation</th>
+                <th class="fs-4">Nom </th>
+                <th class="fs-4">RDV</th>
+                <th class="fs-4">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.id }}</td>
+                <td>{{ booking.title  }}</td>
+                <td>{{ booking.start ? booking.start|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a class="btn btn-primary m-2"href="{{ path('app_booking_show', {'id': booking.id}) }}">Détail</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Pas de reservation</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
     <a  class="fs-5 text-success rounded border border-success border-4 p-1 mx-2"style="float:right;text-decoration:none;"
         href="#" style="text-decoration:none;"> Valider Panier </a>
     <p class="fs-4 border border-4 rounded px-2 text-warning"style="float:right"> Total : 

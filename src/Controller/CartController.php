@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\BookingRepository;
 
 #[Route(['en' => '/cart','fr' => '/panier',])]
 class CartController extends AbstractController
@@ -44,9 +45,8 @@ class CartController extends AbstractController
         $session->set('cart', $cart);
         return $this->redirectToRoute('cart_show', [ 'id'=>$id,]);
     }
-
     #[Route(['en' => '/show','fr' => '/voir',], name: 'cart_show')]
-    public function show(SessionInterface $session, LessonRepository $lessonRepo): Response
+    public function show(SessionInterface $session, LessonRepository $lessonRepo,BookingRepository $bookingRepository): Response
     {
         $fullCart = [];
         $total = 0;
@@ -59,6 +59,7 @@ class CartController extends AbstractController
         return $this->render('cart/cart.html.twig', [
             'cartLessons'=>$fullCart,
             'total' =>$total,
+            'bookings' => $bookingRepository->findAll(),
         ]);
     }
 }
