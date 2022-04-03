@@ -10,11 +10,11 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\BookingRepository;
 
-#[Route(['en' => '/cart','fr' => '/panier',])]
+#[Route('/cart')]
 class CartController extends AbstractController
 {
     // Fonction ADD
-    #[Route(['en' => '/{lesson}/add','fr' => '/{lesson}/ajouter',], name: 'cart_add')]
+    #[Route(['/{lesson}/ajouter'], name: 'cart_add')]
     public function add(Lesson $lesson, SessionInterface $session): Response
     {
         $cart = $session->get('cart', []);
@@ -25,7 +25,7 @@ class CartController extends AbstractController
         return $this->redirectToRoute('app_booking_new', [ 'id'=>$id,]);
     }
     // Fonction LESS
-    #[Route(['en' => '/{lesson}/less','fr' => '/{lesson}/moins',], name: 'cart_less')]
+    #[Route(['/{lesson}/moins'], name: 'cart_less')]
     public function less(Lesson $lesson, SessionInterface $session): Response
     {
         $cart = $session->get('cart', []);
@@ -36,7 +36,7 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart_show', [ 'id'=>$id,]);
     }
     // Fonction supprimer
-    #[Route(['en' => '/{lesson}/del','fr' => '/{lesson}/suprimmer',], name: 'cart_del')]
+    #[Route(['/{lesson}/suprimmer'], name: 'cart_del')]
     public function remove(Lesson $lesson, SessionInterface $session): Response
     {
         $cart = $session->get('cart', []);
@@ -45,16 +45,17 @@ class CartController extends AbstractController
         $session->set('cart', $cart);
         return $this->redirectToRoute('cart_show', [ 'id'=>$id,]);
     }
-    #[Route(['en' => '/show','fr' => '/voir',], name: 'cart_show')]
+    #[Route(['/show'], name: 'cart_show')]
     public function show(SessionInterface $session, LessonRepository $lessonRepo,BookingRepository $bookingRepository): Response
     {
-        $fullCart = [];
         $total = 0;
+        $fullCart = [];
         $cart = $session->get('cart', []);
         foreach($cart as $id =>$qty){
             $lesson = $lessonRepo->find($id);  
+            $price = $lesson->getPrice();
             $fullCart[]= ['lesson' => $lesson,'qty' => $qty,];
-            $total += $lesson->getPrice()*$qty;
+            $total += $price*$qty;
         }
         return $this->render('cart/cart.html.twig', [
             'cartLessons'=>$fullCart,

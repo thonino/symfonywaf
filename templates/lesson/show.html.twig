@@ -2,16 +2,17 @@
 {% block title %}Detail Lesson{% endblock %}
 {% block body %}
 
-<div class="container">
-    <h1>Detail Lesson</h1>
+<div class="container col-6">
+    <h1 class="text-warning text-center">Detail Lesson</h1>
     <table class="table">
         <tbody>
-            <tr><th>Id</th><td>{{ lesson.id }}</td></tr>
-            <tr><th>Name</th><td>{{ lesson.name }}</td></tr>
-            <tr><th>Price</th><td>{{ lesson.price }}</td></tr>
-            <tr><th>Title</th><td>{{ lesson.title }}</td></tr>
-            <tr><th>Description</th><td>{{ lesson.description }}</td></tr>
-            <tr><th>Image</th><td>{{ lesson.image }}</td></tr>
+        <div class="" style="max-width: 500px;">
+        <img src="/img/{{lesson.image}}" class="card-img-top" alt="...">
+        </div>
+            <p class="fs-3 text-warning"> Intitulé : <span class="fs-4 text-light">{{ lesson.name }}</span><br>
+            <span class="fs-3 text-warning"> Prix : </span><span class="fs-4 text-light">{{ lesson.price }}</span><br>
+            <span class="fs-3 text-warning"> Titre : </span><span class="fs-4 text-light">{{ lesson.title }}</span><br>
+            <span class="fs-3 text-warning"> Description : </span><br><span class="fs-6 text-light">{{ lesson.description }}</span>
         </tbody>
     </table>
     <a class="btn btn-warning mb-2 mt-2" href="{{ path('cart_add', {'lesson' : lesson.id})}}">Ajouter au panier</a>
@@ -19,6 +20,7 @@
     <a class="btn btn-success mb-2" href="{{ path('app_lesson_edit', {'id': lesson.id}) }}">Modifier</a>
     {{ include('lesson/_delete_form.html.twig') }}
 </div>
+<br><br>
 
     
 {% endblock %}
