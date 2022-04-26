@@ -22,7 +22,7 @@ class CartController extends AbstractController
         if (array_key_exists($id, $cart)){  $cart[$id]++;}
         else {  $cart[$id] =1; }
         $session->set('cart', $cart);
-        return $this->redirectToRoute('app_booking_new', [ 'id'=>$id,]);
+        return $this->redirectToRoute('cart_show', [ 'id'=>$id,]);
     }
     // Fonction LESS
     #[Route(['/{lesson}/moins'], name: 'cart_less')]

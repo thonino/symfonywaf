@@ -15,7 +15,12 @@
         <tbody>
             {% for row in cartLessons %}
         <tr>
-            <td  class="fs-5">{{ row.lesson.name }}  <span  class="text-light fs-6">{{ row.lesson.title }}</span></td>
+            <form method="post">
+                <td  class="fs-5">{{ row.lesson.name }}  <span  class="text-light fs-6">{{ row.lesson.title }}
+                    <input class="m-2" type="text" placeholder="Prénom" name="title"/>
+                    <input class="mt-2 mb-2" type="date" name="start"/></span>
+                </td>
+            </form>
             <td class="fs-4">{{ row.lesson.price }} €</td>
             <td class=" fs-4">
                 <a href="{{ path('cart_less', {'lesson':row.lesson.id}) }}"><i class="bi bi-file-minus-fill fs-4 mx-2 text-danger"></i></a>
@@ -31,7 +36,7 @@
         </tbody>
     </table>
 
-    <table class="table">
+    {# <table class="table">
         <thead>
             <tr>
                 <th class="fs-6 mx-2">Numero de réservation</th>
@@ -59,7 +64,7 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+    </table> #}
 
     <a  class="fs-5 text-success rounded border border-success border-4 p-1 mx-2"style="float:right;text-decoration:none;"
         href="#" style="text-decoration:none;"> Valider Panier </a>
