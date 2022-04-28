@@ -2,13 +2,17 @@
 
 namespace App\Controller;
 
+
+use DateTime;
 use App\Entity\Lesson;
+use App\Entity\Booking;
 use App\Repository\LessonRepository;
+use App\Repository\BookingRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Repository\BookingRepository;
 
 #[Route('/cart')]
 class CartController extends AbstractController
@@ -46,8 +50,16 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart_show', [ 'id'=>$id,]);
     }
     #[Route(['/show'], name: 'cart_show')]
-    public function show(SessionInterface $session, LessonRepository $lessonRepo,BookingRepository $bookingRepository): Response
+    public function show(EntityManagerInterface $em,SessionInterface $session, LessonRepository $lessonRepo,BookingRepository $bookingRepository): Response
     {
+        $booking = new Booking();
+        if ($_POST) {
+            $booking->setStart(new DateTime($_POST['start']))->setTitle($_POST['title']);
+            $em->persist($booking);
+            $em->flush();
+            return $this->redirectToRoute('app_booking_index',);
+        };
+        $un = 1;
         $total = 0;
         $fullCart = [];
         $cart = $session->get('cart', []);
@@ -61,6 +73,7 @@ class CartController extends AbstractController
             'cartLessons'=>$fullCart,
             'total' =>$total,
             'bookings' => $bookingRepository->findAll(),
+            'un'=> $un
         ]);
     }
 }

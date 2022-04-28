@@ -21,8 +21,13 @@
                 <td>{{ booking.title  }}</td>
                 <td>{{ booking.start ? booking.start|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a class="btn btn-primary m-2"href="{{ path('app_booking_show', {'id': booking.id}) }}">Détail</a>
+                <div class="d-flex m-0">
+                    <a class="btn btn-primary m-0"href="{{ path('app_booking_show', {'id': booking.id}) }}">Détail</a>
+
+                    {{ include('booking/_delete_form.html.twig') }}
+                    </div>
                 </td>
+                
             </tr>
         {% else %}
             <tr>
