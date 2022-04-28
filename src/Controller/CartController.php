@@ -52,6 +52,7 @@ class CartController extends AbstractController
     #[Route(['/show'], name: 'cart_show')]
     public function show(EntityManagerInterface $em,SessionInterface $session, LessonRepository $lessonRepo,BookingRepository $bookingRepository): Response
     {
+
         $booking = new Booking();
         if ($_POST) {
             $booking->setStart(new DateTime($_POST['start']))->setTitle($_POST['title']);
@@ -59,8 +60,9 @@ class CartController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('app_booking_index',);
         };
-        $un = 1;
+        
         $total = 0;
+        $totalQty = 0;
         $fullCart = [];
         $cart = $session->get('cart', []);
         foreach($cart as $id =>$qty){
@@ -68,12 +70,13 @@ class CartController extends AbstractController
             $price = $lesson->getPrice();
             $fullCart[]= ['lesson' => $lesson,'qty' => $qty,];
             $total += $price*$qty;
+            $totalQty += $qty;
         }
         return $this->render('cart/cart.html.twig', [
             'cartLessons'=>$fullCart,
             'total' =>$total,
             'bookings' => $bookingRepository->findAll(),
-            'un'=> $un
+            'totalQty'=> $totalQty,
         ]);
     }
 }
