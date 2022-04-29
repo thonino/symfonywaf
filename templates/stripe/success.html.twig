@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %} Succès {% endblock %}
+{% block body %}
+<div class="container  mt-3">
+    <h1 class="text-success"> Paiement validé avec succès</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="fs-4 text-warning">Produit</th>
+                <th class="fs-4 ">Prix</th>
+                <th class="fs-4 text-success">Quantité</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in purchases %}
+        <tr>
+            <td  class="fs-5">{{ row.lesson.name }}  
+                <span  class="text-light fs-6">{{ row.lesson.description }}</span></td>
+            <td class="fs-4">{{ row.unitPrice }} €</td>
+            <td class=" fs-4">{{ row.quantity }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <p class="fs-4 border border-4 rounded px-2"style="float:right"> Total : 
+    <span class="text-warning fs-4"> {{ invoice.totalPrice }} € </span></p>
+    <h2 class="text-success"> Adresse de Commande  :</h2>
+        <p>{{ invoice.lastname }} {{ invoice.firstname }}</p>
+        <p>{{ invoice.address }}</p>
+        <p>{{ invoice.zipcode }} {{ invoice.city }}</p>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title %}New Invoice{% endblock %}
+{% block body %}
+<div class="container">
+    <table class="table">
+            <thead>
+                <tr>
+                    <th class="fs-4 text-warning">Votre Panier</th>
+                    <th class="fs-4 ">Prix</th>
+                    <th class="fs-4 text-success">Quantité</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in cartLessons %}
+            <tr>
+                <td  class="fs-5">{{ row.lesson.name }}  
+                    <span  class="text-light fs-6">{{ row.lesson.description }}</span></td>
+                <td class="fs-4">{{ row.lesson.price }} €</td>
+                <td class=" fs-4">
+                    {{ row.qty }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="2"> Aucun article ajouté </td>            
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <p class="fs-4 border border-4 rounded px-2"style="float:right"> Total : 
+        <span class="text-warning fs-4"> {{ total }} € </span></p>
+        <h1>Donnez votre adresse</h1>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn">{{ button_label|default('Pay') }}</button>
+        {{ form_end(form) }}
+</div>
+{% endblock %}

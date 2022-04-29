@@ -22,7 +22,7 @@
             <td class="fs-4">{{ row.lesson.price }} €</td>
             <td class=" fs-4">
                 <a href="{{ path('cart_less', {'lesson':row.lesson.id}) }}"><i class="bi bi-file-minus-fill fs-4 mx-2 text-danger"></i></a>
-                {{ row.qty }} H
+                {{ row.quantite }} H
                 <a href="{{ path('cart_add', {'lesson':row.lesson.id}) }}"><i class="bi bi-plus-square-fill fs-4 mx-2 text-warning"></i></a>
                 <a href="{{ path('cart_del', {'lesson':row.lesson.id}) }}"><i class="bi bi-trash fs-4 mx-2 text-danger"></i></a></td>
         </tr>
@@ -59,6 +59,12 @@
     </form>
     <p class="fs-4 border border-4 rounded px-2 text-warning"style="float:right"> Total : 
     <span class="text-white fs-4"> {{ total }} € </span></p>
+     {% if cartLessons != [] %}
+    <a  class="fs-5 text-success rounded border border-success border-4 p-1 mx-2"
+        style="float:right;text-decoration:none;"href="{{ path('app_invoice_new')}}"> 
+        Commander 
+    </a>
+{% endif %}
 </div>
 
 {% endblock %}
