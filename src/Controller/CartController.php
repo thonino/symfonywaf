@@ -65,12 +65,12 @@ class CartController extends AbstractController
         $totalQty = 0;
         $fullCart = [];
         $cart = $session->get('cart', []);
-        foreach($cart as $id =>$qty){
+        foreach($cart as $id =>$quantite){
             $lesson = $lessonRepo->find($id);  
             $price = $lesson->getPrice();
-            $fullCart[]= ['lesson' => $lesson,'qty' => $qty,];
-            $total += $price*$qty;
-            $totalQty += $qty;
+            $fullCart[]= ['lesson' => $lesson,'quantite' => $quantite,];
+            $total += $price*$quantite;
+            $totalQty += $quantite;
         }
         return $this->render('cart/cart.html.twig', [
             'cartLessons'=>$fullCart,
