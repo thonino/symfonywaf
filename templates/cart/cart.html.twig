@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
-
 {% block title %} panier{% endblock %}
-
 {% block body %}
 <div class="container  mt-3">
     <table class="table">
@@ -17,14 +15,9 @@
             <form method="post">
         <tr>
                 <td  class="fs-5">{{ row.lesson.name }}  <span  class="text-light fs-6">{{ row.lesson.title }}</span><br>
+                    {# creation booking form    #}
                     {# <input class="m-2" type="text" placeholder="Prénom" name="title"/>
                     <input class="datetype" type="datetime-local" name="start"/> #}
-                    {# {% for booking in bookings %}
-                    {{ booking.id }}
-                    {{ booking.title  }}
-                    {{ booking.start ? booking.start|date('Y-m-d H:i:s') : '' }}
-                    <a class="btn btn-sm btn-success " href="{{ path('app_booking_edit', {'id': booking.id}) }}">Modifier</a>
-                    {% endfor %} #}
                 </td>
             <td class="fs-4">{{ row.lesson.price }} €</td>
             <td class=" fs-4">
@@ -41,20 +34,21 @@
         </tbody>
     </table>
 
+    {# afficher liste booking #}
+    {# {% for booking in bookings %}
+    {{ booking.id }}
+    {{ booking.title  }}
+    {{ booking.start ? booking.start|date('Y-m-d H:i:s') : '' }}
+    <a class="btn btn-sm btn-success " href="{{ path('app_booking_edit', {'id': booking.id}) }}">Modifier</a><br>
+    {% endfor %} #}
 
-    {% for i in 1 .. totalQty  %}
-        
-        <input class="mx-2 mt-2" type="text" placeholder="Prénom" name="title"/>
-        <input class="datetype" type="datetime-local" name="start"/><br>
-    {% endfor %}
-    
-    
-    
-    
-    
-    
-    
-
+    {# creation booking form & Liaison avec $totalQty #}
+    {% if totalQty != 0 %}
+        {% for i in 1 .. totalQty  %}
+            <input class="mx-2 mt-2" type="text" placeholder="Prénom" name="title"/>
+            <input class="datetype" type="datetime-local" name="start"/><br>
+        {% endfor %}
+    {% endif %}
         <button  type="submit"  class="btn btn-success mx-2 mt-2"> 
             {# <a  class="text-white text-decoration-none" href="{{ path('cart_show',{'id': menu.id}) }}">Valider Panier </a> #}
             {# <a  class="text-white text-decoration-none" href="{{ path('cart_show' )}}"> #}
