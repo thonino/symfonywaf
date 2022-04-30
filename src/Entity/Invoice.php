@@ -40,6 +40,9 @@ class Invoice
     #[ORM\Column(type: 'string', length: 255)]
     private $totalPrice;
 
+    #[ORM\Column(type: 'string', length: 10, nullable: true)]
+    private $phone;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -149,6 +152,18 @@ class Invoice
     public function setTotalPrice(string $totalPrice): self
     {
         $this->totalPrice = $totalPrice;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
 
         return $this;
     }

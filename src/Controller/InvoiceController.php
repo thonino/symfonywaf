@@ -26,7 +26,12 @@ class InvoiceController extends AbstractController
         $user = $this->getUser();
         if ($user) {
             $invoice->setFirstname($user->getFirstname())
-            ->setLastname($user->getLastname());
+            ->setLastname($user->getLastname())
+            ->setPhone($user->getPhone())
+            ->setAddress($user->getAddress())
+            ->setZipcode($user->getZipcode())
+            ->setCity($user->getCity())
+            ;
         }
         $form = $this->createForm(InvoiceType::class, $invoice);
         $form->handleRequest($request);

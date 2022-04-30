@@ -42,6 +42,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 5)]
     private $zipcode;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $city;
+
 
     public function __construct()
     {
@@ -193,6 +196,18 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setZipcode(string $zipcode): self
     {
         $this->zipcode = $zipcode;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
 
         return $this;
     }
