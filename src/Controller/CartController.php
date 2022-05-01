@@ -52,15 +52,6 @@ class CartController extends AbstractController
     #[Route(['/show'], name: 'cart_show')]
     public function show(EntityManagerInterface $em,SessionInterface $session, LessonRepository $lessonRepo,BookingRepository $bookingRepository): Response
     {
-
-        $booking = new Booking();
-        if ($_POST) {
-            $booking->setStart(new DateTime($_POST['start']))->setTitle($_POST['title']);
-            $em->persist($booking);
-            $em->flush();
-            return $this->redirectToRoute('app_booking_index',);
-        };
-        
         $total = 0;
         $totalQty = 0;
         $fullCart = [];
@@ -71,12 +62,24 @@ class CartController extends AbstractController
             $fullCart[]= ['lesson' => $lesson,'quantite' => $quantite,];
             $total += $price*$quantite;
             $totalQty += $quantite;
-        }
+            
+                if (!empty($_POST)) {
+                        for ($i = 1; $i < $totalQty; $i++ )
+                {
+                    $booking[$i] = new Booking();
+                    $booking[$i]->setStart(new DateTime($_POST['start'.$i]))->setTitle($_POST['title'.$i]);
+                    $em->persist($booking[$i]);
+                    $em->flush();
+                    return $this->redirectToRoute('app_booking_index',);}
+                }
+            };
+        
         return $this->render('cart/cart.html.twig', [
             'cartLessons'=>$fullCart,
             'total' =>$total,
             'bookings' => $bookingRepository->findAll(),
             'totalQty'=> $totalQty,
+            
         ]);
     }
 }

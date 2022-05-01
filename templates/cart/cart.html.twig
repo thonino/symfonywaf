@@ -45,10 +45,16 @@
     {# creation booking form & Liaison avec $totalQty #}
     {% if totalQty != 0 %}
         {% for i in 1 .. totalQty  %}
-            <input class="mx-2 mt-2" type="text" placeholder="Prénom" name="title"/>
-            <input class="datetype" type="datetime-local" name="start"/><br>
+            <input class="mx-2 mt-2" type="text" placeholder="Prénom" name="title{{ i }}"/>
+            <input class="datetype" type="datetime-local" name="start{{ i }}"/>
+            test{{i}}
+            <br>
+
         {% endfor %}
+        <input  type="submit" name='test' />
     {% endif %}
+
+
         <button  type="submit"  class="btn btn-success mx-2 mt-2"> 
             {# <a  class="text-white text-decoration-none" href="{{ path('cart_show',{'id': menu.id}) }}">Valider Panier </a> #}
             {# <a  class="text-white text-decoration-none" href="{{ path('cart_show' )}}"> #}
