@@ -67,7 +67,7 @@ class CartController extends AbstractController
                 {
                     $booking[$i] = new Booking();
                     $booking[$i]->setStart(new DateTime($_POST['start'.$i]))->setTitle($_POST['title'.$i]);
-                    $em->persist($booking);
+                    $em->persist($booking[$i]);
                     $em->flush();
                     return $this->redirectToRoute('app_booking_index',);}
                 }
