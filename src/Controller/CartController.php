@@ -62,13 +62,12 @@ class CartController extends AbstractController
             $fullCart[]= ['lesson' => $lesson,'quantite' => $quantite,];
             $total += $price*$quantite;
             $totalQty += $quantite;
-            
-                if (!empty($_POST)) {
-                        for ($i = 1; $i < $totalQty; $i++ )
+            for ($i = 1; $i < $totalQty; $i++ )
+                if ($_POST){
                 {
                     $booking[$i] = new Booking();
                     $booking[$i]->setStart(new DateTime($_POST['start'.$i]))->setTitle($_POST['title'.$i]);
-                    $em->persist($booking[$i]);
+                    $em->persist($booking);
                     $em->flush();
                     return $this->redirectToRoute('app_booking_index',);}
                 }
@@ -78,7 +77,7 @@ class CartController extends AbstractController
             'cartLessons'=>$fullCart,
             'total' =>$total,
             'bookings' => $bookingRepository->findAll(),
-            'totalQty'=> $totalQty,
+            'quantite'=> $quantite,
             
         ]);
     }

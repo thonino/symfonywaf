@@ -18,6 +18,15 @@
                     {# creation booking form    #}
                     {# <input class="m-2" type="text" placeholder="Prénom" name="title"/>
                     <input class="datetype" type="datetime-local" name="start"/> #}
+                        {# creation booking form & Liaison avec $totalQty #}
+    {% if row.quantite != 0 %}
+        {% for i in 1 .. row.quantite  %}
+            <input class="mx-2 mt-2" type="text" placeholder="Prénom" name="title{{i}}"/>
+            <input class="datetype" type="datetime-local" name="start{{i}}"/>
+            <br>
+        {% endfor %}
+    {% endif %}
+    
                 </td>
             <td class="fs-4">{{ row.lesson.price }} €</td>
             <td class=" fs-4">
@@ -33,6 +42,7 @@
         {% endfor %}
         </tbody>
     </table>
+        <input  type="submit" name="test" class="btn btn-success mx-2 mt-2" />
 
     {# afficher liste booking #}
     {# {% for booking in bookings %}
@@ -43,29 +53,21 @@
     {% endfor %} #}
 
     {# creation booking form & Liaison avec $totalQty #}
-    {% if totalQty != 0 %}
+    {# {% if totalQty != 0 %}
         {% for i in 1 .. totalQty  %}
             <input class="mx-2 mt-2" type="text" placeholder="Prénom" name="title{{ i }}"/>
             <input class="datetype" type="datetime-local" name="start{{ i }}"/>
+            <input  type="submit" name='test{{i}}' />
             test{{i}}
             <br>
-
         {% endfor %}
-        <input  type="submit" name='test' />
-    {% endif %}
+    {% endif %} #}
 
-
-        <button  type="submit"  class="btn btn-success mx-2 mt-2"> 
-            {# <a  class="text-white text-decoration-none" href="{{ path('cart_show',{'id': menu.id}) }}">Valider Panier </a> #}
-            {# <a  class="text-white text-decoration-none" href="{{ path('cart_show' )}}"> #}
-            Confirmer RDV
-            {# </a> #}
-        </button>
         {# <button  type="submit" class="btn btn-success mx-2">Valider</button> #}
     </form>
     <p class="fs-4 border border-4 rounded px-2 text-warning"style="float:right"> Total : 
     <span class="text-white fs-4"> {{ total }} € </span></p>
-     {% if cartLessons != [] %}
+        {% if cartLessons != [] %}
     <a  class="fs-5 text-success rounded border border-success border-4 p-1 mx-2"
         style="float:right;text-decoration:none;"href="{{ path('app_invoice_new')}}"> 
         Commander 
