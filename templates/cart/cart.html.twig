@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %} panier{% endblock %}
 {% block body %}
-<div class="container  mt-3">
+<div class="container bg-secondary mt-2 pb-2">
     <table class="table">
         <thead>
             <tr>
@@ -42,31 +42,12 @@
         {% endfor %}
         </tbody>
     </table>
-        <input  type="submit" name="test" class="btn btn-success mx-2 mt-2" />
-
-    {# afficher liste booking #}
-    {# {% for booking in bookings %}
-    {{ booking.id }}
-    {{ booking.title  }}
-    {{ booking.start ? booking.start|date('Y-m-d H:i:s') : '' }}
-    <a class="btn btn-sm btn-success " href="{{ path('app_booking_edit', {'id': booking.id}) }}">Modifier</a><br>
-    {% endfor %} #}
-
-    {# creation booking form & Liaison avec $totalQty #}
-    {# {% if totalQty != 0 %}
-        {% for i in 1 .. totalQty  %}
-            <input class="mx-2 mt-2" type="text" placeholder="Prénom" name="title{{ i }}"/>
-            <input class="datetype" type="datetime-local" name="start{{ i }}"/>
-            <input  type="submit" name='test{{i}}' />
-            test{{i}}
-            <br>
-        {% endfor %}
-    {% endif %} #}
+        <input  type="submit" name="test" class="btn btn-success mx-2 mt-2 " />
 
         {# <button  type="submit" class="btn btn-success mx-2">Valider</button> #}
     </form>
     <p class="fs-4 border border-4 rounded px-2 text-warning"style="float:right"> Total : 
-    <span class="text-white fs-4"> {{ total }} € </span></p>
+    <span class="text-white fs-4 mb-2"> {{ total }} € </span></p>
         {% if cartLessons != [] %}
     <a  class="fs-5 text-success rounded border border-success border-4 p-1 mx-2"
         style="float:right;text-decoration:none;"href="{{ path('app_invoice_new')}}"> 

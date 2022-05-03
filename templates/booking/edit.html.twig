@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %}Modifier Booking{% endblock %}
 {% block body %}
-<div class="container">
+<div class="container bg-secondary mt-2 pb-2">
     <h1>Modifier</h1>
     {{ include('booking/_form.html.twig', {'button_label': 'Update'}) }}
     <a class="btn btn-primary mt-2" href="{{ path('app_booking_index') }}">Retour</a>
