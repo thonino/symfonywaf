@@ -9,6 +9,7 @@
 </style>
 
 <div class="container">
+{% if app.user %}
     <table class="table table-hover table-dark table-bordered border-light border border-2 mt-2">
         <thead>
             <tr>
@@ -19,34 +20,37 @@
             </tr>
         </thead>
         <tbody>
+        
             {% for invoice in invoices %}
-                {% if app.user.lastname == invoice.lastname and app.user.firstname == invoice.firstname %}
-                    <tr class="table-active">
-                        <td class="text-center">{{ invoice.id }}</td>
-                        <td>{{ invoice.lastname }} {{ invoice.firstname }} <span class="text-light">{{ invoice.phone }}</span></span></td>
-                        <td>{{ invoice.totalPrice}} € </td>
-                        <td class="text-center">
-                            <a class="btn btn-light mb-1" href="{{ path('app_invoice_show', {'id': invoice.id}) }}" role="button">Voir</a>
-                        </td>
-                    </tr>
-                {% elseif is_granted('ROLE_ADMIN')%}
-                    <tr class="table-active">
-                        <td class="text-center">{{ invoice.id }}</td>
-                        <td>{{ invoice.lastname }} {{ invoice.firstname }} <span class="text-light">{{ invoice.phone }}</span></span></td>
-                        <td>{{ invoice.totalPrice}} € </td>
-                        <td class="text-center">
-                            <a class="btn btn-light mb-1" href="{{ path('app_invoice_show', {'id': invoice.id}) }}" role="button">Voir</a>
-                        </td>
-                    </tr>
-                {% endif %}
-            {% else %}
-            <tr>
-                <td colspan="5">Aucune facture enregistré</td>
-            </tr>
-            
+                    {% if app.user.lastname == invoice.lastname and app.user.firstname == invoice.firstname %}
+                        <tr class="table-active">
+                            <td class="text-center">{{ invoice.id }}</td>
+                            <td>{{ invoice.lastname }} {{ invoice.firstname }} <span class="text-light">{{ invoice.phone }}</span></span></td>
+                            <td>{{ invoice.totalPrice}} € </td>
+                            <td class="text-center">
+                                <a class="btn btn-light mb-1" href="{{ path('app_invoice_show', {'id': invoice.id}) }}" role="button">Voir</a>
+                            </td>
+                        </tr>
+                        {% elseif is_granted('ROLE_ADMIN')%}
+                            <tr class="table-active">
+                                <td class="text-center">{{ invoice.id }}</td>
+                                <td>{{ invoice.lastname }} {{ invoice.firstname }} <span class="text-light">{{ invoice.phone }}</span></span></td>
+                                <td>{{ invoice.totalPrice}} € </td>
+                                <td class="text-center">
+                                    <a class="btn btn-light mb-1" href="{{ path('app_invoice_show', {'id': invoice.id}) }}" role="button">Voir</a>
+                                </td>
+                            </tr>
+                        {% endif %}
+                {% else %}
+                <tr>
+                    <td colspan="5">Aucune facture enregistré</td>
+                </tr>
             {% endfor %}
         </tbody>
         </table>
+{% else %}
+    <p class="text-dark"> Aucune facture enregistré </p>
+{% endif %}
 </div>
 
 

@@ -4,13 +4,133 @@
 
 {% block body %}
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+.conteneur{width:100%; }
+.carousel .carousel-item {height: 200px;}
+.carousel-item img {position: absolute;}
+.ha2{width: 360px; height: 140px; border-radius: 10px;}
+
+@media screen and (max-width: 1100px) {
+.top2{display: none;}
+}
+@media screen and (max-width: 940px) {
+.top1{display: none;}
+}
+@media screen and (max-width: 700px) {
+.ha2{width: 270px; height: 140px; border-radius: 10px;}
+}
 </style>
-
-<div class="example-wrapper">
-    <h1>Page d'accueil : c'est facile</h1>
-
+<!-- caroussel -->
+<div class="scroll2 d-flex flex-column align-items-center">
+        <div class="d-flex flex-column conteneur mt-2">
+            <div class="container-fluid text-light">
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="img/i1.jpg " width="400px" height="226px" class="d-block  img-fluid w-100 ha1" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>Apprendre à utiliser son <span class="text-success"> PC </span> ou son <span class="text-success"> téléphone </span> </h3> 
+                                <h5 class="text-white">( Formation pour novice )</h5>
+                                <a href="#"><p class=" btn btn-success">Démarrer </p> </span></a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/i2.jpg" width="400px" height="226px" class="d-block w-100 ha1 img-fluid" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>Coaching à domicile <span class="text-success">1h/90€ </span> <span class="text-warning"> 2h/150€ </span> </h3>
+                                <h4 class="text-white">Leçons vidéo + support de cours <span class="text-success"> 25€</span></h4>
+                                <a href="#"><p class=" btn btn-success">Choisir Leçon</p></a>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/i3.jpg" width="400px" height="226px" class="d-block w-100 ha1  img-fluid" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h3>Zone de déplacements : <span class="text-success">Ile de France</span></h3>
+                                <h5 class="text-white">( Pour toutes questions, cliquez ci-dessous )</h5>
+                                <a href="#"><p class=" btn btn-success">Me contacter</p></a>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div> 
+        </div>
+        <!-- Top -->
+    <div class="d-flex flex-row justify-content-end p-2">
+    <div class="mt-2 d-flex flex-column">
+        <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center">
+                    <img src="img/top1.png" class="top1 scroll2 img-fluid mb-2 mx-2" alt="...">
+                    <img src="img/top2.png" class="top2 scroll2 img-fluid mb-2 mx-2" alt="...">
+                    <img src="img/top3.png" class="top3 scroll2 img-fluid mb-2 mx-2" alt="...">
+            </div>
+        </div>
+        <div class="scroll2 card text-secondary bg-secondary mb-2 fs-5 ml " style="max-width: 60rem;border-radius:20px">
+            <div class="card-header bg-success text-center bold"style="border-radius:20px">COURS D'INFORMATIQUE &nbsp<span id="mot"></span></div>
+                <div class="card-body ">
+                    <h5 class="card-title text-white bold">Description :</h5>
+                    <p class="card-text text-light">
+                    Vous avez des difficultés à vous servir d’un ordirnateur ou d’un téléphone portable ? <br>
+                    Faites appel à nos services pour acquérir les compétances nécéssaires afin de devenir enfin
+                    autonome avec votre ordinateur ou téléphone portable.
+                    Sans avoir à bouger de chez vous, pas à pas vous serez guidés par nos coachs et par nos vidéos pédagogiques .<br> 
+                    </p>
+                    <a href="#"><p class="btn btn-success mt-1">plus.. </p> </span></a>
+                </div>
+            </div>
+        </div>
 </div>
+
+<!-- ACHAT Lesson -->
+<div class="d-flex flex-column align-items-center">
+    <h1 class="text-center">Acheter Une Leçon </h1>
+    <a class="btn btn-success"style="max-width: 350px;" href="{{ path('app_lesson_new') }}">Nouvelle Leçon</a>
+</div>
+    <div class="d-flex justify-content-center flex-wrap ">
+        {% for lesson in lessons %}
+            <div class="card m-2 text-light" style="max-width: 300px;">
+                <div class="col-12">
+                <img src="/img/{{lesson.image}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                            <h5 class="card-card text-center text-warning fs-1">{{ lesson.price }}€ </h5>
+                            <h5 class="card-card">{{ lesson.name }} </h5>
+                            <h5 class="card-text">{{ lesson.title }}</h5>
+                            <span class="d-flex justify-content-center">
+                            <a class="btn btn-warning mb-2 mt-2 text-dark" href="{{ path('cart_add', {'lesson' : lesson.id})}}">Ajouter au panier</a><br>
+                            <a class="btn btn-primary mb-2 mt-2 mx-1" href="{{ path('app_lesson_show', {'id': lesson.id}) }}">Détail</a>
+                            </span>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <p>votre panier est vide</p>
+        {% endfor %}
+    </div>
+
+<div><br><br></div>
+
+<script>
+document.querySelector(".homeJs").className = "text-decoration-none text-success fs-4 mx-1";
+// scroollReveal 
+const sr = ScrollReveal()
+sr.reveal('.scroll',{duration : 200,origin : 'top',scale : 0.5,interval: 900,});
+const sr2 = ScrollReveal()
+sr2.reveal('.scroll2',{duration : 600,origin : 'top',scale : 0.5,interval: 200,});
+// text magique
+var options = {strings: ["en vidéo"," à domicile pour débutant"],typeSpeed: 400, backSpeed : 100,loop : false,};
+var typed = new Typed("#mot", options);
+
+</script>
 
 {% endblock %}
