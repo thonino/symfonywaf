@@ -5,18 +5,29 @@ use App\Entity\Invoice;
 use App\Entity\Purchase;
 use App\Form\InvoiceType;
 use App\Repository\LessonRepository;
+use App\Repository\InvoiceRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 class InvoiceController extends AbstractController
 {
-    #[Route('/invoice', name: 'app_invoice')]
-    public function index(): Response
+    #[Route('/invoice/factures', name: 'app_invoices')]
+    public function index(InvoiceRepository $invoice,): Response
     {
         return $this->render('invoice/index.html.twig', [
-            'controller_name' => 'InvoiceController',
+            'invoices' => $invoice->findAll(),            
+        ]);
+    }
+    #[Route('/invoice/{id}', name: 'app_invoice_show', methods: ['GET'])]
+    public function show(Invoice $invoice,): Response
+    {
+        
+        return $this->render('invoice/show.html.twig', [
+            'invoice' => $invoice,
+            
         ]);
     }
     #[Route('/facture/adresse', name: 'app_invoice_new', methods: ['GET', 'POST'])]

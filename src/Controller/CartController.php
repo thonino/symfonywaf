@@ -77,7 +77,7 @@ class CartController extends AbstractController
             'cartLessons'=>$fullCart,
             'total' =>$total,
             'bookings' => $bookingRepository->findAll(),
-            'quantite'=> $quantite,
+            
             
         ]);
     }
