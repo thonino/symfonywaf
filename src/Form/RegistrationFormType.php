@@ -22,6 +22,7 @@ class RegistrationFormType extends AbstractType
         ->add('lastname', TextType::class,[ 'attr' => ['class' => 'form-control'], 'label' => 'Nom'])
         ->add('email', TextType::class,[ 'attr' => ['class' => 'form-control'],'label' => 'E-mail'])
         ->add('phone', TextType::class,[ 'attr' => ['class' => 'form-control'],'label' => 'Téléphone'])
+        ->add('city', TextType::class,[ 'attr' => ['class' => 'form-control'],'label' => 'Ville'])
         ->add('address', TextType::class,[ 'attr' => ['class' => 'form-control'],'label' => 'Adresse'])
         ->add('zipcode', TextType::class,[ 'attr' => ['class' => 'form-control'],'label' => 'Code postal'])
         ->add(  'RGPDConsent', CheckboxType::class, [

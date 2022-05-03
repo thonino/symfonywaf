@@ -65,6 +65,7 @@ class CartController extends AbstractController
             for ($i = 1; $i < $totalQty; $i++ )
                 if ($_POST){
                 {
+                    dd($_POST);
                     $booking[$i] = new Booking();
                     $booking[$i]->setStart(new DateTime($_POST['start'.$i]))->setTitle($_POST['title'.$i]);
                     $em->persist($booking[$i]);
