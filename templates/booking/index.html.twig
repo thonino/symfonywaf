@@ -3,6 +3,7 @@
 {% block title %}Booking index{% endblock %}
 
 {% block body %}
+
 <div class="container bg-secondary mt-2 pb-2"style="border-radius:10px">
     <h1>Reservation booking</h1>
     <table class="table">
@@ -22,7 +23,7 @@
                 <td>{{ booking.start ? booking.start|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                 <div class="d-flex m-0">
-                    <a class="btn btn-primary m-0"href="{{ path('app_booking_show', {'id': booking.id}) }}">Détail</a>
+                    <a class="btn btn-primary m-0 mx-2"href="{{ path('app_booking_show', {'id': booking.id}) }}">Détail</a>
 
                     {{ include('booking/_delete_form.html.twig') }}
                     </div>

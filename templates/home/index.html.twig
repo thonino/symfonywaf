@@ -20,7 +20,7 @@
 }
 </style>
 <!-- caroussel -->
-<div class="scroll2 d-flex flex-column align-items-center">
+<div class="scroll2 d-flex flex-column align-items-center bg-white">
         <div class="d-flex flex-column conteneur mt-2">
             <div class="container-fluid text-light">
                 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -66,8 +66,23 @@
                 </div>
             </div> 
         </div>
-        <!-- Top -->
-    <div class="d-flex flex-row justify-content-end p-2">
+        
+
+    <div class="d-flex flex-row justify-content-end p-2 bg-white">
+<!--waformafion-->
+    <div class="col-12 bg-white">
+            <div class="d-flex justify-content-center header">
+                <a class="text-decoration-none "href="{{ path('app_home') }}">
+                    <div class="d-flex justify-content-center mb-0">
+                        <img class="" style="margin-bottom:-35px;margin-top:-10px"src="/img/logo.jpg" width="100px" height="100px"alt="logo"/>
+                    </div>
+                    <div class="d-flex justify-content-center"style="margin-bottom:-30px">
+                        <p class="text-info d-inline tailleTxt">W<span class="text-success">A</span><span class="text-dark">FORMATION</span></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="mt-2 d-flex flex-column">
         <div class="d-flex justify-content-center">
                 <div class="d-flex justify-content-center">
@@ -76,7 +91,7 @@
                     <img src="img/top3.png" class="top3 scroll2 img-fluid mb-2 mx-2" alt="...">
             </div>
         </div>
-        <div class="scroll2 card text-secondary bg-secondary mb-2 fs-5 ml " style="max-width: 60rem;border-radius:20px">
+        <div class="scroll2 card text-secondary bg-secondary mb-2 fs-5 ml mx-2" style="max-width: 60rem;border-radius:20px">
             <div class="card-header bg-success text-center bold"style="border-radius:20px">COURS D'INFORMATIQUE &nbsp<span id="mot"></span></div>
                 <div class="card-body text-center">
                     <h4 class="card-title text-white bold">Vous avez des difficultés à vous servir d’un ordirnateur ou d’un téléphone portable ? </h5>
@@ -104,8 +119,8 @@
                 <div class="col-12">
                 <img src="/img/{{lesson.image}}" class="card-img-top" alt="..." style="border-top-left-radius:20px;border-top-right-radius:20px">
                     <div class="card-body">
-                            <h5 class="card-card text-center text-warning fs-1">{{ lesson.price }}€ </h5>
-                            <h5 class="card-card text-white text-center fs-5">{{ lesson.name }} </h5>
+                            <h5 class="card-card text-center text-warning fs-3"style="margin-top:-10px">{{ lesson.price }}€ </h5>
+                            <h5 class="card-card text-white text-center fs-5"style="margin-top:-10px">{{ lesson.name }} </h5>
                             <h5 class="card-text text-center fs-6">{{ lesson.title }}</h5>
                             <span class="d-flex justify-content-center">
                             <a class="btn btn-warning mb-2 mt-2 text-white fs-6" href="{{ path('cart_add', {'lesson' : lesson.id})}}">
