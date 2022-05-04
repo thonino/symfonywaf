@@ -3,7 +3,7 @@
 {% block title %}New Booking{% endblock %}
 
 {% block body %}
-<div class="container bg-secondary mt-2 pb-2">
+<div class="container bg-secondary mt-2 pb-2"style="border-radius:10px">
     <h1>Nouveau RDV</h1>
     {{ include('booking/_form.html.twig') }}
     <a class="btn btn-primary" href="{{ path('app_booking_index') }}">retour</a>
