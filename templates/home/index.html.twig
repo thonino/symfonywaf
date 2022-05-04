@@ -78,22 +78,21 @@
         </div>
         <div class="scroll2 card text-secondary bg-secondary mb-2 fs-5 ml " style="max-width: 60rem;border-radius:20px">
             <div class="card-header bg-success text-center bold"style="border-radius:20px">COURS D'INFORMATIQUE &nbsp<span id="mot"></span></div>
-                <div class="card-body ">
-                    <h5 class="card-title text-white bold">Description :</h5>
-                    <p class="card-text text-light">
-                    Vous avez des difficultés à vous servir d’un ordirnateur ou d’un téléphone portable ? <br>
-                    Faites appel à nos services pour acquérir les compétances nécéssaires afin de devenir enfin
-                    autonome avec votre ordinateur ou téléphone portable.
-                    Sans avoir à bouger de chez vous, pas à pas vous serez guidés par nos coachs et par nos vidéos pédagogiques .<br> 
+                <div class="card-body text-center">
+                    <h4 class="card-title text-white bold">Vous avez des difficultés à vous servir d’un ordirnateur ou d’un téléphone portable ? </h5>
+                    <p class="card-text text-light ">
+                    Faites appel à mes services pour acquérir les compétances nécéssaires afin de devenir enfin
+                    autonome avec votre ordinateur ou téléphone portable.<br> 
                     </p>
                     <a href="#"><p class="btn btn-success mt-1">plus.. </p> </span></a>
+                    </div>
                 </div>
             </div>
         </div>
-</div>
 
 <!-- ACHAT Lesson -->
 <div class="d-flex flex-column align-items-center">
+
     <h1 class="text-center text-secondary">Acheter Une Leçon </h1>
     {% if is_granted('ROLE_ADMIN') %}
         <a class="btn btn-success"style="max-width: 350px;" href="{{ path('app_lesson_new') }}">Nouvelle Leçon</a>
@@ -101,15 +100,16 @@
 </div>
     <div class="d-flex justify-content-center flex-wrap ">
         {% for lesson in lessons %}
-            <div class="card m-2 text-light" style="max-width: 300px;">
+            <div class="card m-2 text-light" style="max-width: 200px;border-radius:20px">
                 <div class="col-12">
-                <img src="/img/{{lesson.image}}" class="card-img-top" alt="...">
+                <img src="/img/{{lesson.image}}" class="card-img-top" alt="..." style="border-top-left-radius:20px;border-top-right-radius:20px">
                     <div class="card-body">
                             <h5 class="card-card text-center text-warning fs-1">{{ lesson.price }}€ </h5>
-                            <h5 class="card-card">{{ lesson.name }} </h5>
-                            <h5 class="card-text">{{ lesson.title }}</h5>
+                            <h5 class="card-card text-white text-center fs-5">{{ lesson.name }} </h5>
+                            <h5 class="card-text text-center fs-6">{{ lesson.title }}</h5>
                             <span class="d-flex justify-content-center">
-                            <a class="btn btn-warning mb-2 mt-2 text-white" href="{{ path('cart_add', {'lesson' : lesson.id})}}">Ajouter au panier</a><br>
+                            <a class="btn btn-warning mb-2 mt-2 text-white fs-6" href="{{ path('cart_add', {'lesson' : lesson.id})}}">
+                            + Panier</a><br>
                             <a class="btn btn-primary mb-2 mt-2 mx-1" href="{{ path('app_lesson_show', {'id': lesson.id}) }}">Détail</a>
                             </span>
                     </div>

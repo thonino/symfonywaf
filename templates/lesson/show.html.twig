@@ -2,12 +2,12 @@
 {% block title %}Detail Lesson{% endblock %}
 {% block body %}
 
-<div class="container col-6">
+<div class="container col-6 bg-secondary mt-2 pb-2"style="border-radius:10px">
     <h1 class="text-warning text-center">Detail Lesson</h1>
     <table class="table">
         <tbody>
-        <div class="" style="max-width: 500px;">
-        <img src="/img/{{lesson.image}}" class="card-img-top" alt="...">
+        <div class="container" style="max-width: 500px;">
+        <img src="/img/{{lesson.image}}" class="card-img-top" alt="..."style="border-radius:20px">
         </div>
             <p class="fs-3 text-warning"> Intitulé : <span class="fs-4 text-light">{{ lesson.name }}</span><br>
             <span class="fs-3 text-warning"> Prix : </span><span class="fs-4 text-light">{{ lesson.price }}</span><br>

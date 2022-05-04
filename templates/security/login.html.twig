@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %}connexion{% endblock %}
 {% block body %}
-<div class="container bg-secondary mt-2 pb-2">
+<div class="container bg-secondary mt-2 pb-2"style="border-radius:10px">
  <form method="post">
   {% if error %}
     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData,'security')}}</div>
