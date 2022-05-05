@@ -9,10 +9,12 @@ use App\Entity\Booking;
 use App\Repository\LessonRepository;
 use App\Repository\BookingRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\BookingType;
 
 #[Route('/cart')]
 class CartController extends AbstractController
@@ -49,9 +51,11 @@ class CartController extends AbstractController
         $session->set('cart', $cart);
         return $this->redirectToRoute('cart_show', [ 'id'=>$id,]);
     }
-    #[Route(['/show'], name: 'cart_show')]
-    public function show(EntityManagerInterface $em,SessionInterface $session, LessonRepository $lessonRepo,BookingRepository $bookingRepository): Response
+    #[Route(['/show'], name: 'cart_show', methods: ['GET', 'POST'])]
+    public function show(Request $request,EntityManagerInterface $em,SessionInterface $session, LessonRepository $lessonRepo,BookingRepository $bookingRepository): Response
     {
+        
+
         $total = 0;
         $totalQty = 0;
         $fullCart = [];
@@ -62,24 +66,22 @@ class CartController extends AbstractController
             $fullCart[]= ['lesson' => $lesson,'quantite' => $quantite,];
             $total += $price*$quantite;
             $totalQty += $quantite;
-            for ($i = 1; $i < $totalQty; $i++ )
+            for ($i = 1; $i < $totalQty; $i++ ){
                 if ($_POST){
-                {
-                    dd($_POST);
-                    $booking[$i] = new Booking();
-                    $booking[$i]->setStart(new DateTime($_POST['start'.$i]))->setTitle($_POST['title'.$i]);
-                    $em->persist($booking[$i]);
+                    $booking = new Booking();
+                    $booking->setStart(new DateTime($_POST['start'.$i]))->setTitle($_POST['title'.$i]);
+                    $em->persist($booking);
                     $em->flush();
-                    return $this->redirectToRoute('app_booking_index',);}
+                    return $this->redirectToRoute('app_booking_index',);
                 }
-            };
+            }
+        };
         
         return $this->render('cart/cart.html.twig', [
             'cartLessons'=>$fullCart,
             'total' =>$total,
             'bookings' => $bookingRepository->findAll(),
-            
-            
+
         ]);
     }
 }

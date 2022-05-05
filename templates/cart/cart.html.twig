@@ -21,8 +21,8 @@
                         {# creation booking form & Liaison avec $totalQty #}
     {% if row.quantite != 0 %}
         {% for i in 1 .. row.quantite  %}
-            <input class="mx-2 mt-2" type="text" placeholder="Prénom" name="title{{i}}"/>
-            <input class="datetype" type="datetime-local" name="start{{i}}"/>
+                <input class="mx-2 mt-2" type="text" placeholder="Prénom" name="title{{i}}"/>
+                <input class="datetype" type="datetime-local" name="start{{i}}"/>
             <br>
         {% endfor %}
     {% endif %}
