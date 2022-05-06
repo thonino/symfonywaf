@@ -6,15 +6,18 @@ namespace App\Controller;
 use DateTime;
 use App\Entity\Lesson;
 use App\Entity\Booking;
+use App\Form\BookingType;
 use App\Repository\LessonRepository;
 use App\Repository\BookingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Form\BookingType;
 
 #[Route('/cart')]
 class CartController extends AbstractController
@@ -51,11 +54,9 @@ class CartController extends AbstractController
         $session->set('cart', $cart);
         return $this->redirectToRoute('cart_show', [ 'id'=>$id,]);
     }
-    #[Route(['/show'], name: 'cart_show', methods: ['GET', 'POST'])]
+    #[Route(['/show'], name: 'cart_show')]
     public function show(Request $request,EntityManagerInterface $em,SessionInterface $session, LessonRepository $lessonRepo,BookingRepository $bookingRepository): Response
     {
-        
-
         $total = 0;
         $totalQty = 0;
         $fullCart = [];
@@ -66,15 +67,15 @@ class CartController extends AbstractController
             $fullCart[]= ['lesson' => $lesson,'quantite' => $quantite,];
             $total += $price*$quantite;
             $totalQty += $quantite;
-            for ($i = 1; $i < $totalQty; $i++ ){
-                if ($_POST){
-                    $booking = new Booking();
-                    $booking->setStart(new DateTime($_POST['start'.$i]))->setTitle($_POST['title'.$i]);
-                    $em->persist($booking);
+            for ($i = 1; $i <= $quantite; $i++ ){
+                if ($request->request->count()>0){
+                    $booking[$i] = new Booking();
+                    $booking[$i]->setStart(new DateTime($request->request->get('start'.$i)))
+                            ->setTitle($request->request->get('title'.$i));
+                    $em->persist($booking[$i]);dd($request);
                     $em->flush();
-                    return $this->redirectToRoute('app_booking_index',);
-                }
-            }
+                }}
+            
         };
         
         return $this->render('cart/cart.html.twig', [
@@ -83,5 +84,29 @@ class CartController extends AbstractController
             'bookings' => $bookingRepository->findAll(),
 
         ]);
+    }
+    #[Route(['/test'], name: 'cart_test')]
+    public function create(Request $request,EntityManagerInterface $em){
+        if ($request->request->count()>0){
+            $booking = new Booking();
+                    $booking->setStart(new DateTime($request->request->get('start')))
+                            ->setTitle($request->request->get('title'));
+                    $em->persist($booking);
+                    $em->flush();
+
+        }
+        return $this->render('cart/test.html.twig');
+        // $booking = new Booking();
+        // $form = $this->createFormBuilder($booking)
+        // ->add('title', TextType::class,['attr' => ['class' => 'form-control'], 'label' => 'Prénom'])
+        // ->add(  'start', DateTimeType::class,['date_widget'=>'single_text', 'label' => 'Jour & Heure'],)
+        // ->add(  'submit', SubmitType::class,[ 'label' => 'Envoyer'],)
+        // ->getForm();
+        // // ->add('title')
+        // // ->add('start')
+        // // ->getForm();
+        // return $this->render('cart/test.html.twig',[
+        //     'formTest'=>$form->createView()
+        // ]);
     }
 }
