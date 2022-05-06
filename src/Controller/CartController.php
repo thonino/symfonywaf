@@ -74,7 +74,8 @@ class CartController extends AbstractController
                             ->setTitle($request->request->get('title'.$i));
                     $em->persist($booking[$i]);dd($request);
                     $em->flush();
-                }}
+                }
+            }
             
         };
         
@@ -87,26 +88,31 @@ class CartController extends AbstractController
     }
     #[Route(['/test'], name: 'cart_test')]
     public function create(Request $request,EntityManagerInterface $em){
+        // Méthod 1
+        // if ($request->request->count()>0){
+        //     $booking = new Booking();
+        //             $booking->setStart(new DateTime($request->request->get('start')))
+        //                     ->setTitle($request->request->get('title'));
+        //             $em->persist($booking);
+        //             $em->flush();
+        // }
+        // return $this->render('cart/test.html.twig');
+        
+        // Méthod 2
+        $booking = new Booking();
+        $form = $this->createFormBuilder($booking)
+        ->add('title', TextType::class,['attr' => ['class' => 'form-control'], 'label' => 'Prénom'])
+        ->add('start', DateTimeType::class,['date_widget'=>'single_text', 'label' => 'Jour & Heure'],)
+        ->add('submit', SubmitType::class,[ 'label' => 'Envoyer'],)
+        ->getForm();
+        $form->handleRequest($request);  // récupère les données de $request
         if ($request->request->count()>0){
-            $booking = new Booking();
-                    $booking->setStart(new DateTime($request->request->get('start')))
-                            ->setTitle($request->request->get('title'));
-                    $em->persist($booking);
-                    $em->flush();
-
+        $em->persist($booking);
+        $em->flush();
+        // dd($booking);
         }
-        return $this->render('cart/test.html.twig');
-        // $booking = new Booking();
-        // $form = $this->createFormBuilder($booking)
-        // ->add('title', TextType::class,['attr' => ['class' => 'form-control'], 'label' => 'Prénom'])
-        // ->add(  'start', DateTimeType::class,['date_widget'=>'single_text', 'label' => 'Jour & Heure'],)
-        // ->add(  'submit', SubmitType::class,[ 'label' => 'Envoyer'],)
-        // ->getForm();
-        // // ->add('title')
-        // // ->add('start')
-        // // ->getForm();
-        // return $this->render('cart/test.html.twig',[
-        //     'formTest'=>$form->createView()
-        // ]);
+        return $this->render('cart/test.html.twig',[
+            'formTest'=>$form->createView()
+        ]);
     }
 }
