@@ -19,7 +19,7 @@
                     {% if row.quantite != 0 %}
                         {% for i in 1 .. row.quantite  %}
                             <input class=" mt-2" type="text" placeholder="Prénom" name='title{{i}}{{row.lesson.id}}'/><br>
-                            <input class="datetype" type="datetime-local" name="start{{i}}{{row.lesson.name}}"/><br>
+                            <input class="datetime" type="datetime-local" name="start{{i}}{{row.lesson.id}}"/><br>
                         {% endfor %}
                     {% endif %}
                 </td>

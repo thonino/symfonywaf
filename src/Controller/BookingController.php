@@ -38,7 +38,7 @@ class BookingController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $bookingRepository->add($booking);
-            return $this->redirectToRoute('cart_show', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_calendar', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('booking/new.html.twig', [

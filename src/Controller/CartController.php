@@ -6,7 +6,6 @@ namespace App\Controller;
 use DateTime;
 use App\Entity\Lesson;
 use App\Entity\Booking;
-use App\Form\BookingType;
 use App\Repository\LessonRepository;
 use App\Repository\BookingRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -77,6 +76,7 @@ class CartController extends AbstractController
                     $em->flush();
                 }
             }
+
         };
         return $this->render('cart/cart.html.twig', [
             'cartLessons'=>$fullCart,

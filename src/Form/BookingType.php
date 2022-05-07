@@ -13,7 +13,7 @@ class BookingType extends AbstractType
     {
         $builder
             ->add('title', TextType::class,['attr' => ['class' => 'form-control'], 'label' => 'Prénom'])
-            ->add(  'start', DateTimeType::class,['date_widget'=>'single_text', 'label' => 'Jour & Heure'],)
+            ->add('start', DateTimeType::class,['date_widget'=>'single_text', 'label' => 'Jour & Heure'],)
         ;
     }
     public function configureOptions(OptionsResolver $resolver): void
