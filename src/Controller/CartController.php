@@ -86,7 +86,7 @@ class CartController extends AbstractController
 
         ]);
     }
-    #[Route(['/test'], name: 'cart_test')]
+    #[Route(['/betaTest'], name: 'cart_betaTest')]
     public function create(Request $request,EntityManagerInterface $em){
         // Méthod 1
         // if ($request->request->count()>0){
