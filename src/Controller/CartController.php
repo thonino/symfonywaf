@@ -69,27 +69,14 @@ class CartController extends AbstractController
             $totalQty += $quantite;
             for ($i = 1; $i <= $quantite; $i++ ){
                 if ($request->request->count()>0){
-                    $booking[$i] = new Booking();
-                    $booking[$i]->setStart(new DateTime($request->request->get('start'.$i)))
-                            ->setTitle($request->request->get('title'.$i));
-                    $em->persist($booking[$i]);dd($request);
+                    $booking[$i.$id] = new Booking();
+                    $booking[$i.$id]->setStart(new DateTime($request->request->get('start'.$i.$id)))
+                            ->setTitle($request->request->get('title'.$i.$id));
+                    $em->persist($booking[$i.$id]);
+                    // dd($request);
                     $em->flush();
                 }
             }
-            // $booking = new Booking();
-            // $form = $this->createFormBuilder($booking)
-            // ->add('title', TextType::class,['attr' => ['class' => 'form-control'], 'label' => 'Prénom'])
-            // ->add('start', DateTimeType::class,['date_widget'=>'single_text', 'label' => 'Jour & Heure'],)
-            // ->add('submit', SubmitType::class,['name'=>'submit', 'label' => 'Envoyer'],)
-            // ->getForm();
-            // $form->handleRequest($request);  // récupère les données de $request
-            // if ($form->isSubmitted() && $form->isValid()){
-            
-            //     $em->persist($booking);
-            //     dd($request);
-            //     $em->flush();
-            // }
-            
         };
         return $this->render('cart/cart.html.twig', [
             'cartLessons'=>$fullCart,

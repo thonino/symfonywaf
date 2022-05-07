@@ -18,15 +18,8 @@
                     {# creation booking form & Liaison avec $totalQty #}
                     {% if row.quantite != 0 %}
                         {% for i in 1 .. row.quantite  %}
-                            <input class=" mt-2" type="text" placeholder="Prénom" name='title{{i}}'/><br>
-                            <input class="datetype" type="datetime-local" name="start{{i}}"/><br>
-                            {# <button type="submit" class="btn btn-success " />Envoyer</button><br> #}
-                            
-                            {# {{ form_start(formTest) }}
-                                {{ form_row(formTest.title, {'attr':{'placeholder':"prénom"}}) }}
-                                {{ form_row(formTest.start) }}
-                            {{ form_end(formTest) }} #}
-                            
+                            <input class=" mt-2" type="text" placeholder="Prénom" name='title{{i}}{{row.lesson.id}}'/><br>
+                            <input class="datetype" type="datetime-local" name="start{{i}}{{row.lesson.name}}"/><br>
                         {% endfor %}
                     {% endif %}
                 </td>
@@ -46,9 +39,7 @@
             </tbody>
         </table>
             <button type="submit" class="btn btn-success mx-2 mt-2 " />Envoyer</button>
-            {# <button  type="submit" class="btn btn-success mx-2">Valider</button> #}
-        
-            <p class="fs-4 border border-4 rounded  text-warning p-1"style="float:right;margin-top:-5px"> Total : 
+            <p class="fs-4 border border-4 rounded text-warning p-1"style="float:right;margin-top:-5px"> Total : 
             <span class="text-white fs-4 "> {{ total }} € </span></p>
             {% if cartLessons != [] %}
                 <a  class="fs-5 text-success rounded border border-success border-4 p-1 mx-2"
