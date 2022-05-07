@@ -76,13 +76,26 @@ class CartController extends AbstractController
                     $em->flush();
                 }
             }
+            // $booking = new Booking();
+            // $form = $this->createFormBuilder($booking)
+            // ->add('title', TextType::class,['attr' => ['class' => 'form-control'], 'label' => 'Prénom'])
+            // ->add('start', DateTimeType::class,['date_widget'=>'single_text', 'label' => 'Jour & Heure'],)
+            // ->add('submit', SubmitType::class,['name'=>'submit', 'label' => 'Envoyer'],)
+            // ->getForm();
+            // $form->handleRequest($request);  // récupère les données de $request
+            // if ($form->isSubmitted() && $form->isValid()){
+            
+            //     $em->persist($booking);
+            //     dd($request);
+            //     $em->flush();
+            // }
             
         };
-        
         return $this->render('cart/cart.html.twig', [
             'cartLessons'=>$fullCart,
             'total' =>$total,
             'bookings' => $bookingRepository->findAll(),
+            // 'formTest'=>$form->createView()
 
         ]);
     }
@@ -106,13 +119,13 @@ class CartController extends AbstractController
         ->add('submit', SubmitType::class,[ 'label' => 'Envoyer'],)
         ->getForm();
         $form->handleRequest($request);  // récupère les données de $request
-        if ($request->request->count()>0){
-        $em->persist($booking);
-        $em->flush();
-        // dd($booking);
+        if ($form->isSubmitted() && $form->isValid()){
+            $em->persist($booking);
+            $em->flush();
+            // dd($booking);
         }
         return $this->render('cart/test.html.twig',[
-            'formTest'=>$form->createView()
+            'formTest'=>$form->createView(),
         ]);
     }
 }
