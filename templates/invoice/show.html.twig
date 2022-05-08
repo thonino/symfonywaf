@@ -35,18 +35,18 @@
         <table class="table table-hover table-dark table-bordered border-light border border-2 ">
             <thead>
                 <th scope="col" class="text-center text-white">Produits</th>
-                <th scope="col" class="text-center text-white">description</th>
+                <th scope="col" class="text-center text-white">Titre</th>
                 <th scope="col" class="text-center text-white">prix</th>
                 <th scope="col" class="text-center text-white">Quantité</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="table-active">
-                    <td class="text-center">xxx</td>
-                    <td class="text-center">xxx</span></span></td>
-                    <td class="text-center">{{ invoice.totalPrice}} € </td>
-                    <td class="text-center"> quantité</a>
-                    </td>
+                    <td class="text-center">{{ invoice.lessonName }}</td>
+                    <td class="text-center">{{ invoice.lessonTitle }}</span></span></td>
+                    <td class="text-center">{{ invoice.totalPrice}} </td>
+                    <td class="text-center">{{ invoice.lessonQty }}</a>
+                    </td> 
                 </tr>
             </tbody>
         </table>

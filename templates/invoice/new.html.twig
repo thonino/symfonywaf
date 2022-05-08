@@ -2,6 +2,7 @@
 {% block title %}New Invoice{% endblock %}
 {% block body %}
 <div class="container bg-secondary mt-2 pb-2"style="border-radius:10px">
+    <h1 class="text-success"> Votre commande</h1>
     <table class="table">
             <thead>
                 <tr>
@@ -14,10 +15,10 @@
                 {% for row in cartLessons %}
             <tr>
                 <td  class="fs-5">{{ row.lesson.name }}  
-                    <span  class="text-light fs-6">{{ row.lesson.description }}</span></td>
+                    <span  class="text-light fs-6">{{ row.lesson.title }}</span></td>
                 <td class="fs-4">{{ row.lesson.price }} €</td>
                 <td class=" fs-4">
-                    {{ row.qty }}</td>
+                    {{ row.qty }} H</td>
                 </tr>
             {% else %}
                 <tr>
@@ -28,10 +29,12 @@
         </table>
         <p class="fs-4 border border-4 rounded px-2"style="float:right"> Total : 
         <span class="text-warning fs-4"> {{ total }} € </span></p>
-        <h1>Donnez votre adresse</h1>
+        <h1>Informations commande</h1>
         {{ form_start(form) }}
         {{ form_widget(form) }}
-        <button class="btn">{{ button_label|default('Pay') }}</button>
+        <button class="btn btn-warning fs-5"><i class="bi bi-credit-card mx-1 fs-5"></i>{{ button_label|default('Payer') }}</button>
         {{ form_end(form) }}
+
+        
 </div>
 {% endblock %}

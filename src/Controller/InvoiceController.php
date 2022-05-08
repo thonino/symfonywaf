@@ -30,7 +30,7 @@ class InvoiceController extends AbstractController
             
         ]);
     }
-    #[Route('/facture/adresse', name: 'app_invoice_new', methods: ['GET', 'POST'])]
+    #[Route('/facture/commande', name: 'app_invoice_new', methods: ['GET', 'POST'])]
     public function new(Request $request,SessionInterface $session,LessonRepository $lessonRepo): Response
     {
         $invoice = new Invoice();
@@ -53,12 +53,20 @@ class InvoiceController extends AbstractController
             $lesson = $lessonRepo->find($id);  
             $fullCart[]= ['lesson' => $lesson,'qty' => $qty,];
             $total += $lesson->getPrice()*$qty;
-        }
-        if ($form->isSubmitted() && $form->isValid()) {
+            $lessons = $lesson->getName();
+            $titles = $lesson->getTitle();
+            $qties[] = $qty;
+            
             $entityManager = $this->getDoctrine()->getManager();
             $invoice->setTotalPrice($total)
+                    ->setLessonName($lessons) 
+                    ->setLessonTitle($titles) 
+                    ->setLessonQty(array_sum($qties)) 
                     ->setPaid(false)    
                     ->setStripeSuccessKey(uniqid());
+        }
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($invoice);
             foreach($cart as $id =>$qty){
                 $lesson = $lessonRepo->find($id);
@@ -73,10 +81,12 @@ class InvoiceController extends AbstractController
             return $this->redirectToRoute('stripe_checkout', ["invoice"=> $invoice->getId()], Response::HTTP_SEE_OTHER);
         }
         return $this->renderForm('invoice/new.html.twig', [
+            
             'invoice' => $invoice,
             'form' => $form,
             'cartLessons'=>$fullCart,
             'total' =>$total,
+            'fa'=>$invoice->getId(),
         ]);
     }
 }

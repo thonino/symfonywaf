@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\InvoiceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: InvoiceRepository::class)]
@@ -42,6 +44,16 @@ class Invoice
 
     #[ORM\Column(type: 'string', length: 10, nullable: true)]
     private $phone;
+
+    #[ORM\Column(type: 'string', length: 100, nullable: true)]
+    private $lessonName;
+
+    #[ORM\Column(type: 'string', length: 3, nullable: true)]
+    private $lessonQty;
+
+    #[ORM\Column(type: 'string', length: 100)]
+    private $lessonTitle;
+
 
     public function getId(): ?int
     {
@@ -164,6 +176,42 @@ class Invoice
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getLessonName(): ?string
+    {
+        return $this->lessonName;
+    }
+
+    public function setLessonName(?string $lessonName): self
+    {
+        $this->lessonName = $lessonName;
+
+        return $this;
+    }
+
+    public function getLessonQty(): ?string
+    {
+        return $this->lessonQty;
+    }
+
+    public function setLessonQty(?string $lessonQty): self
+    {
+        $this->lessonQty = $lessonQty;
+
+        return $this;
+    }
+
+    public function getLessonTitle(): ?string
+    {
+        return $this->lessonTitle;
+    }
+
+    public function setLessonTitle(string $lessonTitle): self
+    {
+        $this->lessonTitle = $lessonTitle;
 
         return $this;
     }
