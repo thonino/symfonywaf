@@ -1,13 +1,10 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}{% endblock %}
-
 {% block body %}
-
-<div class=" bg-white pb-2 text-secondary m-5 mt-3 p-3" >
-    
-    <div class="col-12 bg-white" >
-        <div class="d-flex justify-content-between ">
+<style></style>
+    <div class="bg-white pb-2 text-secondary m-5 mt-3 p-3 min-vh-100" >
+        <div class="col-12 bg-white" >
+            <div class="d-flex justify-content-between ">
                 <div class="d-inline header mt-2"style="margin-left:20px">
                     <img class="" src="/img/logo.jpg" width="80px" height="80px"alt="logo"/>
                     <p class="text-info d-inline fs-2 ">W<span class="text-success">A</span><span class="text-dark">FORMATION</span></p><br>
@@ -19,37 +16,46 @@
                 <div class="d-inline header "style="margin-right:20px">
                     <P class="fs-5 mt-2">LE : J/M/A</P>
                     <P class="fs-5">Facture n° {{ invoice.id }}</P>
-
                 </div>
-        </div>    
- 
-    </div>
+            </div>    
+        </div>
 
-    <div class="m-2 text-center 4">
-        <h1 class="">FACTURE N° {{ invoice.id }}</P>
-        <h3 class="">Client : {{ invoice.lastname }} {{ invoice.firstname }}</h3>
-        <h5 class="text-light">Téléphone : {{ invoice.phone }}</h5>
-        <h5 class="text-light">Adresse : {{ invoice.address }}</h5>
-        <h5 class="text-light">Prix tolal : {{ invoice.totalPrice}} € </h5>
+        <div class="m-2 text-center 4">
+            <h1 class="">FACTURE N° {{ invoice.id }}</P>
+            <h3 class="">Client : {{ invoice.lastname }} {{ invoice.firstname }}</h3>
+            <h5 class="text-light">Téléphone : {{ invoice.phone }}</h5>
+            <h5 class="text-light">Adresse : {{ invoice.address }}</h5>
+            <h5 class="text-light">Prix tolal : {{ invoice.totalPrice}} € </h5>
+        </div>
+            <table class="table table-hover table-dark table-bordered border-light border border-2 ">
+                <thead>
+                    <th scope="col" class="text-center text-white">Produit</th>
+                    <th scope="col" class="text-center text-white">Quantité</th>
+                    <th scope="col" class="text-center text-white">Prix Unitaire</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for purchase in purchases %}
+                        <tr class="table-active">
+                            <td class="text-center">
+                                {% for lesson in lessons %} 
+                                    {% if purchase.lesson.id ==  lesson.id %}
+                                        {{  lesson.name}} 
+                                    {% endif %}  
+                                {% endfor %}
+                            </td>
+                            <td class="text-center">{{ purchase.quantity}} </td> 
+                            <td class="text-center">{{ purchase.unitPrice}}</td>
+                            </td> 
+                        </tr>
+                    {% endfor %}
+                </tbody> 
+            </table>
+            <div class="d-flex justify-content-end "> 
+                <span  class="fs-2 border border-4 border-secondary mx-2 px-2 "style="border-radius:10px">
+                    {{ invoice.totalPrice}}€ 
+                </span>
+            </div>
+        </div>
     </div>
-        <table class="table table-hover table-dark table-bordered border-light border border-2 ">
-            <thead>
-                <th scope="col" class="text-center text-white">Produits</th>
-                <th scope="col" class="text-center text-white">Titre</th>
-                <th scope="col" class="text-center text-white">prix</th>
-                <th scope="col" class="text-center text-white">Quantité</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="table-active">
-                    <td class="text-center">xxx</td>
-                    <td class="text-center">xxx</span></span></td>
-                    <td class="text-center">{{ invoice.totalPrice}} </td>
-                    <td class="text-center">xxx</a>
-                    </td> 
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
 {% endblock %}

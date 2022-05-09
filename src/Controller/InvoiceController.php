@@ -6,6 +6,7 @@ use App\Entity\Purchase;
 use App\Form\InvoiceType;
 use App\Repository\LessonRepository;
 use App\Repository\InvoiceRepository;
+use App\Repository\PurchaseRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,18 +16,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class InvoiceController extends AbstractController
 {
     #[Route('/invoice/factures', name: 'app_invoices')]
-    public function index(InvoiceRepository $invoice,): Response
+    public function index(InvoiceRepository $invoice): Response
     {
         return $this->render('invoice/index.html.twig', [
-            'invoices' => $invoice->findAll(),            
+            'invoices' => $invoice->findAll(),
         ]);
     }
     #[Route('/invoice/{id}', name: 'app_invoice_show', methods: ['GET'])]
-    public function show(Invoice $invoice,): Response
+    public function show(Invoice $invoice,PurchaseRepository $purchase,LessonRepository $lesson): Response
     {
-        
+     
         return $this->render('invoice/show.html.twig', [
             'invoice' => $invoice,
+            'purchases' => $purchase->findAll(), 
+            'lessons' => $lesson->findAll(), 
             
         ]);
     }
