@@ -53,22 +53,17 @@ class InvoiceController extends AbstractController
             $lesson = $lessonRepo->find($id);  
             $fullCart[]= ['lesson' => $lesson,'qty' => $qty,];
             $total += $lesson->getPrice()*$qty;
-            $lessons = $lesson->getName();
-            $titles = $lesson->getTitle();
             $qties[] = $qty;
             
-            $entityManager = $this->getDoctrine()->getManager();
-            $invoice->setTotalPrice($total)
-                    ->setLessonName($lessons) 
-                    ->setLessonTitle($titles) 
-                    ->setLessonQty(array_sum($qties)) 
-                    ->setPaid(false)    
-                    ->setStripeSuccessKey(uniqid());
                     
         }
         if ($form->isSubmitted() && $form->isValid()) {
-            // $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $this->getDoctrine()->getManager();
+            $invoice->setTotalPrice($total)
+                    ->setPaid(false)    
+                    ->setStripeSuccessKey(uniqid());
             $entityManager->persist($invoice);
+
             foreach($cart as $id =>$qty){
                 $lesson = $lessonRepo->find($id);
                 $purchase = new Purchase;

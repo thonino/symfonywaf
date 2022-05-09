@@ -45,16 +45,6 @@ class Invoice
     #[ORM\Column(type: 'string', length: 10, nullable: true)]
     private $phone;
 
-    #[ORM\Column(type: 'string', length: 100, nullable: true)]
-    private $lessonName;
-
-    #[ORM\Column(type: 'string', length: 3, nullable: true)]
-    private $lessonQty;
-
-    #[ORM\Column(type: 'string', length: 100)]
-    private $lessonTitle;
-
-
     public function getId(): ?int
     {
         return $this->id;
