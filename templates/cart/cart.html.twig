@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %} panier{% endblock %}
 {% block body %}
-<div class="container bg-secondary mt-2 pb-2"style="border-radius:10px">
+<div class="container bg-secondary mt-2 pb-2"style="border-radius:10px;min-height:200px">
     <table class="table">
         <thead>
             <tr>
@@ -18,7 +18,7 @@
                     {# creation booking form & Liaison avec $totalQty #}
                     {% if row.quantite != 0 %}
                         {% for i in 1 .. row.quantite  %}
-                            <input class=" mt-2" type="text" placeholder="Nom Prénom" name='title{{i}}{{row.lesson.id}}'/><br>
+                            <input class=" mt-2" type="text" placeholder="Votre Pseudo" name='title{{i}}{{row.lesson.id}}'/><br>
                             <input class="datetime" type="datetime-local" name="start{{i}}{{row.lesson.id}}"/><br>
                         {% endfor %}
                     {% endif %}
@@ -33,21 +33,30 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="2"> Aucun article ajouté </td>            
-            </tr>
+                <td colspan="2"> Aucun article ajouté </td>         
+            </tr>  
         {% endfor %}
-            </tbody>
+            </tbody>            
         </table>
-            <button type="submit" class="btn btn-success mx-2 mt-2 " />Envoyer</button>
-            <p class="fs-4 border border-4 rounded text-warning p-1"style="float:right;margin-top:-5px"> Total : 
-            <span class="text-white fs-4 "> {{ total }} € </span></p>
-            {% if cartLessons != [] %}
-                <a  class="fs-5 text-success rounded border border-success border-4 p-1 mx-2"
-                    style="float:right;text-decoration:none;margin-top:0px"href="{{ path('app_invoice_new')}}"> 
-                    Commander 
-                </a>
-            {% endif %}
+            <div class="mb-2 ">
+                <p class="fs-4 border border-4 rounded text-warning p-1 mx-2 mb-2"style="float:left ;margin-top:-15px;"> 
+                    Total : 
+                    <span class="text-white fs-4"> {{ total }} € </span>
+                </p>
+                {% if cartLessons != [] %}
+                    <div id="del">
+                        {# <a href="{{ path('app_invoice_new') }}"></a> #}
+                        <button class="btn">commander</button>
+                        {# {% do redirect('app_invoice_new') %} #}
+                    </div>
+                {% endif %}
+            </div>
+
         </form>
 </div>
+<script>
+const btn = document.querySelector('.btn')
+btn.addEventListener('click',()=>{window.location.href = "/invoice/new.html.twig"})
 
+</script>
 {% endblock %}

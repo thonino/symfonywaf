@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% endblock %}
 {% block body %}
-<style></style>
+<style>.colorTab{ background-color:#e6ffe6}</style>
     <div class="bg-white pb-2 text-secondary m-5 mt-3 p-3 min-vh-100" >
         <div class="col-12 bg-white" >
             <div class="d-flex justify-content-between ">
@@ -19,35 +19,35 @@
                 </div>
             </div>    
         </div>
-
-        <div class="m-2 text-center 4">
+        <div class="m-2 text-center 4 ">
             <h1 class="">FACTURE N° {{ invoice.id }}</P>
             <h3 class="">Client : {{ invoice.lastname }} {{ invoice.firstname }}</h3>
-            <h5 class="text-light">Téléphone : {{ invoice.phone }}</h5>
-            <h5 class="text-light">Adresse : {{ invoice.address }}</h5>
-            <h5 class="text-light">Prix tolal : {{ invoice.totalPrice}} € </h5>
+            <h5 class="">Téléphone : {{ invoice.phone }}</h5>
+            <h5 class="">Adresse : {{ invoice.address }}</h5>
         </div>
             <table class="table table-hover table-dark table-bordered border-light border border-2 ">
-                <thead>
-                    <th scope="col" class="text-center text-white">Produit</th>
-                    <th scope="col" class="text-center text-white">Quantité</th>
-                    <th scope="col" class="text-center text-white">Prix Unitaire</th>
+                <thead >
+                    <th scope="col" class="text-center bg-secondary border border-white ">Produit</th>
+                    <th scope="col" class="text-center bg-secondary border border-white">Quantité</th>
+                    <th scope="col" class="text-center bg-secondary ">Prix Unitaire</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for purchase in purchases %}
-                        <tr class="table-active">
-                            <td class="text-center">
-                                {% for lesson in lessons %} 
-                                    {% if purchase.lesson.id ==  lesson.id %}
-                                        {{  lesson.name}} 
-                                    {% endif %}  
-                                {% endfor %}
-                            </td>
-                            <td class="text-center">{{ purchase.quantity}} </td> 
-                            <td class="text-center">{{ purchase.unitPrice}}</td>
-                            </td> 
-                        </tr>
+                        {% if invoice.id ==  purchase.invoice.id %}
+                            <tr class="table-light">
+                                <td class="text-center border border-white">
+                                    {% for lesson in lessons %} 
+                                        {% if purchase.lesson.id ==  lesson.id %}
+                                            {{  lesson.name}} 
+                                        {% endif %}  
+                                    {% endfor %}
+                                </td>
+                                <td class="text-center border border-white">{{ purchase.quantity}} </td> 
+                                <td class="text-center border border-white">{{ purchase.unitPrice}}</td>
+                                </td> 
+                            </tr>
+                        {% endif %}
                     {% endfor %}
                 </tbody> 
             </table>

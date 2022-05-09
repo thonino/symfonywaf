@@ -73,7 +73,8 @@ class CartController extends AbstractController
                             ->setTitle($request->request->get('title'.$i.$id));
                     $em->persist($booking[$i.$id]);
                     // dd($request);
-                    $em->flush();
+                    $em->flush()
+                    ;
                 }
             }
         };
@@ -81,7 +82,6 @@ class CartController extends AbstractController
             'cartLessons'=>$fullCart,
             'total' =>$total,
             'bookings' => $bookingRepository->findAll(),
-            // 'formTest'=>$form->createView()
 
         ]);
     }
