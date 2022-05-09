@@ -64,6 +64,7 @@ class InvoiceController extends AbstractController
                     ->setLessonQty(array_sum($qties)) 
                     ->setPaid(false)    
                     ->setStripeSuccessKey(uniqid());
+                    
         }
         if ($form->isSubmitted() && $form->isValid()) {
             // $entityManager = $this->getDoctrine()->getManager();

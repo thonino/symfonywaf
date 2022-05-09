@@ -76,7 +76,6 @@ class CartController extends AbstractController
                     $em->flush();
                 }
             }
-
         };
         return $this->render('cart/cart.html.twig', [
             'cartLessons'=>$fullCart,

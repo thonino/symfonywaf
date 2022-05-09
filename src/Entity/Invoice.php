@@ -179,40 +179,4 @@ class Invoice
 
         return $this;
     }
-
-    public function getLessonName(): ?string
-    {
-        return $this->lessonName;
-    }
-
-    public function setLessonName(?string $lessonName): self
-    {
-        $this->lessonName = $lessonName;
-
-        return $this;
-    }
-
-    public function getLessonQty(): ?string
-    {
-        return $this->lessonQty;
-    }
-
-    public function setLessonQty(?string $lessonQty): self
-    {
-        $this->lessonQty = $lessonQty;
-
-        return $this;
-    }
-
-    public function getLessonTitle(): ?string
-    {
-        return $this->lessonTitle;
-    }
-
-    public function setLessonTitle(string $lessonTitle): self
-    {
-        $this->lessonTitle = $lessonTitle;
-
-        return $this;
-    }
 }
