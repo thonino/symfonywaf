@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block title %} panier{% endblock %}
 {% block body %}
-<div class="container bg-secondary mt-2 pb-2"style="border-radius:10px;min-height:200px">
+<div class="container bg-secondary mt-2 pb-1"style="border-radius:10px;min-height:180px">
     <table class="table">
         <thead>
             <tr>
@@ -39,15 +39,16 @@
             </tbody>            
         </table>
             <div class="mb-2 ">
-                <p class="fs-4 border border-4 rounded text-warning p-1 mx-2 mb-2"style="float:left ;margin-top:-15px;"> 
-                    Total : 
-                    <span class="text-white fs-4"> {{ total }} € </span>
-                </p>
                 {% if cartLessons != [] %}
-                    <div id="del">
-                        {# <a href="{{ path('app_invoice_new') }}"></a> #}
-                        <button class="btn">commander</button>
-                        {# {% do redirect('app_invoice_new') %} #}
+                    <p class="fs-4 border border-4 rounded text-warning p-1 mx-2 mb-2"style="float:left ;margin-top:-15px;"> 
+                        Total : 
+                        <span class="text-white fs-4"> {{ total }} € </span>
+                    </p>
+                
+                    <div id="">
+                        {# <a href="{{ path('app_invoice_new') }}"></a>  #}
+                            <button class="btn btn-success">commander</button>
+                        
                     </div>
                 {% endif %}
             </div>
@@ -55,8 +56,8 @@
         </form>
 </div>
 <script>
-const btn = document.querySelector('.btn')
-btn.addEventListener('click',()=>{window.location.href = "/invoice/new.html.twig"})
+// const btn = document.querySelector('.btn')
+// btn.addEventListener('click',()=>{window.location.href = "/invoice/new.html.twig"})
 
 </script>
 {% endblock %}

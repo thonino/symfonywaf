@@ -73,11 +73,11 @@ class CartController extends AbstractController
                             ->setTitle($request->request->get('title'.$i.$id));
                     $em->persist($booking[$i.$id]);
                     // dd($request);
-                    $em->flush()
-                    ;
+                    $em->flush();
                 }
             }
-        };
+        }if($request->request->count()>0){return $this->redirectToRoute("app_invoice_new"); }
+        ;
         return $this->render('cart/cart.html.twig', [
             'cartLessons'=>$fullCart,
             'total' =>$total,
