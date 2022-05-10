@@ -1,14 +1,11 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Reservation{% endblock %}
-
 {% block body %}
-
-<div class="container bg-secondary mt-2 pb-2"style="border-radius:10px">
-    <h1>Reservation</h1>
+<div class="scroll container bg-secondary mt-2 pb-2"style="border-radius:10px">
+    <h1 class="scroll">Reservation</h1>
     <table class="table">
         <thead>
-            <tr>
+            <tr class="scroll ">
                 <th>Numero</th>
                 <th>Pseudo</th>
                 <th>Date RDV</th>
@@ -17,7 +14,7 @@
         </thead>
         <tbody>
         {% for booking in bookings %}
-            <tr>
+            <tr class="scroll ">
                 <td>{{ booking.id }}</td>
                 <td>{{ booking.title  }}</td>
                 <td>{{ booking.start ? booking.start|date('Y-m-d H:i:s') : '' }}</td>
@@ -29,7 +26,6 @@
                         {% endif %}
                     </div>
                 </td>
-                
             </tr>
         {% else %}
             <tr>
@@ -41,6 +37,6 @@
     {% if is_granted('ROLE_ADMIN') %}
         <a class="btn btn-success " href="{{ path('app_booking_new') }}">Nouveau RDV</a>
     {% endif %}
-    <a class="btn btn-primary mx-1" href="{{ path('app_calendar')}}">Calendrier</a>
+    <a class="scroll btn btn-primary mx-1" href="{{ path('app_calendar')}}">Calendrier</a>
 </div>
 {% endblock %}

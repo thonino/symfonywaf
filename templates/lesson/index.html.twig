@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}leçons Tarif{% endblock %}
-
 {% block body %}
 <div class="d-flex flex-column align-items-center">
     <h1 class="text-center text-secondary">Acheter Une Leçon </h1>
@@ -11,7 +9,7 @@
 </div>
     <div class="d-flex justify-content-center flex-wrap ">
         {% for lesson in lessons %}
-            <div class="card m-2 text-light" style="max-width: 300px;">
+            <div class="scroll card m-2 text-light" style="max-width: 300px;">
                 <div class="col-12">
                 <img src="/img/{{lesson.image}}" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -30,16 +28,5 @@
         {% endfor %}
     </div>
 <div><br><br></div>
-<script>
-document.querySelector(".homeJs").className = "text-decoration-none text-success fs-4 mx-1";
-// scroollReveal 
-const sr = ScrollReveal()
-sr.reveal('.scroll',{duration : 200,origin : 'top',scale : 0.5,interval: 900,});
-const sr2 = ScrollReveal()
-sr2.reveal('.scroll2',{duration : 600,origin : 'top',scale : 0.5,interval: 200,});
-// text magique
-var options = {strings: ["en vidéo"," à domicile pour débutant"],typeSpeed: 400, backSpeed : 100,loop : false,};
-var typed = new Typed("#mot", options);
 
-</script>
 {% endblock %}

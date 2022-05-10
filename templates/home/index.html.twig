@@ -20,7 +20,7 @@
 }
 </style>
 <!-- caroussel -->
-<div class="scroll2 d-flex flex-column align-items-center bg-white">
+<div class="scroll d-flex flex-column align-items-center bg-white">
         <div class="d-flex flex-column conteneur mt-2">
             <div class="container-fluid text-light">
                 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -86,12 +86,12 @@
     <div class="mt-2 d-flex flex-column">
         <div class="d-flex justify-content-center">
                 <div class="d-flex justify-content-center">
-                    <img src="img/top1.png" class="top1 scroll2 img-fluid mb-2 mx-2" alt="...">
-                    <img src="img/top2.png" class="top2 scroll2 img-fluid mb-2 mx-2" alt="...">
-                    <img src="img/top3.png" class="top3 scroll2 img-fluid mb-2 mx-2" alt="...">
+                    <img src="img/top1.png" class="top1 scroll img-fluid mb-2 mx-2" alt="...">
+                    <img src="img/top2.png" class="top2 scroll img-fluid mb-2 mx-2" alt="...">
+                    <img src="img/top3.png" class="top3 scroll img-fluid mb-2 mx-2" alt="...">
             </div>
         </div>
-        <div class="scroll2 card text-secondary bg-secondary mb-2 fs-5 ml mx-2" style="max-width: 60rem;border-radius:20px">
+        <div class="scroll card text-secondary bg-secondary mb-2 fs-5 ml mx-2" style="max-width: 60rem;border-radius:20px">
             <div class="card-header bg-success text-center bold"style="border-radius:20px">COURS D'INFORMATIQUE &nbsp<span id="mot"></span></div>
                 <div class="card-body text-center">
                     <h4 class="card-title text-white bold">Vous avez des difficultés à vous servir d’un ordirnateur ou d’un téléphone portable ? </h5>
@@ -137,17 +137,6 @@
 
 <div><br><br></div>
 
-<script>
-document.querySelector(".homeJs").className = "text-decoration-none text-success fs-4 mx-1";
-// scroollReveal 
-const sr = ScrollReveal()
-sr.reveal('.scroll',{duration : 200,origin : 'top',scale : 0.5,interval: 900,});
-const sr2 = ScrollReveal()
-sr2.reveal('.scroll2',{duration : 600,origin : 'top',scale : 0.5,interval: 200,});
-// text magique
-var options = {strings: ["en vidéo"," à domicile pour débutant"],typeSpeed: 400, backSpeed : 100,loop : false,};
-var typed = new Typed("#mot", options);
 
-</script>
 
 {% endblock %}
