@@ -12,8 +12,8 @@ class BookingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class,['attr' => ['class' => 'form-control'], 'label' => 'Prénom'])
-            ->add('start', DateTimeType::class,['date_widget'=>'single_text', 'label' => 'Jour & Heure'],)
+            ->add('title', TextType::class,['attr' => ['class' => 'scroll form-control'],'label_attr' =>['class'=> 'scroll'], 'label' => 'Prénom'])
+            ->add('start', DateTimeType::class,['date_widget'=>'single_text','attr' => ['class'=>'scroll'],'label_attr' =>['class'=> 'scroll'],'label' => 'Jour & Heure'],)
         ;
     }
     public function configureOptions(OptionsResolver $resolver): void
