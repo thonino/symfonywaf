@@ -4,20 +4,26 @@
 {% endblock %}
 {% block body %}
     <div class="d-flex justify-content-center">
-        <div class="scroll container bg-secondary m-2 pb-2"style="border-radius:10px">
-            <a class="btn btn-primary m-3 " href="{{ path('app_booking_index')}}">Reservations</a>
-            <div class="container mb-2 mx-1" id="calendrier"></div>
+        <div class="scroll  container bg-secondary m-2 p-2 "style="border-radius:10px">
+            <a class="btn btn-success  mt-2 mx-2 mb-2" href="{{ path('app_booking_index')}}">Reservations</a>
+            <div class="mx-2 mt-1 pb-2" id="calendrier"></div>
         </div>
     </div>
     <script>
         window.onload = () => {
             let calendarElt = document.querySelector("#calendrier")
             let calendar = new FullCalendar.Calendar(calendarElt, {
-                initialView: 'timeGridWeek', locale: 'fr', timeZone: 'Europe/Paris',  
-                headerToolbar: { start:'prev, next today',center: 'title',end: 'dayGridMonth, timeGridWeek'}, 
+                initialView: 'timeGridWeek', 
+                locale: 'fr', 
+                timeZone: 'Europe/Paris',  
+                headerToolbar: { start:'prev, next today',center:'title',end: 'dayGridMonth, timeGridWeek'},
                 events: {{ data|raw }}, editable: true,
-                forceEventDuration: true,
-            })
+                allDaySlot: false,
+                slotMinTime: "08:00:00",
+                slotMaxTime: "17:00:00",
+                forceEventDuration: true, 
+                hiddenDays:[0,6],
+            });
             calendar.on('eventChange', (e) => {
                 let url = `/api/${e.event.id}/edit`
                 let donnees = {
