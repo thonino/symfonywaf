@@ -2,10 +2,10 @@
 {% block title %}New Invoice{% endblock %}
 {% block body %}
 <div class="container bg-secondary mt-2 pb-2"style="border-radius:10px">
-    <h1 class="text-success"> Votre commande</h1>
+    <h1 class="scroll text-success"> Votre commande</h1>
     <table class="table">
             <thead>
-                <tr>
+                <tr class="scroll ">
                     <th class="fs-4 text-warning">Votre Panier</th>
                     <th class="fs-4 ">Prix</th>
                     <th class="fs-4 text-success">Quantité</th>
@@ -13,7 +13,7 @@
             </thead>
             <tbody>
                 {% for row in cartLessons %}
-            <tr>
+            <tr class="scroll">
                 <td  class="fs-5">{{ row.lesson.name }}  
                     <span  class="text-light fs-6">{{ row.lesson.title }}</span></td>
                 <td class="fs-4">{{ row.lesson.price }} €</td>
@@ -22,19 +22,17 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="2"> Aucun article ajouté </td>            
+                    <td class="scroll"colspan="2"> Aucun article ajouté </td>            
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-        <p class="fs-4 border border-4 rounded px-2"style="float:right"> Total : 
+        <p class="scroll fs-4 border border-4 rounded px-2"style="float:right"> Total : 
         <span class="text-warning fs-4"> {{ total }} € </span></p>
-        <h1>Informations commande</h1>
+        <h1 class="scroll">Informations commande</h1>
         {{ form_start(form) }}
         {{ form_widget(form) }}
-        <button class="btn btn-warning fs-5"><i class="bi bi-credit-card mx-1 fs-5"></i>{{ button_label|default('Payer') }}</button>
+        <button class="scroll btn btn-warning fs-5"><i class="bi bi-credit-card mx-1 fs-5"></i>{{ button_label|default('Payer') }}</button>
         {{ form_end(form) }}
-
-        
-</div>
+</div><br><br>
 {% endblock %}

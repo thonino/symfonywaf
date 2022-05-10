@@ -7,52 +7,52 @@
             <div class="d-flex justify-content-between ">
                 <div class="d-inline header mt-2"style="margin-left:20px">
                     <img class="" src="/img/logo.jpg" width="80px" height="80px"alt="logo"/>
-                    <p class="text-info d-inline fs-2 ">W<span class="text-success">A</span><span class="text-dark">FORMATION</span></p><br>
-                    <p class="text-dark d-inline fs-6 mx-2"> 158 rue de la Joie</p><br>
-                    <p class="text-dark d-inline fs-6 mx-2"> 75001 Paris , France</p><br>
-                    <p class="text-dark d-inline fs-6 mx-2"> Téléphone : 01 12 34 56 78 </p><br>
-                    <p class="text-dark d-inline fs-6 mx-2"> waformation@gmail.com </p><br>
+                    <p class="scroll text-info d-inline fs-2 ">W<span class="text-success">A</span><span class="text-dark">FORMATION</span></p><br>
+                    <p class="scroll text-dark d-inline fs-6 mx-2"> 158 rue de la Joie</p><br>
+                    <p class="scroll text-dark d-inline fs-6 mx-2"> 75001 Paris , France</p><br>
+                    <p class="scroll text-dark d-inline fs-6 mx-2"> Téléphone : 01 12 34 56 78 </p><br>
+                    <p class="scroll text-dark d-inline fs-6 mx-2"> waformation@gmail.com </p><br>
                 </div>
                 <div class="d-inline header "style="margin-right:20px">
-                    <P class="fs-5 mt-2">LE : J/M/A</P>
-                    <P class="fs-5">Facture n° {{ invoice.id }}</P>
+                    <P class="scroll fs-5 mt-2">LE : J/M/A</P>
+                    <P class="scroll fs-5">Facture n° {{ invoice.id }}</P>
                 </div>
             </div>    
         </div>
         <div class="m-2 text-center 4 ">
-            <h1 class="">FACTURE N° {{ invoice.id }}</P>
-            <h3 class="">Client : {{ invoice.lastname }} {{ invoice.firstname }}</h3>
-            <h5 class="">Téléphone : {{ invoice.phone }}</h5>
-            <h5 class="">Adresse : {{ invoice.address }}</h5>
+            <h1 class="scroll ">FACTURE N° {{ invoice.id }}</P>
+            <h3 class="scroll ">Client : {{ invoice.lastname }} {{ invoice.firstname }}</h3>
+            <h5 class="scroll ">Téléphone : {{ invoice.phone }}</h5>
+            <h5 class="scroll ">Adresse : {{ invoice.address }}</h5>
         </div>
-            <table class="table table-hover table-dark table-bordered border-light border border-2 ">
-                <thead >
-                    <th scope="col" class="text-center bg-secondary border border-white ">Produit</th>
-                    <th scope="col" class="text-center bg-secondary border border-white">Quantité</th>
-                    <th scope="col" class="text-center bg-secondary ">Prix Unitaire</th>
+            <table class="table table-hover table-dark border border-2 border-white">
+                <thead class="">
+                    <th scope="col" class="text-center bg-secondary border border-2 border-white "><span class="scroll">Produit</span></th>
+                    <th scope="col" class="text-center bg-secondary border border-2 border-white "><span class="scroll">Quantité</span></th>
+                    <th scope="col" class="text-center bg-secondary "><span class="scroll">Prix Unitaire</span></th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for purchase in purchases %}
                         {% if invoice.id ==  purchase.invoice.id %}
                             <tr class="table-light">
-                                <td class="text-center border border-white">
+                                <td class="text-center border border-2 border-white ">
                                     {% for lesson in lessons %} 
                                         {% if purchase.lesson.id ==  lesson.id %}
-                                            {{  lesson.name}} 
+                                            <span class="scroll">{{  lesson.name}}</span> 
                                         {% endif %}  
                                     {% endfor %}
                                 </td>
-                                <td class="text-center border border-white">{{ purchase.quantity}} </td> 
-                                <td class="text-center border border-white">{{ purchase.unitPrice}}</td>
+                                <td class="text-center border border-2 border-white "><span class="scroll">{{ purchase.quantity}}</span> </td> 
+                                <td class="text-center border border-2 border-white "><span class="scroll">{{ purchase.unitPrice}}</span></td>
                                 </td> 
                             </tr>
                         {% endif %}
                     {% endfor %}
                 </tbody> 
             </table>
-            <div class="d-flex justify-content-end "> 
-                <span  class="fs-2 border border-4 border-secondary mx-2 px-2 "style="border-radius:10px">
+            <div class="scroll d-flex justify-content-end "> 
+                <span  class="scroll fs-2 border border-4 border-secondary mx-2 px-2 "style="border-radius:10px">
                     {{ invoice.totalPrice}}€ 
                 </span>
             </div>
