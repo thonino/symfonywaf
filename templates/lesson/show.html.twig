@@ -3,22 +3,22 @@
 {% block body %}
 
 <div class="container col-6 bg-secondary mt-2 pb-2"style="border-radius:10px">
-    <h1 class="text-warning text-center">Detail Lesson</h1>
+    <h1 class="scroll text-warning text-center">Detail Lesson</h1>
     <table class="table">
         <tbody>
-        <div class="container" style="max-width: 500px;">
+        <div class="scroll container" style="max-width: 500px;">
         <img src="/img/{{lesson.image}}" class="card-img-top" alt="..."style="border-radius:20px">
         </div>
-            <p class="fs-3 text-warning"> Intitulé : <span class="fs-4 text-light">{{ lesson.name }}</span><br>
-            <span class="fs-3 text-warning"> Prix : </span><span class="fs-4 text-light">{{ lesson.price }}</span><br>
-            <span class="fs-3 text-warning"> Titre : </span><span class="fs-4 text-light">{{ lesson.title }}</span><br>
-            <span class="fs-3 text-warning"> Description : </span><br><span class="fs-6 text-light">{{ lesson.description }}</span>
+            <p class="scroll fs-3 text-warning"> Intitulé : <span class="fs-4 text-light">{{ lesson.name }}</span><br>
+            <span class="scroll fs-3 text-warning"> Prix : </span><span class="fs-4 text-light">{{ lesson.price }}</span><br>
+            <span class="scroll fs-3 text-warning"> Titre : </span><span class="fs-4 text-light">{{ lesson.title }}</span><br>
+            <span class="scroll fs-3 text-warning"> Description : </span><br><span class="fs-6 text-light">{{ lesson.description }}</span>
         </tbody>
     </table>
-    <a class="btn btn-warning mb-2 mt-2" href="{{ path('cart_add', {'lesson' : lesson.id})}}">Ajouter au panier</a>
-    <a class="btn btn-primary mb-2 mt-2 mx-1" href="{{ path('app_lesson_index') }}">Retour</a><br>
+    <a class="scroll btn btn-warning mb-2 mt-2" href="{{ path('cart_add', {'lesson' : lesson.id})}}">Ajouter au panier</a>
+    <a class="scroll btn btn-primary mb-2 mt-2 mx-1" href="{{ path('app_lesson_index') }}">Retour</a><br>
     {% if is_granted('ROLE_ADMIN') %}
-        <a class="btn btn-success mb-2" href="{{ path('app_lesson_edit', {'id': lesson.id}) }}">Modifier</a>
+        <a class="scroll btn btn-success mb-2" href="{{ path('app_lesson_edit', {'id': lesson.id}) }}">Modifier</a>
         {{ include('lesson/_delete_form.html.twig') }}
     {% endif %}
 </div>

@@ -12,11 +12,11 @@ class LessonType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class,['attr' => ['class' => 'form-control'], 'label' => 'nom'])
-            ->add('price', TextType::class,['attr' => ['class' => 'form-control'], 'label' => 'prix'])
-            ->add('description', TextType::class,['attr' => ['class' => 'form-control'], 'label' => 'description'])
-            ->add('title', TextType::class,['attr' => ['class' => 'form-control'], 'label' => 'title'])
-            ->add('image', TextType::class,['attr' => ['class' => 'form-control'], 'label' => 'nom de l\'image'])
+            ->add('name', TextType::class,['attr' => ['class' => 'scroll form-control'],'label_attr' =>['class'=> 'scroll'], 'label' => 'nom'])
+            ->add('price', TextType::class,['attr' => ['class' => 'scroll form-control'],'label_attr' =>['class'=> 'scroll'], 'label' => 'prix'])
+            ->add('description', TextType::class,['attr' => ['class' => 'scroll form-control'],'label_attr' =>['class'=> 'scroll'], 'label' => 'description'])
+            ->add('title', TextType::class,['attr' => ['class' => 'scroll form-control'],'label_attr' =>['class'=> 'scroll'], 'label' => 'title'])
+            ->add('image', TextType::class,['attr' => ['class' => 'scroll form-control'],'label_attr' =>['class'=> 'scroll'], 'label' => 'nom de l\'image'])
 
         ;
     }

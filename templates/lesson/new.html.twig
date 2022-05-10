@@ -4,10 +4,10 @@
 
 {% block body %}
 <div class="container bg-secondary mt-2 pb-2"style="border-radius:10px">
-    <h1>Nouvelle Leçon</h1>
+    <h1 class="scroll">Nouvelle Leçon</h1>
 
     {{ include('lesson/_form.html.twig') }}
 
-    <a class="btn btn-primary"href="{{ path('app_lesson_index') }}"> Retour </a>
+    <a class="scroll btn btn-primary"href="{{ path('app_lesson_index') }}"> Retour </a>
 </div>
 {% endblock %}

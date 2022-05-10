@@ -108,17 +108,17 @@
 <!-- ACHAT Lesson -->
 <div class="d-flex flex-column align-items-center">
 
-    <h1 class="text-center text-secondary">Acheter Une Leçon </h1>
+    <h1 class="scroll text-center text-secondary">Acheter Une Leçon </h1>
     {% if is_granted('ROLE_ADMIN') %}
-        <a class="btn btn-success"style="max-width: 350px;" href="{{ path('app_lesson_new') }}">Nouvelle Leçon</a>
+        <a class="scroll btn btn-success"style="max-width: 350px;" href="{{ path('app_lesson_new') }}">Nouvelle Leçon</a>
     {% endif %}
 </div>
     <div class="d-flex justify-content-center flex-wrap ">
         {% for lesson in lessons %}
-            <div class="card m-2 text-light" style="max-width: 200px;border-radius:20px">
+            <div class="scroll card m-2 text-light" style="max-width: 200px;border-radius:20px">
                 <div class="col-12">
                 <img src="/img/{{lesson.image}}" class="card-img-top" alt="..." style="border-top-left-radius:20px;border-top-right-radius:20px">
-                    <div class="card-body">
+                    <div class=" card-body ">
                             <h5 class="card-card text-center text-warning fs-3"style="margin-top:-10px">{{ lesson.price }}€ </h5>
                             <h5 class="card-card text-white text-center fs-5"style="margin-top:-10px">{{ lesson.name }} </h5>
                             <h5 class="card-text text-center fs-6">{{ lesson.title }}</h5>
