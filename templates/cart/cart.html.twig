@@ -2,7 +2,7 @@
 {% block title %} panier{% endblock %}
 {% block body %}
 <div class="container bg-secondary mt-2 pb-1"style="border-radius:10px;min-height:180px">
-    <table class="table">
+    <table class="scroll table">
         <thead class="scroll">
             <tr>
                 <th class="fs-4 text-warning">Votre Panier</th>
@@ -14,7 +14,7 @@
         {% for row in cartLessons %}
         <form method="post">
             <tr class="scroll">
-                <td  class="fs-5">{{ row.lesson.name }}  <span  class="text-light fs-6">{{ row.lesson.title }}</span><br>
+                <td  class="scrollfs-5">{{ row.lesson.name }}  <span  class="text-light fs-6">{{ row.lesson.title }}</span><br>
                     {# creation booking form & Liaison avec $totalQty #}
                     {% if row.quantite != 0 %}
                         {% for i in 1 .. row.quantite  %}

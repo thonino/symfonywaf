@@ -2,9 +2,9 @@
 {% block title %} Succès {% endblock %}
 {% block body %}
 <div class="container bg-secondary mb-2 mt-2"style="border-radius:10px">
-    <h1 class="text-success"> Paiement validé avec succès</h1>
+    <h1 class="scroll text-success"> Paiement validé avec succès</h1>
     <table class="table">
-        <thead>
+        <thead class="scroll">
             <tr>
                 <th class="fs-4 text-warning">Produit</th>
                 <th class="fs-4 ">Prix</th>
@@ -13,7 +13,7 @@
         </thead>
         <tbody>
             {% for row in purchases %}
-        <tr>
+        <tr class="scroll">
             <td  class="fs-5">{{ row.lesson.name }}  <span  class="text-light fs-6">{{ row.lesson.title }}</span><br>
             <td class="fs-4">{{ row.unitPrice }} €</td>
             <td class=" fs-4">{{ row.quantity }} H</td>
@@ -21,15 +21,15 @@
         {% endfor %}
         </tbody>
     </table>
-    <p class="fs-4 border border-4 rounded px-2"style="float:right"> Total : 
+    <p class="scroll fs-4 border border-4 rounded px-2"style="float:right"> Total : 
     <span class="text-warning fs-4"> {{ invoice.totalPrice }} € </span></p>
     <div class="d-flex justify-content-center p-2">
-        <div class="border border-light border-4 rounded  px-4" style="width:50%">
-            <h3 class="text-success"> Informations Commande</h3>
-            <p>{{ invoice.lastname }} {{ invoice.firstname }}</p>
-            <p>{{ invoice.phone }}</p>
-            <p>{{ invoice.address }}</p>
-            <p>{{ invoice.zipcode }} {{ invoice.city }}</p>
+        <div class="scroll border border-light border-4 rounded  px-4" style="width:50%">
+            <h3 class="scroll text-success"> Informations Commande</h3>
+            <p class="scroll">{{ invoice.lastname }} {{ invoice.firstname }}</p>
+            <p class="scroll">{{ invoice.phone }}</p>
+            <p class="scroll">{{ invoice.address }}</p>
+            <p class="scroll">{{ invoice.zipcode }} {{ invoice.city }}</p>
         </div>
     </div><br>
 </div>

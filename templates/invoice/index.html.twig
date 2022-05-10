@@ -12,11 +12,11 @@
 {% if app.user %}
     <table class="table table-hover table-dark table-bordered border-light border border-2 mt-2">
         <thead>
-            <tr class="scroll">
-            <th scope="col" class="text-center text-white">Facture</th>
-            <th scope="col" class="text-center text-white">Client</th>
-            <th scope="col" class="text-center text-white">total</th>
-            <th scope="col" class="text-center text-white">action</th>
+            <tr>
+            <th scope="col" class="text-center text-white"><span class="scroll">Facture</span></th>
+            <th scope="col" class="text-center text-white"><span class="scroll">Client</span></th>
+            <th scope="col" class="text-center text-white"><span class="scroll">total</span></th>
+            <th scope="col" class="text-center text-white"><span class="scroll">action</span></th>
             </tr>
         </thead>
         <tbody>
@@ -24,19 +24,19 @@
             {% for invoice in invoices %}
                     {% if app.user.lastname == invoice.lastname and app.user.firstname == invoice.firstname %}
                         <tr class="table-active">
-                            <td class="scroll text-center">{{ invoice.id }}</td>
-                            <td class="scroll">{{ invoice.lastname }} {{ invoice.firstname }} <span class="scroll text-light">{{ invoice.phone }}</span></span></td>
-                            <td class="scroll">{{ invoice.totalPrice}} € </td>
-                            <td class="scroll text-center">
+                            <td class="text-center"><span class="scroll">{{ invoice.id }}</span></td>
+                            <td><span class="scroll">{{ invoice.lastname }} {{ invoice.firstname }} </span> <span class="scroll text-light"> {{ invoice.phone }}</span></span></td>
+                            <td><span class="scroll">{{ invoice.totalPrice}} € </span></td>
+                            <td class=" text-center">
                                 <a class="scroll btn btn-light mb-1" href="{{ path('app_invoice_show', {'id': invoice.id}) }}" role="button">Voir</a>
                             </td>
                         </tr>
                         {% elseif is_granted('ROLE_ADMIN')%}
                             <tr class="table-active">
-                                <td class="scroll text-center">{{ invoice.id }}</td>
-                                <td class="scroll">{{ invoice.lastname }} {{ invoice.firstname }} <span class="scroll text-light">{{ invoice.phone }}</span></span></td>
-                                <td class="scroll">{{ invoice.totalPrice}} € </td>
-                                <td class="scroll text-center">
+                                <td class=" text-center"><span class="scroll">{{ invoice.id }}</span></td>
+                                <td><span class="scroll">{{ invoice.lastname }} {{ invoice.firstname }} </span><span class="scroll text-light"> {{ invoice.phone }}</span></span></td>
+                                <td><span class="scroll">{{ invoice.totalPrice}} € </span></td>
+                                <td class="text-center">
                                     <a class="scroll btn btn-light mb-1" href="{{ path('app_invoice_show', {'id': invoice.id}) }}" role="button">Voir</a>
                                 </td>
                             </tr>
