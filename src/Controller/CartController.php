@@ -101,33 +101,4 @@ class CartController extends AbstractController
 
         ]);
     }
-    #[Route(['/betaTest'], name: 'cart_betaTest')]
-    public function create(Request $request,EntityManagerInterface $em){
-        // Méthod 1
-        // if ($request->request->count()>0){
-        //     $booking = new Booking();
-        //             $booking->setStart(new DateTime($request->request->get('start')))
-        //                     ->setTitle($request->request->get('title'));
-        //             $em->persist($booking);
-        //             $em->flush();
-        // }
-        // return $this->render('cart/test.html.twig');
-        
-        // Méthod 2
-        $booking = new Booking();
-        $form = $this->createFormBuilder($booking)
-        ->add('title', TextType::class,['attr' => ['class' => 'form-control'], 'label' => 'Prénom'])
-        ->add('start', DateTimeType::class,['date_widget'=>'single_text', 'label' => 'Jour & Heure'],)
-        ->add('submit', SubmitType::class,[ 'label' => 'Envoyer'],)
-        ->getForm();
-        $form->handleRequest($request);  // récupère les données de $request
-        if ($form->isSubmitted() && $form->isValid()){
-            $em->persist($booking);
-            $em->flush();
-            // dd($booking);
-        }
-        return $this->render('cart/test.html.twig',[
-            'formTest'=>$form->createView(),
-        ]);
-    }
 }
