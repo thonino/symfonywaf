@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use DateTime;
+use App\Entity\Users;
 use App\Entity\Lesson;
 use App\Entity\Booking;
 use App\Repository\LessonRepository;
@@ -54,25 +55,38 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart_show', [ 'id'=>$id,]);
     }
     #[Route(['/show'], name: 'cart_show')]
-    public function show(Request $request,EntityManagerInterface $em,SessionInterface $session, LessonRepository $lessonRepo,BookingRepository $bookingRepository): Response
+    public function show(
+        Request $request,EntityManagerInterface $em,SessionInterface $session, 
+        LessonRepository $lessonRepo,BookingRepository $bookingRepository,
+        ): Response
     {
         $total = 0;
         $totalQty = 0;
         $fullCart = [];
         $cart = $session->get('cart', []);
+        
         foreach($cart as $id =>$quantite){
             $lesson = $lessonRepo->find($id);  
             $price = $lesson->getPrice();
             $fullCart[]= ['lesson' => $lesson,'quantite' => $quantite,];
             $total += $price*$quantite;
             $totalQty += $quantite;
+            
             for ($i = 1; $i <= $quantite; $i++ ){
                 if ($request->request->count()>0){
+
+                    $userRepo = $em->getRepository(Users::class);
+                    $user = $userRepo->find(1);
+                    $firstname = $user->getFirstname();
+                    $lastname = $user->getLastname();
+                    // dd($firstname );
                     $booking[$i.$id] = new Booking();
                     $booking[$i.$id]->setStart(new DateTime($request->request->get('start'.$i.$id)))
-                            ->setTitle($request->request->get('title'.$i.$id));
+                            ->setTitle($request->request->get('title'.$i.$id))
+                            ->setFirstname($firstname)
+                            ->setLastname($lastname);
                     $em->persist($booking[$i.$id]);
-                    // dd($request);
+                    
                     $em->flush();
                 }
             }

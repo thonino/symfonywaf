@@ -10,6 +10,7 @@
                     <th>Numero</th>
                     <th>Pseudo</th>
                     <th>Date RDV</th>
+                    <th>Nom Prénom</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -19,11 +20,14 @@
                     <td>{{ booking.id }}</td>
                     <td>{{ booking.title  }}</td>
                     <td>{{ booking.start ? booking.start|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ booking.firstname }} {{ booking.lastname }}</td>
                     <td>
                         <div class="d-flex">
-                            <a class="btn btn-primary mx-2 " href="{{ path('app_booking_show', {'id': booking.id}) }}" style="margin-bottom:10px">Détails</a>
-                            {% if is_granted('ROLE_ADMIN') %}
-                                {{ include('booking/_delete_form.html.twig') }}
+                            {% if app.user or is_granted('ROLE_ADMIN') %}
+                                <a class="btn btn-primary mx-2 " href="{{ path('app_booking_show', {'id': booking.id}) }}" style="margin-bottom:10px">Détails</a>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    {{ include('booking/_delete_form.html.twig') }}
+                                {% endif %}
                             {% endif %}
                         </div>
                     </td>

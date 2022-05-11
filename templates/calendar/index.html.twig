@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block head %}
 <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css"integrity="sha256-5veQuRbWaECuYxwap/IOE/DAwNxgm4ikX7nrgsqYp88="crossorigin="anonymous">
+<link href='fullcalendar/main.css' rel='stylesheet'/>
+<link href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css' rel='stylesheet'>
+<script src="https://kit.fontawesome.com/da1b5a2268.js" crossorigin="anonymous"></script>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
 {% endblock %}
 {% block body %}
     <div class="d-flex justify-content-center">
@@ -13,29 +17,30 @@
         window.onload = () => {
             let calendarElt = document.querySelector("#calendrier")
             let calendar = new FullCalendar.Calendar(calendarElt, {
+                themeSystem:'bootstrap5',
                 initialView: 'timeGridWeek', 
-                locale: 'fr', 
-                timeZone: 'Europe/Paris',  
-                headerToolbar: { start:'prev, next today',center:'title',end: 'dayGridMonth, timeGridWeek'},
-                events: {{ data|raw }}, editable: true,
-                allDaySlot: false,
-                slotMinTime: "08:00:00",
-                slotMaxTime: "17:00:00",
-                forceEventDuration: true, 
-                hiddenDays:[0,6],
-            });
+                locale: 'fr', timeZone: 'Europe/Paris',  
+                events: {{ data|raw }}, editable: false, forceEventDuration: true, 
+                allDaySlot: false, slotMinTime: "08:00:00", slotMaxTime: "17:00:00",hiddenDays:[0,6],
+                buttonText: {today:'Actuel',month:'Mois',week:'Semaine',day:'Jour',list:'Liste' }, 
+                headerToolbar: {left: 'prev,next today',center: 'title',right: 'dayGridMonth,timeGridWeek,timeGridDay'},
+                // customButtons: { myCustomButton: { text: 'customisez-moi !',click: function() { alert('clicked the custom button!');}}},
+                //                 headerToolbar: {left: 'prev,next today myCustomButton',center: 'title',right: 'dayGridMonth,timeGridWeek,timeGridDay'}, 
+                bootstrapFontAwesome:{  close: 'fa-times',prev: 'fa-solid fa-angle-left',next: 'fa-solid fa-angle-right',
+                                        prevYear: 'fa-angle-double-left',nextYear: 'fa-angle-double-right'},
+                });
             calendar.on('eventChange', (e) => {
-                let url = `/api/${e.event.id}/edit`
-                let donnees = {
-                    "title": e.event.title,
-                    "start": e.event.start,
-                }
-                let xhr = new XMLHttpRequest
-                xhr.open("PUT", url)
-                xhr.send(JSON.stringify(donnees))
+            let url = `/api/${e.event.id}/edit`
+            let donnees = {
+                "title": e.event.title,
+                "start": e.event.start,
+            }
+            let xhr = new XMLHttpRequest
+            xhr.open("PUT", url)
+            xhr.send(JSON.stringify(donnees))
             })
             calendar.render()
         }
     </script>
-<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"integrity="sha256-YicH/8aE660iEnJtgll3vT54dJApy3XkYmqNfGVFEzA="crossorigin="anonymous"></script>
+{# <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"integrity="sha256-YicH/8aE660iEnJtgll3vT54dJApy3XkYmqNfGVFEzA="crossorigin="anonymous"></script> #}
 {% endblock %}
