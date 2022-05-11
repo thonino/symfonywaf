@@ -40,7 +40,7 @@
                 <a class="nav-link active" aria-current="page" href="{{ path('app_invoices') }}">Factures</a>
             </li>
                             <li class="nav-item" >
-                    <a class="nav-link active" aria-current="page" href="{{ path('cart_betaTest') }}">Test</a>
+                    <a class="nav-link disabled" aria-current="page" href="{{ path('cart_betaTest') }}">Test</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -50,7 +50,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ path('app_invoice_new') }}">Commande</a>
+                    <a class="nav-link disabled" aria-current="page" href="{{ path('app_invoice_new') }}">Commande</a>
                 </li>
             {% if is_granted('ROLE_ADMIN') %}
                 <li class="nav-item" >

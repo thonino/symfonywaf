@@ -109,9 +109,6 @@
 <div class="d-flex flex-column align-items-center">
 
     <h1 class="scroll text-center text-secondary">Acheter Une Leçon </h1>
-    {% if is_granted('ROLE_ADMIN') %}
-        <a class="scroll btn btn-success"style="max-width: 350px;" href="{{ path('app_lesson_new') }}">Nouvelle Leçon</a>
-    {% endif %}
 </div>
     <div class="d-flex justify-content-center flex-wrap ">
         {% for lesson in lessons %}

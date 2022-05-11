@@ -1,22 +1,24 @@
 {% extends 'base.html.twig' %}
 {% block title %}Inscription{% endblock %}
 {% block body %}
-<div class="container bg-secondary mb-2 mt-2"style="border-radius:10px">
-    <h1>Inscription</h1>
-    {{ form_start(registrationForm) }}
-    <fieldset class="m-3">
-        <legend>Veuillez remplir le formulaire</legend>
-        {{ form_row(registrationForm.firstname) }}
-        {{ form_row(registrationForm.lastname) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.phone) }}
-        {{ form_row(registrationForm.address) }}
-        {{ form_row(registrationForm.zipcode) }}
-        {{ form_row(registrationForm.city) }}
-        {{ form_row(registrationForm.plainPassword, {label: 'Mot de pass'}) }}
-        {{ form_row(registrationForm.RGPDConsent) }}
-        <button type="submit" class="btn btn-success m-3">Inscription</button>
-        {{ form_end(registrationForm) }}
-    </fieldset>
+<div class="d-flex justify-content-center">
+    <div class="container bg-secondary m-2 mb-2 "style="border-radius:10px">
+        <h1>Inscription</h1>
+        {{ form_start(registrationForm) }}
+        <fieldset class="m-3">
+            <legend>Veuillez remplir le formulaire</legend>
+            {{ form_row(registrationForm.firstname) }}
+            {{ form_row(registrationForm.lastname) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.phone) }}
+            {{ form_row(registrationForm.address) }}
+            {{ form_row(registrationForm.zipcode) }}
+            {{ form_row(registrationForm.city) }}
+            {{ form_row(registrationForm.plainPassword, {label: 'Mot de pass'}) }}
+            {{ form_row(registrationForm.RGPDConsent) }}
+            <button type="submit" class="btn btn-success m-3">Inscription</button>
+            {{ form_end(registrationForm) }}
+        </fieldset>
+    </div>
 </div>
 {% endblock %}
