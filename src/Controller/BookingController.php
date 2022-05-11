@@ -12,7 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/booking')]
 class BookingController extends AbstractController
 {
-
     #[Route('/test', name: 'app_booking_test', methods: ['GET'])]
     public function test(BookingRepository $bookingRepository): Response
     {
@@ -21,7 +20,6 @@ class BookingController extends AbstractController
         ]);
     }
 
-
     #[Route('/', name: 'app_booking_index', methods: ['GET'])]
     public function index(BookingRepository $bookingRepository): Response
     {
@@ -29,6 +27,7 @@ class BookingController extends AbstractController
             'bookings' => $bookingRepository->findAll(),
         ]);
     }
+
     #[Route('/new', name: 'app_booking_new', methods: ['GET', 'POST'])]
     public function new(Request $request, BookingRepository $bookingRepository): Response
     {

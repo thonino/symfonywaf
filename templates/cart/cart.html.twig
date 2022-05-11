@@ -39,21 +39,21 @@
                 </tbody>
             {% endfor %}
         </table>
+        {% if cartLessons != [] %}
             {% if not app.user and not is_granted('ROLE_ADMIN') %}
                 <input class="mx-2" type="text" placeholder="Votre Nom" name='firstname'/>
                 <input class="" type="text" placeholder="Votre Prénom" name='lastname'/><br><br>
             {% endif %}            
-            
-                <div class="mb-2 ">
-                    {% if cartLessons != [] %}
-                        <p class="scroll fs-4 border border-4 rounded text-warning p-1 mx-2 mb-2"style="float:left ;margin-top:-12px;"> 
-                            Total : 
-                            <span class="text-white fs-4"> {{ total }}€ </span>
-                        </p>
-                        <button class="scroll btn btn-success">commander</button>
-                    {% endif %}
-                </div>
-            </form>
+            <div class="mb-2 ">
+        
+            <p class="scroll fs-4 border border-4 rounded text-warning p-1 mx-2 mb-2"style="float:left ;margin-top:-12px;"> 
+                Total : 
+                <span class="text-white fs-4"> {{ total }}€ </span>
+            </p>
+            <button class="scroll btn btn-success">commander</button>
+        {% endif %}
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}
