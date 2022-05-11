@@ -2,7 +2,7 @@
 {% block title %}Reservation{% endblock %}
 {% block body %}
 <div class="d-flex justify-content-center">
-    <div class="scroll container bg-secondary m-2 pb-2" style="border-radius:10px">
+    <div class="container bg-secondary m-2 pb-1"style="border-radius:10px;min-height:180px">
         <h1 class="scroll">Reservation</h1>
         <table class="table">
             <thead>
@@ -27,26 +27,22 @@
                                 {% if is_granted('ROLE_ADMIN') %}
                                     <td>{{ booking.firstname }} {{ booking.lastname }}</td>
                                 {% endif %}                    
-                                <td>
-                                <div class="d-flex">
-                                    <a class="btn btn-primary mx-2 " href="{{ path('app_booking_show', {'id': booking.id}) }}" style="margin-bottom:10px">Détails</a>
-                                        {{ include('booking/_delete_form.html.twig') }}
-                                </div>
+                                <td class="d-flex">
+                                    <a class="btn btn-primary mx-2 d-inline" href="{{ path('app_booking_show', {'id': booking.id}) }}">+</a>
+                                     {{ include('booking/_delete_form.html.twig') }}
                                 </td>
                             </tr>
                         {% elseif is_granted('ROLE_ADMIN')%}
-                        <tr class="scroll ">
+                            <tr class="scroll ">
                                 <td>{{ booking.id }}</td>
                                 <td>{{ booking.title  }}</td>
                                 <td>{{ booking.start ? booking.start|date('Y-m-d H:i:s') : '' }}</td>
                                 {% if is_granted('ROLE_ADMIN') %}
                                     <td>{{ booking.firstname }} {{ booking.lastname }}</td>
                                 {% endif %}                    
-                                <td>
-                                <div class="d-flex">
-                                    <a class="btn btn-primary mx-2 " href="{{ path('app_booking_show', {'id': booking.id}) }}" style="margin-bottom:10px">Détails</a>
-                                        {{ include('booking/_delete_form.html.twig') }}
-                                </div>
+                                <td class="d-flex">
+                                    <a class="btn btn-primary mx-2 d-inline" href="{{ path('app_booking_show', {'id': booking.id}) }}">+</a>
+                                    {{ include('booking/_delete_form.html.twig') }}
                                 </td>
                             </tr>
                         {% endif %}
