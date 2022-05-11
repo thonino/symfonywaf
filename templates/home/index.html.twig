@@ -14,44 +14,43 @@
 @media screen and (max-width: 940px) {
 .top1{display: none;}
 }
-
 </style>
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="img/i1.jpg " class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block" style="top:0">
-                                <h3>Maitriser son <span class="text-info"> PC </span> ou son <span class="text-success"> Téléphone </span> </h3> 
-                                <h5 class="text-white">( Formation pour novice )</h5>
-                                <a href="{{ path('app_lesson_index') }}"><p class="btn btn-success">Voir Les Leçons </p> </span></a>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/i2.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block" style="top:0">
-                                <h3>Cours à domicile : de <span class="text-warning"> 40€ </span> à <span class="text-warning"> 50€ </span>l'heure </h3>
-                                <h5 class="text-white">Vérifier mes disponibilités :</h5>
-                                <a href="{{ path('app_calendar') }}"><p class="btn btn-success">Calendier</p></a>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/i3.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block" style="top:0">
-                                <h3>Zone de déplacements : <span class="text-warning">Ile de France</span></h3>
-                                <h5 class="text-white">Pour plus d'informations : </h5>
-                                <a href="#"><p class="btn btn-success">Contactez moi</p></a>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="img/i1.jpg " class="d-block w-100" alt="..." style="max-height:220px">
+            <div class="carousel-caption d-none d-md-block" style="top:0">
+                <h3>Maitriser son <span class="text-info"> PC </span> ou son <span class="text-success"> Téléphone </span> </h3> 
+                <h5 class="text-white">( Formation pour novice )</h5>
+                <a href="{{ path('app_lesson_index') }}"><p class="btn btn-success">Voir Les Leçons </p> </span></a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="img/i2.jpg" class="d-block w-100" alt="..." style="max-height:220px">
+            <div class="carousel-caption d-none d-md-block" style="top:0">
+                <h3>Cours à domicile : de <span class="text-warning"> 40€ </span> à <span class="text-warning"> 50€ </span>l'heure </h3>
+                <h5 class="text-white">Vérifier mes disponibilités :</h5>
+                <a href="{{ path('app_calendar') }}"><p class="btn btn-success">Calendier</p></a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="img/i3.jpg" class="d-block w-100" alt="..." style="max-height:220px">
+            <div class="carousel-caption d-none d-md-block" style="top:0">
+                <h3>Zone de déplacements : <span class="text-warning">Ile de France</span></h3>
+                <h5 class="text-white">Pour plus d'informations : </h5>
+                <a href="#"><p class="btn btn-success">Contactez moi</p></a>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
 
 <div class="scroll d-flex flex-column align-items-center bg-white">
     <div class="d-flex flex-row justify-content-end p-2 bg-white">
@@ -60,7 +59,7 @@
                 <div class="d-flex justify-content-center header">
                     <a class="text-decoration-none "href="{{ path('app_home') }}">
                         <div class="d-flex justify-content-center mb-1">
-                            <img  style="margin-bottom:-35px;margin-top:5px"src="/img/logo.jpg" width="100px" height="100px"alt="logo"/>
+                            <img  style="margin-bottom:-35px;margin-top:-8px"src="/img/logo.jpg" width="100px" height="100px"alt="logo"/>
                         </div>
                         <div class="d-flex justify-content-center"style="margin-bottom:-60px">
                             <p class="text-info d-inline tailleTxt">W<span class="text-success">A</span><span class="text-dark">FORMATION</span></p>
@@ -91,7 +90,7 @@
                 </div>
             </div>
 
-    <!-- ACHAT Lesson -->
+    <!-- ACHAT Leçon -->
     <div class="d-flex flex-column align-items-center">
         <h1 class="scroll text-center text-secondary">Acheter Une Leçon </h1>
     </div>

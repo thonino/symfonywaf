@@ -28,23 +28,35 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ path('app_lesson_index') }}">Leçons </a>
+                <a class="nav-link active" aria-current="page" href="{{ path('app_lesson_index') }}">
+                    <i class="bi bi-book"></i>
+                    Cours
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ path('app_calendar') }}">Calendrier</a>
+                <a class="nav-link active" aria-current="page" href="{{ path('app_calendar') }}">
+                    <i class="bi bi-calendar-date"></i>
+                    Calendrier
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ path('app_booking_index') }}">Reservations</a>
+                <a class="nav-link active" aria-current="page" href="{{ path('app_booking_index') }}">
+                    <i class="bi bi-pencil"></i>
+                    RDV
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ path('app_invoices') }}">Factures</a>
+                <a class="nav-link active" aria-current="page" href="{{ path('app_invoices') }}">
+                    <i class="bi bi-receipt-cutoff"></i>
+                    Factures
+                </a>
             </li>
-            
+
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item" >
                     <a class="nav-link active" aria-current="page" href="{{ path('cart_show') }}">
-                        <i class="bi-cart text-white mx-1"> </i>Panier
+                        <i class="bi-cart text-white mx-1"></i>Panier
                     </a>
                 </li>
                 <li class="nav-item">
