@@ -4,7 +4,6 @@ namespace App\Controller;
 
 
 use DateTime;
-use App\Entity\Users;
 use App\Entity\Lesson;
 use App\Entity\Booking;
 use App\Repository\LessonRepository;
@@ -74,20 +73,23 @@ class CartController extends AbstractController
             
             for ($i = 1; $i <= $quantite; $i++ ){
                 if ($request->request->count()>0){
-
-                    $userRepo = $em->getRepository(Users::class);
-                    $user = $userRepo->find(1);
-                    $firstname = $user->getFirstname();
-                    $lastname = $user->getLastname();
-                    // dd($firstname );
+                    // $userRepo = $em->getRepository(Users::class);
+                    $firstname = $request->request->get('firstname');
+                    $lastname = $request->request->get('lastname');
+                        $user = $this->getUser();
+                        if ($user) {
+                            $firstname = $user->getFirstname();
+                            $lastname = $user->getLastname();
+                        }
+                    ;
                     $booking[$i.$id] = new Booking();
                     $booking[$i.$id]->setStart(new DateTime($request->request->get('start'.$i.$id)))
                             ->setTitle($request->request->get('title'.$i.$id))
                             ->setFirstname($firstname)
                             ->setLastname($lastname);
                     $em->persist($booking[$i.$id]);
-                    
                     $em->flush();
+                    // dd($firstname );
                 }
             }
         }if($request->request->count()>0){return $this->redirectToRoute("app_invoice_new"); }

@@ -19,12 +19,16 @@
                         {# creation booking form & Liaison avec $totalQty #}
                         {% if row.quantite != 0 %}
                             {% for i in 1 .. row.quantite  %}
-                                <input class=" mt-2" type="text" placeholder="Votre Pseudo" name='title{{i}}{{row.lesson.id}}'/><br>
+                                <input class="mt-2" type="text" placeholder="Votre Pseudo" name='title{{i}}{{row.lesson.id}}'/><br>
                                 <input class="datetime" type="datetime-local" name="start{{i}}{{row.lesson.id}}"/><br>
+                                {% if not app.user and not is_granted('ROLE_ADMIN') %}
+                                    <input class="mt-2" type="text" placeholder="Votre Nom" name='firstname'/>
+                                    <input class="mt-2" type="text" placeholder="Votre Prénom" name='lastname'/><br>
+                                {% endif %}
                             {% endfor %}
                         {% endif %}
                     </td>
-                    <td class="fs-4">{{ row.lesson.price }} €</td>
+                    <td class="fs-4">{{ row.lesson.price }}€</td>
                     <td class=" fs-4">
                         <a href="{{ path('cart_less', {'lesson':row.lesson.id}) }}"><i class="bi bi-file-minus-fill fs-4 mx-2 text-danger"></i></a>
                         {{ row.quantite }} H
@@ -43,7 +47,7 @@
                     {% if cartLessons != [] %}
                         <p class="scroll fs-4 border border-4 rounded text-warning p-1 mx-2 mb-2"style="float:left ;margin-top:-12px;"> 
                             Total : 
-                            <span class="text-white fs-4"> {{ total }} € </span>
+                            <span class="text-white fs-4"> {{ total }}€ </span>
                         </p>
                         <button class="scroll btn btn-success">commander</button>
                     {% endif %}
