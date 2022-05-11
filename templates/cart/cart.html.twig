@@ -21,10 +21,6 @@
                             {% for i in 1 .. row.quantite  %}
                                 <input class="mt-2" type="text" placeholder="Votre Pseudo" name='title{{i}}{{row.lesson.id}}'/><br>
                                 <input class="datetime" type="datetime-local" name="start{{i}}{{row.lesson.id}}"/><br>
-                                {% if not app.user and not is_granted('ROLE_ADMIN') %}
-                                    <input class="mt-2" type="text" placeholder="Votre Nom" name='firstname'/>
-                                    <input class="mt-2" type="text" placeholder="Votre Prénom" name='lastname'/><br>
-                                {% endif %}
                             {% endfor %}
                         {% endif %}
                     </td>
@@ -40,9 +36,14 @@
                 <tr>
                     <td class="scroll" colspan="2"> Aucun article ajouté </td>         
                 </tr>  
+                </tbody>
             {% endfor %}
-                </tbody>            
-            </table>
+        </table>
+            {% if not app.user and not is_granted('ROLE_ADMIN') %}
+                <input class="mx-2" type="text" placeholder="Votre Nom" name='firstname'/>
+                <input class="" type="text" placeholder="Votre Prénom" name='lastname'/><br><br>
+            {% endif %}            
+            
                 <div class="mb-2 ">
                     {% if cartLessons != [] %}
                         <p class="scroll fs-4 border border-4 rounded text-warning p-1 mx-2 mb-2"style="float:left ;margin-top:-12px;"> 
