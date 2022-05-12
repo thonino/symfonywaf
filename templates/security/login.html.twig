@@ -7,12 +7,7 @@
     {% if error %}
       <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData,'security')}}</div>
     {% endif %}
-    {% if app.user %}
-      <div class="mb-3">tu es connecté sur {{ app.user.username }}, 
-        <a href="{{ path('app_logout') }}">déconnexion</a>
-      </div>
-    {% endif %}
-      <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
+      <h1 class="h4 mt-2 font-weight-normal">Se connecter</h1>
       <label for="inputEmail">Email</label>
       <input type="email" value="{{ last_username }}"name="email" id="inputEmail" 
             class="form-control mt-2 mb-2" autocomplete="email" required autofocus>
@@ -20,8 +15,40 @@
       <input type="password" name="password" id="inputPassword" class="form-control mt-2 mb-2"
             autocomplete="current-password" required>
       <input type="hidden" name="_csrf_token"value="{{ csrf_token('authenticate') }}">
-      <button class="btn btn-lg btn-primary mt-2 " type="submit">connexion</button>
-    </form>
+      <div class="mt-2">
+    {% if app.user %}
+      <div class="mt-2 mb-2 fs-4 text-center border border-2"style="border-radius:10px">  
+        Tu es connecté sur : 
+        <span class="text-success">
+          {{ app.user.username }}
+        </span> 
+      </div>
+      <div class="mt-2">
+          <a class="btn btn-lg btn-danger" aria-current="page" href="{{ path('app_logout') }}">
+            <div style="margin-top:-2px" >
+              <span class="fs-5">Déconnexion</span> 
+            </div>
+          </a>
+      </div>
+    {% else %}
+        <button class="btn btn-lg btn-primary"  type="submit">
+          <div style="margin-top:-5px;margin-left:-3px">
+            <i class="bi bi-person fs-3"></i>
+            <span class="fs-5"style="margin-left:3px"> Connexion </span> 
+          </div>
+        </button>
+      </div>
+      
+      <div class="mt-2">
+          <a class="btn btn-lg btn-success" aria-current="page" href="{{ path('app_register') }}">
+            <div style="margin-top:-5px" >
+              <i class="bi bi-person-plus fs-3"></i><span class="fs-5"> S'inscrire</span> 
+            </div>
+          </a>
+      </div>
+    {% endif %}
+  </form>
   </div>
 </div>
+
 {% endblock %}
