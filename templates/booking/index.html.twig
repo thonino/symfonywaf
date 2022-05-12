@@ -3,20 +3,20 @@
 {% block body %}
 <div class="d-flex justify-content-center">
     <div class="container bg-secondary m-2 pb-1"style="border-radius:10px;min-height:180px">
-        <h1 class="scroll">Reservation</h1>
-        <table class="table">
-            <thead>
-                <tr class="scroll ">
-                    <th>Pseudo</th>
-                    <th>Date RDV</th>
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <th>Nom Prénom</th>
-                    {% endif %}
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% if app.user %}
+        <h1 class="scroll">Mes Rendez-vous <span class="fs-4 text-light">en ligne</span></h1>
+        {% if app.user %}
+            <table class="table">
+                <thead>
+                    <tr class="scroll ">
+                        <th>Pseudo</th>
+                        <th>Date RDV</th>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <th>Nom Prénom</th>
+                        {% endif %}
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {% for booking in bookings %}
                         {% if booking.firstname == app.user.firstname and booking.lastname  == app.user.lastname and not is_granted('ROLE_ADMIN') %}
                             <tr class="scroll ">
@@ -27,7 +27,7 @@
                                 {% endif %}                    
                                 <td class="d-flex">
                                     <a class="btn btn-primary mx-2 d-inline" href="{{ path('app_booking_show', {'id': booking.id}) }}">Détail</a>
-                                     {{ include('booking/_delete_form.html.twig') }}
+                                        {{ include('booking/_delete_form.html.twig') }}
                                 </td>
                             </tr>
                         {% elseif is_granted('ROLE_ADMIN')%}
@@ -49,8 +49,13 @@
                             </tr>
                     {% endfor %}
                 {% else %}
-                    <tr>
-                        <td colspan="6">Vous n'avez pas encore réservé</td>
+                    <tr >
+                        <p class="mx-1"colspan="6">Pour voir vos RDV en ligne, 
+                        <a href="{{ path('app_login') }}">Connectez-vous </a> ou
+                        <a href="{{ path('app_register') }}">Inscrivez-vous</a> avec votre 
+                        <span class="text-light fs-5"> Nom </span> et 
+                        <span class="text-light fs-5"> Prénom </span>de
+                        <span class="text-warning fs-5"> Facturation</span>.</p><br>
                     </tr>
                 {% endif %}
             </tbody>

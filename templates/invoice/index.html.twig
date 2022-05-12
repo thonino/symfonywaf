@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% endblock %}
 {% block body %}
-<div class="container">
-{% if app.user %}
+<div class="d-flex justify-content-center">
+    <div class="container bg-secondary m-2 pb-1"style="border-radius:10px;min-height:180px">
+    <h1 class="scroll">Mes Factures <span class="fs-4 text-light">en ligne</span></h1>
     <table class="table table-hover table-dark table-bordered border-light border border-2 mt-2">
+    {% if app.user %}
         <thead>
             <tr>
             <th scope="col" class="text-center text-white"><span class="scroll">Facture</span></th>
@@ -37,12 +39,19 @@
                 <tr>
                     <td class="scroll"colspan="5">Aucune facture enregistrée</td>
                 </tr>
-            {% endfor %}
-        </tbody>
-        </table>
-{% else %}
-    <p class="scroll text-dark"> Aucune facture enregistré </p>
-{% endif %}
+            {% endfor %}</tbody></table>
+            {% else %}
+                <tr >
+                    <p class="mx-1"colspan="6">Pour voir vos Factures en ligne, 
+                    <a href="{{ path('app_login') }}">Connectez-vous </a> ou
+                    <a href="{{ path('app_register') }}">Inscrivez-vous</a> avec votre 
+                    <span class="text-light fs-5"> Nom </span> et 
+                    <span class="text-light fs-5"> Prénom </span>de votre
+                    <span class="text-warning fs-5"> Facturation</span>.</p><br>
+                </tr>
+            {% endif %}
+        
+    </div>
 </div>
 
 
