@@ -50,13 +50,14 @@
                     {% endfor %}
                 {% else %}
                     <tr >
-                        <p class="mx-1"colspan="6">Pour voir vos RDV en ligne, 
+                        <p class="mx-1"colspan="6">Pour voir vos Rdv, 
                         <a href="{{ path('app_login') }}">Connectez-vous </a> ou
                         <a href="{{ path('app_register') }}">Inscrivez-vous</a> avec votre 
                         <span class="text-light fs-5"> Nom </span> et 
-                        <span class="text-light fs-5"> Prénom </span>de
-                        <span class="text-warning fs-5"> Facturation</span>.</p><br>
-                    </tr>
+                        <span class="text-light fs-5"> Prénom </span>inscrits sur la
+                        <span class="text-warning fs-5"> Facture</span> qui vous a été envoyé par 
+                        <span class="text-warning fs-5"> Mail</span>.</p><br>
+                        </tr>
                 {% endif %}
             </tbody>
         </table>
