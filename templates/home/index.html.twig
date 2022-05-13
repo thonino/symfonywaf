@@ -2,6 +2,8 @@
 {% block title %}Hello HomeController!{% endblock %}
 {% block body %}
 <style>
+.body{background: #ff0000; }
+.cookies{  width: 200px;height: 35px;bottom: 24px; border-radius: 25px;}
 @media screen and (max-width: 1100px) {
 .top2{display: none;}
 }
@@ -46,8 +48,8 @@
     </button>
 </div>
 
-<div class="scroll d-flex flex-column align-items-center bg-white">
-    <div class="d-flex flex-row justify-content-end p-2 bg-white">
+<div class="scroll d-flex flex-column align-items-center bg-white" >
+    <div class="d-flex flex-row justify-content-end p-2 bg-white"style="margin-bottom:-30px">
         <!--waformafion-->
         <div class="col-12 bg-white">
             <div class="d-flex justify-content-center header">
@@ -72,16 +74,15 @@
         </div>
     </div>
 </div>
-
     <!-- Achat Cours -->
-    <div class="d-flex flex-column align-items-center bg-white">
-        <h1 class="scroll text-center text-secondary">Acheter Un Cours </h1>
+    <div class="d-flex flex-column align-items-center bg-white" style="margin-top:-10px">
+        <h1 class="scroll text-center text-secondary">Acheter un cours </h1>
     </div>
-    <div class="d-flex justify-content-center flex-wrap bg-white">
+    <div class="d-flex justify-content-center flex-wrap bg-white pb-5">
         {% for lesson in lessons %}
             <div class="scroll card m-2 text-light" style="max-width: 200px;border-radius:20px">
                 <div class="col-12">
-                <img src="/img/{{lesson.image}}" class="card-img-top" alt="..." style="border-top-left-radius:20px;border-top-right-radius:20px">
+                    <img src="/img/{{lesson.image}}" class="card-img-top" alt="..." style="border-top-left-radius:20px;border-top-right-radius:20px">
                     <div class=" card-body ">
                             <h5 class="card-card text-center text-warning fs-3"style="margin-top:-10px">{{ lesson.price }}€ </h5>
                             <h5 class="card-card text-white text-center fs-5"style="margin-top:-10px">{{ lesson.name }} </h5>
@@ -98,9 +99,9 @@
             <p>votre panier est vide</p>
         {% endfor %}
     </div>
-<div><br><br></div>
+
 <!-- cookies -->
-<div class=" text-light text-center bg-secondary fixed-bottom cookies opacity-75 m-2">
+<div class=" text-light text-center bg-secondary fixed-bottom cookies opacity-75 m-2" >
     <div class="text-center m-1">
         Accepter les Cookies
     <a class="text-warning bold ok " href="#">OK</a>
