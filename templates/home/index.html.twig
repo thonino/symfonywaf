@@ -1,16 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block title %}Hello HomeController!{% endblock %}
 {% block body %}
-<style>
-.body{background: #ff0000; }
-.cookies{  width: 200px;height: 35px;bottom: 24px; border-radius: 25px;}
-@media screen and (max-width: 1100px) {
-.top2{display: none;}
-}
-@media screen and (max-width: 940px) {
-.top1{display: none;}
-}
-</style>
+<style>.cookies{  width: 200px;height: 35px;bottom: 24px; border-radius: 25px;}</style>
+
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
@@ -65,9 +57,9 @@
     <div class="mt-2 d-flex flex-column">
         <div class="d-flex justify-content-center">
                 <div class="d-flex justify-content-center">
-                    <img src="img/top1.png" class="top1 scroll img-fluid mb-2 mx-2" alt="...">
-                    <img src="img/top2.png" class="top2 scroll img-fluid mb-2 mx-2" alt="...">
-                    <img src="img/top3.png" class="top3 scroll img-fluid mb-2 mx-2" alt="...">
+                    <img src="img/top1.png" class="scroll d-none d-lg-inline mb-2 mx-2" alt="...">
+                    <img src="img/top2.png" class="scroll d-none d-md-inline mb-2 mx-2" alt="...">
+                    <img src="img/top3.png" class="scroll mb-2 mx-2" alt="...">
             </div>
         </div>
     </div>
