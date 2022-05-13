@@ -22,15 +22,19 @@
             {% endfor %}
             </tbody>
         </table>
-        <p class="scroll fs-4 border border-4 rounded px-2"style="float:right"> Total : 
-        <span class="text-warning fs-4"> {{ invoice.totalPrice }}€ </span></p>
+        <div class="d-flex justify-content-center">
+            <div>
+            <p class="scroll fs-1 border border-4 rounded px-2"style="float:right"> Total : 
+            <span class="text-warning fs-1 text-center"> {{ invoice.totalPrice }}€ </span></p>
+            </div>
+        </div>
         <div class="d-flex justify-content-center p-2">
-            <div class="scroll border border-light border-4 rounded  px-4" style="width:50%">
-                <h3 class="scroll text-success"> Informations Commande</h3>
-                <p class="scroll">{{ invoice.lastname }} {{ invoice.firstname }}</p>
-                <p class="scroll">{{ invoice.phone }}</p>
-                <p class="scroll">{{ invoice.address }}</p>
-                <p class="scroll">{{ invoice.zipcode }} {{ invoice.city }}</p>
+            <div class="scroll border border-light border-4 rounded  px-2" style="width:62%">
+                <h3 class="scroll text-center text-success"> Informations Commande</h3>
+                <p class="scroll text-center">{{ invoice.lastname }} {{ invoice.firstname }}</p>
+                <p class="scroll text-center">{{ invoice.phone }}</p>
+                <p class="scroll text-center">{{ invoice.address }}</p>
+                <p class="scroll text-center">{{ invoice.zipcode }} {{ invoice.city }}</p>
             </div>
         </div><br>
     </div>
