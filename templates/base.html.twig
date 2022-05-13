@@ -16,40 +16,45 @@
     .tailleTxt{font-size: 50px;}
     .cookies{  width: 100%;height: 40px;bottom: 24px;}
     .ok{text-decoration:none;}
+    .navbar-toggler {padding: 2px 4px !important;}
+    .navbar-toggler-icon{width:20px ;height:25px;}
+
     /* Au niveau le plus haut du code */
 </style>
 {# NavBar#}
 <nav class="navbar py-0 navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ path('app_home') }}">
-        <p class="text-info d-inline "style="font-family: 'Poiret One', cursive;margin-right:-8px">W<span class="text-success">A</span><span class="text-white">FORMATION</span></p></a>
-        <button class="navbar-toggler navbar-toggler-sm mt-1"; type="button" data-bs-toggle="collapse"data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon" ></span>
+        <p class="text-info d-inline "style="font-family: 'Poiret One', cursive;margin-right:-8px">W<span 
+        class="text-success">A</span><span class="text-white">FORMATION</span></p></a>
+        <button class="navbar-toggler navbar-toggler-sm "type="button" data-bs-toggle="collapse"data-bs-target="#navbarSupportedContent" 
+                aria-controls="navbarSupportedContent"aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-lg-0">
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ path('app_lesson_index') }}">
                     <i class="bi bi-book"></i>
-                    <p class="d-none d-md-inline"> Cours</p>
+                    <p class="d-inline d-md-inline d-sm-none "> Cours</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ path('app_calendar') }}">
                     <i class="bi bi-calendar-date"></i>
-                    <p class="d-none d-md-inline"> Calendrier</p>
+                    <p class="d-inline d-md-inline d-sm-none "> Calendrier</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ path('app_booking_index') }}">
                     <i class="bi bi-pencil"></i>
-                    <p class="d-none d-md-inline"> RDV</p>
+                    <p class="d-inline d-md-inline d-sm-none "> RDV</p>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ path('app_invoices') }}">
                     <i class="bi bi-receipt-cutoff"></i>
-                    <p class="d-none d-md-inline"> Factures</p>
+                    <p class="d-inline d-md-inline d-sm-none "> Factures</p>
                 </a>
             </li>
             {# <li class="nav-item">
@@ -60,7 +65,7 @@
                 <li class="nav-item" >
                     <a class="nav-link active" aria-current="page" href="{{ path('cart_show') }}">
                         <i class="bi-cart text-white "></i>
-                        <p class="d-none d-md-inline">Pannier</p>
+                        <p class="d-inline d-md-inline d-sm-none ">Pannier</p>
                     </a>
                 </li>
             {% if app.user %}
