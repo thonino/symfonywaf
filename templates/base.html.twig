@@ -73,17 +73,20 @@
                     <li class="nav-item" >
                         <a class="nav-link active" aria-current="page" href="{{ path('app_admin') }}">
                             <i class="bi bi-gear-fill"></i>
+                            <p class="d-inline d-lg-inline d-md-none d-sm-none ">Admin</p>
                         </a>
                     </li>
                 {% endif %}
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">
                         <i class="bi bi-file-earmark-person"></i>
+                        <p class="d-inline d-lg-inline d-md-none d-sm-none ">Compte</p>
                     </a>
                 </li>            
-                <li class="nav-item"style="margin-top:2px;margin-left:-5px">
+                <li class="nav-item"style="margin-left:-5px">
                     <a class="nav-link active" aria-current="page" href="{{ path('app_logout') }}">
                         <i class="bi bi-power"></i>
+                        <p class="d-inline d-lg-inline d-md-none d-sm-none ">Déconnexion</p>
                     </a>
                 </li>
             {% else %}
