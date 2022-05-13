@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 {% block title %}Detail Lesson{% endblock %}
 {% block body %}
-
-<div class="container col-6 bg-secondary mt-2 pb-2"style="border-radius:10px">
+<div class="d-flex justify-content-center">
+<div class="container  bg-secondary m-2 pb-2"style="border-radius:10px">
     <h1 class="scroll text-warning text-center">Detail Lesson</h1>
     <table class="table">
         <tbody>
-        <div class="scroll container" style="max-width: 500px;">
+        <div class="scroll container" style="max-width: 800px;">
         <img src="/img/{{lesson.image}}" class="card-img-top" alt="..."style="border-radius:20px">
         </div>
             <p class="scroll fs-3 text-warning"> Intitulé : <span class="fs-4 text-light">{{ lesson.name }}</span><br>
@@ -23,6 +23,6 @@
     {% endif %}
 </div>
 <br><br>
-
+</div>
     
 {% endblock %}
