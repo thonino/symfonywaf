@@ -7,12 +7,17 @@
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
 {% endblock %}
 {% block body %}
-    <div class="d-flex justify-content-center">
-        <div class="scroll  container bg-white m-2 p-2 text-secondary"style="border-radius:10px">
-            <a class="btn btn-secondary mt-2 mx-2 mb-2" href="{{ path('app_lesson_index')}}">Acheter un cours</a>
-            <div class="mx-2 mt-1 pb-2" id="calendrier"></div>
+    <div class="d-flex flex-column justify-content-center bg-white m-2 p-2 text-secondary"style="border-radius:10px">
+        <div class="scroll  d-flex justify-content-center">
+            <div class="">
+                <a class="btn btn-secondary text-warning mt-2 mx-2 mb-2" href="{{ path('app_lesson_index')}}">Acheter un cours</a>
+            </div>
+            <div class="">
+                <a class="btn btn-secondary text-success mt-2 mx-2 mb-2" href="{{ path('app_booking_index')}}">Mes Rendez-vous</a>
+            </div>
         </div>
-    </div>
+        <div class="mx-2 mt-1 pb-2" id="calendrier"></div>
+    </div><br>
     <script>
         window.onload = () => {
             let calendarElt = document.querySelector("#calendrier")
@@ -24,10 +29,10 @@
                 allDaySlot: false, slotMinTime: "08:00:00", slotMaxTime: "17:00:00",hiddenDays:[0,6],
                 buttonText: {today:'Actuel',month:'Mois',week:'Semaine',day:'Jour',list:'Liste' }, 
                 headerToolbar: {left: 'prev,next today',center: 'title',right: 'dayGridMonth,timeGridWeek,timeGridDay'},
-                customButtons: { myCustomButton: { text: 'Mes Rendez-vous !',click: function() { window.location.href = "{{ path('app_booking_index') }}";}}},
-                                headerToolbar: {left: 'prev,next today myCustomButton',center: 'title',right: 'dayGridMonth,timeGridWeek,timeGridDay'}, 
-                bootstrapFontAwesome:{  close: 'fa-times',prev: 'fa-solid fa-angle-left',next: 'fa-solid fa-angle-right',
-                                        prevYear: 'fa-angle-double-left',nextYear: 'fa-angle-double-right'},
+                // customButtons: { myCustomButton: { text: 'Mes Rendez-vous !',click: function() { window.location.href = "{{ path('app_booking_index') }}";}}},
+                //                 headerToolbar: {left: 'prev,next today myCustomButton',center: 'title',right: 'dayGridMonth,timeGridWeek,timeGridDay'}, 
+                // bootstrapFontAwesome:{  close: 'fa-times',prev: 'fa-solid fa-angle-left',next: 'fa-solid fa-angle-right',
+                //                         prevYear: 'fa-angle-double-left',nextYear: 'fa-angle-double-right'},
                 });
             calendar.on('eventChange', (e) => {
             let url = `/api/${e.event.id}/edit`
