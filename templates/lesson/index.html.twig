@@ -10,13 +10,13 @@
 </div>
     <div class="d-flex justify-content-center flex-wrap ">
         {% for lesson in lessons %}
-            <div class="scroll card m-2 text-light bg-white" style="max-width: 300px;">
+            <div class="scroll card m-2 text-light bg-leger" style="max-width: 300px;">
                 <div class="col-12">
                     <img src="/img/{{lesson.image}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-card text-center text-warning fs-1">{{ lesson.price }}€ </h5>
                         <h5 class="card-card text-secondary text-center">{{ lesson.name }} </h5>
-                        <h5 class="card-text text-center">{{ lesson.title }}</h5>
+                        <h5 class="card-text text-center text-white">{{ lesson.title }}</h5>
                         <span class="d-flex justify-content-center">
                         <a class="btn btn-warning mb-2 mt-2 text-white" href="{{ path('cart_add', {'lesson' : lesson.id})}}">Ajouter au panier</a><br>
                         <a class="btn btn-primary mb-2 mt-2 mx-1" href="{{ path('app_lesson_show', {'id': lesson.id}) }}">Détail</a>

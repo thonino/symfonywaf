@@ -9,7 +9,7 @@
 <link href="{{ asset('css/styles.css')}}" rel="stylesheet"> 
 <link href="{{ asset('bootstrapIcons/bootstrap-icons.css')}}" rel="stylesheet"> 
 </head>
-    <body style="background-color: #dfdfdf;;">
+    <body class="bg-white">
     <style>
     .header p{font-family: 'Poiret One', cursive;font-weight: bold;}
     a{font-family: 'Bad Script', cursive;}
@@ -58,6 +58,11 @@
                     <p class="d-inline d-md-inline d-sm-none "> Factures</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ path('app_home_contact') }}">
+                    <p class="d-inline d-md-inline d-sm-none "> Contact</p>
+                </a>
+            </li>
             {# <li class="nav-item">
                 <a class="nav-link " aria-current="page" href="{{ path('app_invoice_new') }}">Commande</a>
             </li> #}
@@ -66,7 +71,7 @@
                 <li class="nav-item" >
                     <a class="nav-link active" aria-current="page" href="{{ path('cart_show') }}">
                         <i class="bi-cart text-white "></i>
-                        <p class="d-inline d-md-inline d-sm-none "s>Pannier</p>
+                        <p class="d-inline d-md-inline d-sm-none ">Pannier</p>
                     </a>
                 </li>
             {% if app.user %}
