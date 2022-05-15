@@ -36,22 +36,4 @@ class HomeController extends AbstractController
         return $this->render('home/contact.html.twig', [
         ]);
     }
-    // #[Route('/home/contact', name: 'app_home_contact')]
-    // public function send(Request $request, MailerInterface $mailer): Response
-    // {
-    //     if ($request->request->all()){
-    //         $email = (new Email())
-    //                 ->to('thoninoben@gamil.com')
-    //                 ->from($request->request->get("email"))
-    //                 ->subject($request->request->get("subject"))
-    //                 ->text($request->request->get("message"))
-    //                 ;
-    //                 // dd($mailer);
-    //         $mailer->send($email);
-    //         $this->addFlash("success", "votre message a été envoyé");
-    //         }
-    //     return $this->render('home/contact.html.twig', [
-    //     ]);
-    // }
-
 }
