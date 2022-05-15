@@ -3,8 +3,16 @@
 {% block body %}
 <style>.rd-border{border-radius:10px}</style>
 <div class="d-flex justify-content-center">
-    <div class="scroll container bg-secondary m-2 pb-2"style="border-radius:10px">
+    <div class="scroll rd-border container bg-secondary m-2 pb-2">
         <h1>Page contact</h1>
+
+        
+        {% for classStyle, messages in app.flashes %}
+            {% for message in messages %}
+              <p class="scroll rd-border text-center text-white fs-4 bg-{{ classStyle }}">{{ message }}</p>
+            {% endfor %}
+        {% endfor %}
+        
 
         <form method="post">
             <div class="form-group ">

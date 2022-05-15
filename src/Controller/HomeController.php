@@ -1,6 +1,5 @@
 <?php
 namespace App\Controller;
-use Symfony\Component\Mime\Email;
 use App\Repository\LessonRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,7 +31,7 @@ class HomeController extends AbstractController
                     ;
                     // dd($mailer);
             $mailer->send($email);
-            $this->addFlash("success", "votre message a été envoyé");
+            $this->addFlash("success", "Votre message a bien été envoyé");
             }
         return $this->render('home/contact.html.twig', [
         ]);
