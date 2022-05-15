@@ -8,13 +8,16 @@
 
         <form method="post">
             <div class="form-group ">
-                <label for="emailmail" class="col-sm-2 col-form-label">Mail</label>
-                <input type="text" class="form-control-plaintext border rd-border px-2" name="email" placeholder="Entrez votre couriel"/>
-                <label for="subjet" class="form-label mt-2">Sujet</label>
-                <input type="text" class="form-control-plaintext border rd-border px-2" name="subjet" placeholder="Entrez le sujet"/>
+                <label for="email" class="col-sm-2 col-form-label">Mail</label>
+                <input type="email" class="form-control-plaintext border rd-border px-2" name="email" placeholder="Entrez votre couriel"/>
+
+                <label for="subject" class="form-label mt-2">Sujet</label>
+                <input type="text" class="form-control-plaintext border rd-border px-2" name="subject" placeholder="Entrez le sujet"/>
+
                 <label for="message" class="form-label mt-2">Votre Message</label>
-                <textarea class="form-control-plaintext border rd-border px-2" name="message" placeholder="Champ de text" row="4"></textarea>
-                <button class="btn btn-success mt-2">Envoyer</button>
+                <textarea type="text"class="form-control-plaintext border rd-border px-2" name="message" placeholder="Champ de text" row="4"></textarea>
+
+                <input type="submit" class="btn btn-success mt-2"></button>
             </div>
         </form>
     </div>
