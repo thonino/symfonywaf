@@ -3,8 +3,8 @@
 {% block body %}
 <div class="d-flex justify-content-center">
     <div class="container bg-secondary m-2 pb-1"style="border-radius:10px;min-height:180px">
-        <table class="scroll table">
-            <thead class="scroll">
+        <table class="table">
+            <thead class="">
                 <tr>
                     <th class="fs-4 text-warning">Votre Panier</th>
                     <th class="fs-4 text-warning">Prix</th>
@@ -14,13 +14,13 @@
             <tbody>
             {% for row in cartLessons %}
             <form method="post">
-                <tr class="scroll">
-                    <td  class="scrollfs-5">{{ row.lesson.name }}  <span  class="text-light fs-6">{{ row.lesson.title }}</span><br>
+                <tr class="">
+                    <td  class=" fs-5">{{ row.lesson.name }}  <span  class="text-light fs-6">{{ row.lesson.title }}</span><br>
                         {# creation booking form & Liaison avec $totalQty #}
                         {% if row.quantite != 0 %}
                             {% for i in 1 .. row.quantite  %}
-                                <input class="mt-2" type="text" placeholder="Votre Pseudo" name='title{{i}}{{row.lesson.id}}'/><br>
-                                <input class="datetime" type="datetime-local" name="start{{i}}{{row.lesson.id}}"/><br>
+                                <input class="scroll mt-2" type="text" placeholder="Votre Pseudo" name='title{{i}}{{row.lesson.id}}'/><br>
+                                <input class="scroll datetime" type="datetime-local" name="start{{i}}{{row.lesson.id}}"/><br>
                             {% endfor %}
                         {% endif %}
                     </td>

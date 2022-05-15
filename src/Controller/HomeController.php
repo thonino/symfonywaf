@@ -2,6 +2,7 @@
 namespace App\Controller;
 use Symfony\Component\Mime\Email;
 use App\Repository\LessonRepository;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,31 +22,37 @@ class HomeController extends AbstractController
     public function send(Request $request, MailerInterface $mailer): Response
     {
         if ($request->request->all()){
-            $email = (new Email())
+            $email = (new TemplatedEmail())
                     ->to('thoninoben@gamil.com')
                     ->from($request->request->get("email"))
                     ->subject($request->request->get("subject"))
-                    ->text($request->request->get("message"))
+                    ->htmlTemplate('home/templatedEmail.html.twig')
+                    ->context([
+                        "message" => $request->request->get("message")])
                     ;
-                    // dd($request->request->all());
+                    // dd($mailer);
             $mailer->send($email);
             $this->addFlash("success", "votre message a été envoyé");
-            ;}
+            }
         return $this->render('home/contact.html.twig', [
         ]);
     }
     // #[Route('/home/contact', name: 'app_home_contact')]
-    // public function send(MailerInterface $mailer): Response
+    // public function send(Request $request, MailerInterface $mailer): Response
     // {
-    //     $email = (new Email())
-    //         ->from('hello@example.com')
-    //         ->to('thoninoben@gmail.com')
-    //         ->subject('Time for Symfony Mailer!')
-    //         ->text('Sending emails is fun again!')
-    //         ->html('<p>See Twig integration for better HTML integration!</p>');
-    //     $mailer->send($email);
-    //     // dd($mailer);
+    //     if ($request->request->all()){
+    //         $email = (new Email())
+    //                 ->to('thoninoben@gamil.com')
+    //                 ->from($request->request->get("email"))
+    //                 ->subject($request->request->get("subject"))
+    //                 ->text($request->request->get("message"))
+    //                 ;
+    //                 // dd($mailer);
+    //         $mailer->send($email);
+    //         $this->addFlash("success", "votre message a été envoyé");
+    //         }
     //     return $this->render('home/contact.html.twig', [
     //     ]);
     // }
+
 }
