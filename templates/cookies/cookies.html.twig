@@ -1,0 +1,10 @@
+{% if not app.request.cookies.get('ok') %} 
+    <form method="post">
+        <div class=" text-light text-center bg-secondary fixed-bottom cookies opacity-75 m-2" >
+            <div class="text-center text-cookies mt-2">
+                Accepter les Cookies
+                <button class="btn btn-warning btn-sm bold" name="ok" >ok go</button>
+            </div>
+        </div>
+    </form>
+ {% endif %}

@@ -67,7 +67,6 @@ class CartController extends AbstractController
             
             for ($i = 1; $i <= $quantite; $i++ ){
                 if ($request->request->count()>0){
-                    // $userRepo = $em->getRepository(Users::class);
                     $firstname = $request->request->get('firstname');
                     $lastname = $request->request->get('lastname');
                         $user = $this->getUser();

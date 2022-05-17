@@ -15,7 +15,7 @@
             {% for row in cartLessons %}
             <form method="post">
                 <tr class="">
-                    <td  class=" fs-5">{{ row.lesson.name }}  <span  class="text-light fs-6">{{ row.lesson.title }}</span><br>
+                    <td  class=" fs-5 scroll">{{ row.lesson.name }}  <span  class="scroll text-light fs-6">{{ row.lesson.title }}</span><br>
                         {# creation booking form & Liaison avec $totalQty #}
                         {% if row.quantite != 0 %}
                             {% for i in 1 .. row.quantite  %}
@@ -25,7 +25,7 @@
                         {% endif %}
                     </td>
                     <td class="fs-4">{{ row.lesson.price }}€</td>
-                    <td class=" fs-4">
+                    <td class="fs-4">
                         <a href="{{ path('cart_less', {'lesson':row.lesson.id}) }}"><i class="bi bi-file-minus-fill fs-4 mx-2 text-danger"></i></a>
                         {{ row.quantite }} H
                         <a href="{{ path('cart_add', {'lesson':row.lesson.id}) }}"><i class="bi bi-plus-square-fill fs-4 mx-2 text-warning"></i></a>
@@ -43,16 +43,16 @@
             {% if not app.user and not is_granted('ROLE_ADMIN') %}
                 <input class="mx-2" type="text" placeholder="Votre Nom" name='firstname'/>
                 <input class="" type="text" placeholder="Votre Prénom" name='lastname'/><br><br>
-            {% endif %}            
+            {% endif %}     
             <div class="mb-2 ">
-        
-            <p class="scroll fs-4 border border-4 rounded text-warning p-1 mx-2 mb-2"style="float:left ;margin-top:-12px;"> 
-                Total : 
-                <span class="text-white fs-4"> {{ total }}€ </span>
-            </p>
-            <button class="scroll btn btn-success">commander</button>
-        {% endif %}
+                <p class="scroll fs-4 border border-4 rounded text-warning p-1 mx-2 mb-2"style="float:left ;margin-top:-12px;"> 
+                    Total : 
+                    <span class="text-white fs-4"> {{ total }}€ </span>
+                </p>
+            <a class="btn btn-warning" href="{{ path('app_lesson_index') }}"> Ajouter un autre cours </a>
+                <button class="scroll mx-1 btn btn-success">commander</button><br>
             </div>
+        {% endif %}
         </form>
     </div>
 </div>

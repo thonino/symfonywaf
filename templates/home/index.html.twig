@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}{% endblock %}
 {% block body %}
-<style>.cookies{  width: 200px;height: 35px;bottom: 24px; border-radius: 25px;}</style>
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active scroll ">
@@ -87,13 +86,4 @@
             <p>votre panier est vide</p>
         {% endfor %}
     </div>
-
-<!-- cookies -->
-<div class=" text-light text-center bg-secondary fixed-bottom cookies opacity-75 m-2" >
-    <div class="text-center m-1">
-        Accepter les Cookies
-    <a class="text-warning bold ok " href="#">OK</a>
-    </div>
-</div>
-
 {% endblock %}

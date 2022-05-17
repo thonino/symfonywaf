@@ -9,107 +9,108 @@
 <link href="{{ asset('css/styles.css')}}" rel="stylesheet"> 
 <link href="{{ asset('bootstrapIcons/bootstrap-icons.css')}}" rel="stylesheet"> 
 </head>
-    <body class="bg-white">
+<body class="bg-white">
     <style>
-    .header p{font-family: 'Poiret One', cursive;font-weight: bold;}
-    a{font-family: 'Bad Script', cursive;}
-    .tailleTxt{font-size: 50px;}
-    .cookies{  width: 100%;height: 40px;bottom: 24px;}
-    .ok{text-decoration:none;}
-    .navbar-toggler {padding: 2px 4px !important;} 
-    .navbar-toggler-icon{width:20px ;height:25px;}
-
-
-    /* Au niveau le plus haut du code */
-</style>
+        .header p{font-family: 'Poiret One', cursive;font-weight: bold;}
+        a{font-family: 'Bad Script', cursive;}
+        .tailleTxt{font-size: 50px;}
+        .navbar-toggler {padding: 2px 4px !important;} 
+        .navbar-toggler-icon{width:20px ;height:25px;}
+        .cookies{  width: 200px;height: 35px;bottom: 24px; border-radius: 25px;}
+    </style>
 {# NavBar#}
-<nav class="navbar py-0 navbar-expand-sm navbar-dark bg-dark">
-    <div class="scroll container-fluid">
-        <a class="navbar-brand" href="{{ path('app_home') }}">
-        <p class="text-info d-inline "style="font-family: 'Poiret One', cursive;margin-right:-8px">W<span 
-        class="text-success">A</span><span class="text-white">FORMATION</span></p></a>
-        <button class="navbar-toggler navbar-toggler-sm "type="button" data-bs-toggle="collapse"data-bs-target="#navbarSupportedContent" 
-                aria-controls="navbarSupportedContent"aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ path('app_lesson_index') }}">
-                    <i class="bi bi-book"></i>
-                    <p class="d-inline d-md-inline d-sm-none"> Cours</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ path('app_calendar') }}">
-                    <i class="bi bi-calendar-date"></i>
-                    <p class="d-inline d-md-inline d-sm-none "> Calendrier</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ path('app_booking_index') }}">
-                    <i class="bi bi-pencil"></i>
-                    <p class="d-inline d-md-inline d-sm-none "> RDV</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{ path('app_invoices') }}">
-                    <i class="bi bi-receipt-cutoff"></i>
-                    <p class="d-inline d-md-inline d-sm-none "> Factures</p>
-                </a>
-            </li>
-            {# <li class="nav-item">
-                <a class="nav-link " aria-current="page" href="{{ path('app_invoice_new') }}">Commande</a>
-            </li> #}
-            </ul>
-            <ul class="navbar-nav ms-auto mb-lg-0">
-                <li class="nav-item" >
-                    <a class="nav-link active" aria-current="page" href="{{ path('cart_show') }}">
-                        <i class="bi-cart text-white "></i>
-                        <p class="d-inline d-md-inline d-sm-none ">Pannier</p>
+    <nav class="navbar py-0 navbar-expand-sm navbar-dark bg-dark">
+        <div class="scroll container-fluid">
+            <a class="navbar-brand" href="{{ path('app_home') }}">
+            <p class="text-info d-inline "style="font-family: 'Poiret One', cursive;margin-right:-8px">W<span 
+            class="text-success">A</span><span class="text-white">FORMATION</span></p></a>
+            <button class="navbar-toggler navbar-toggler-sm "type="button" data-bs-toggle="collapse"data-bs-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent"aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ path('app_lesson_index') }}">
+                        <i class="bi bi-book"></i>
+                        <p class="d-inline d-md-inline d-sm-none"> Cours</p>
                     </a>
                 </li>
-            {% if app.user %}
-                {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ path('app_calendar') }}">
+                        <i class="bi bi-calendar-date"></i>
+                        <p class="d-inline d-md-inline d-sm-none "> Calendrier</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ path('app_booking_index') }}">
+                        <i class="bi bi-pencil"></i>
+                        <p class="d-inline d-md-inline d-sm-none "> RDV</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ path('app_invoices') }}">
+                        <i class="bi bi-receipt-cutoff"></i>
+                        <p class="d-inline d-md-inline d-sm-none "> Factures</p>
+                    </a>
+                </li>
+                {# <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="{{ path('app_invoice_new') }}">Commande</a>
+                </li> #}
+                </ul>
+                <ul class="navbar-nav ms-auto mb-lg-0">
                     <li class="nav-item" >
-                        <a class="nav-link active" aria-current="page" href="{{ path('app_admin') }}">
-                            <i class="bi bi-gear-fill"></i>
-                            <p class="d-inline d-lg-inline d-md-none d-sm-none ">Admin</p>
+                        <a class="nav-link active" aria-current="page" href="{{ path('cart_show') }}">
+                            <i class="bi-cart text-white "></i>
+                            <p class="d-inline d-md-inline d-sm-none ">Pannier</p>
+                        </a>
+                    </li>
+                {% if app.user %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="nav-item" >
+                            <a class="nav-link active" aria-current="page" href="{{ path('app_admin') }}">
+                                <i class="bi bi-gear-fill"></i>
+                                <p class="d-inline d-lg-inline d-md-none d-sm-none ">Admin</p>
+                            </a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <i class="bi bi-file-earmark-person"></i>
+                            <p class="d-inline d-lg-inline d-md-none d-sm-none ">Compte</p>
+                        </a>
+                    </li>            
+                    <li class="nav-item"style="margin-left:-5px">
+                        <a class="nav-link active" aria-current="page" href="{{ path('app_logout') }}">
+                            <i class="bi bi-power"></i>
+                            <p class="d-inline d-lg-inline d-md-none d-sm-none ">Déconnexion</p>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">
+                            <i class="bi bi-person"></i>
+                            Connexion
                         </a>
                     </li>
                 {% endif %}
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">
-                        <i class="bi bi-file-earmark-person"></i>
-                        <p class="d-inline d-lg-inline d-md-none d-sm-none ">Compte</p>
-                    </a>
-                </li>            
-                <li class="nav-item"style="margin-left:-5px">
-                    <a class="nav-link active" aria-current="page" href="{{ path('app_logout') }}">
-                        <i class="bi bi-power"></i>
-                        <p class="d-inline d-lg-inline d-md-none d-sm-none ">Déconnexion</p>
-                    </a>
-                </li>
-            {% else %}
-                <li class="nav-item"style="margin-top:2px">
-                    <a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">
-                        <i class="bi bi-person"></i>
-                        Connexion
-                    </a>
-                </li>
-            {% endif %}
-            </ul>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-<!-- FOOTER -->
-<footer class="scroll text-center bg-dark fixed-bottom">
-    <div class="text-center ">
-        <a class="text-light text-decoration-none mx-2" href="#">Conditions générales de vente</a>
-        <a class="text-light text-decoration-none mx-2" href="#">Partenariats</a>
-        <a class="text-success text-decoration-none mx-2 bold" href="{{ path('app_home_contact') }}">Me Contacter</a>
-    </div>
-</footer> 
+    </nav>
+
+    <!-- FOOTER -->
+    <footer class="scroll text-center bg-dark fixed-bottom">
+        <div class="text-center ">
+            <a class="text-light text-decoration-none mx-2" href="#">Conditions générales de vente</a>
+            <a class="text-light text-decoration-none mx-2" href="#">Partenariats</a>
+            <a class="text-success text-decoration-none mx-2 bold" href="{{ path('app_home_contact') }}">Me Contacter</a>
+        </div>
+    </footer> 
+
+<!-- Twig Render Cookies -->
+{{ render(controller("App\\Controller\\CookiesController::cookies")) }}
+
         {% block body %}{% endblock %}
         {# bootstrap & js #}
         <script src="{{ asset('bootstrap.bundle.min.js')}}" defer>
