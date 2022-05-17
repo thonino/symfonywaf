@@ -30,14 +30,8 @@ class Lesson
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
     private $image;
 
-    #[ORM\Column(type: 'datetime', nullable: true)]
-    private $book;
-
-
-    public function __construct()
-    {
-        $this->bookings = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(targetEntity: Categories::class)]
+    private $categories;
 
     public function getId(): ?int
     {
@@ -104,16 +98,18 @@ class Lesson
         return $this;
     }
 
-    public function getBook(): ?\DateTimeInterface
+    public function getCategories(): ?Categories
     {
-        return $this->book;
+        return $this->categories;
     }
 
-    public function setBook(?\DateTimeInterface $book): self
+    public function setCategories(?Categories $categories): self
     {
-        $this->book = $book;
+        $this->categories = $categories;
 
         return $this;
     }
+
+
 
 }
