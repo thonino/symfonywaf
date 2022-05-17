@@ -27,7 +27,7 @@
                 locale: 'fr', timeZone: 'Europe/Paris',  
                 events: {{ data|raw }}, editable: false, forceEventDuration: true, 
                 allDaySlot: false, slotMinTime: "08:00:00", slotMaxTime: "17:00:00",hiddenDays:[0,6],
-                buttonText: {today:'Actuel',month:'Mois',week:'Semaine',day:'Jour',list:'Liste' }, 
+                buttonText: {today:'J - 1',month:'Mois',week:'Semaine',day:'Jour',list:'Liste' }, 
                 headerToolbar: {left: 'prev,next today',center: 'title',right: 'dayGridMonth,timeGridWeek,timeGridDay'},
                 // customButtons: { myCustomButton: { text: 'Mes Rendez-vous !',click: function() { window.location.href = "{{ path('app_booking_index') }}";}}},
                 //                 headerToolbar: {left: 'prev,next today myCustomButton',center: 'title',right: 'dayGridMonth,timeGridWeek,timeGridDay'}, 

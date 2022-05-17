@@ -4,7 +4,7 @@
 .glyphicon-chevron-left{
     background-color: blue;
 }
-.cookies{  width: 200px;height: 212px;bottom: 24px; border-radius: 15px;
+.cookies{  width: 200px;height: 200px;bottom: 24px; border-radius: 15px;
 }
 @media only screen and (min-width:767px){ #calendrier{height:560px;} }
 @media only screen and (min-width:991px){ #calendrier{height:560px;} }

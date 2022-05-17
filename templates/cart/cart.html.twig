@@ -34,9 +34,13 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td class="scroll" colspan="2"> Aucun article ajouté </td>         
+                    <td class="scroll" colspan="2"> Aucun article ajouté <br><br>
+                        <a class="btn btn-warning" href="{{ path('app_lesson_index') }}"> acheter un cours </a>
+                    </td>         
                 </tr>  
+                
                 </tbody>
+                
             {% endfor %}
         </table>
         {% if cartLessons != [] %}
@@ -49,7 +53,7 @@
                     Total : 
                     <span class="text-white fs-4"> {{ total }}€ </span>
                 </p>
-            <a class="btn btn-warning" href="{{ path('app_lesson_index') }}"> Ajouter un autre cours </a>
+                <a class="btn btn-warning" href="{{ path('app_lesson_index') }}"> Ajouter un autre cours </a>
                 <button class="scroll mx-1 btn btn-success">commander</button><br>
             </div>
         {% endif %}

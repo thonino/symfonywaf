@@ -3,6 +3,7 @@
 namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 class CookiesController extends AbstractController
 {
     public function cookies(): Response
@@ -13,5 +14,11 @@ class CookiesController extends AbstractController
                 header("Refresh: $delay;");
             }
         return $this->render('cookies/cookies.html.twig');
+    }  
+    
+#[Route('/mentionsLegales', name: 'app_mentions_legales')]
+    public function mentionsLegales(): Response
+    {
+        return $this->render('cookies/mentionsLegales.html.twig');
     }  
 }

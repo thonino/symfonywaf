@@ -1,12 +1,13 @@
 {% if not app.request.cookies.get('ok') %} 
     <form method="post">
     <div class="d-flex justify-content-center">
-        <div class="text-light text-center bg-secondary fixed-bottom cookies opacity-75 m-2 " >
-            <p class="scroll fs-6 text-center text- m-1 ">
-                En acceptant, vous nous autorisez à installer des cookies sur votre périphérique. 
-                Nous utilisons des cookies afin d’améliorer l'expérience de nos utilisateurs sur le site
-                <button class="scroll btn btn-warning btn-sm" name="ok" style="">j'accepte</button>
-            </p>
+        <div class="text-light text-center bg-secondary fixed-bottom cookies opacity-75 m-2 p-1" >
+            <h6 class="scroll fs-7 text-center text- mx-1 ">
+                Nous utilisons des cookies afin d’améliorer l'expérience de nos utilisateurs sur le site,
+                en acceptant, vous nous autorisez à installer des cookies sur votre périphérique. <br>
+                <button class="scroll btn btn-warning btn-sm mt-1" name="ok" style="">j'accepte</button>
+                <a class="scroll btn btn-primary btn-sm mt-1" href="{{ path('app_mentions_legales') }}" style="">plus..</a>
+            </h6>
         </div>
     </div>
     </form>
