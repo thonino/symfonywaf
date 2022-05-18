@@ -30,6 +30,9 @@ class Lesson
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
     private $image;
 
+    #[ORM\Column(type: 'string', length: 50, nullable: true)]
+    private $categorie;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,6 +94,18 @@ class Lesson
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?string
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?string $categorie): self
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

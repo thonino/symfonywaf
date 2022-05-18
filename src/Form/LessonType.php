@@ -17,6 +17,7 @@ class LessonType extends AbstractType
             ->add('description', TextType::class,['attr' => ['class' => 'scroll form-control'],'label_attr' =>['class'=> 'scroll'], 'label' => 'description'])
             ->add('title', TextType::class,['attr' => ['class' => 'scroll form-control'],'label_attr' =>['class'=> 'scroll'], 'label' => 'title'])
             ->add('image', TextType::class,['attr' => ['class' => 'scroll form-control'],'label_attr' =>['class'=> 'scroll'], 'label' => 'nom de l\'image'])
+            ->add('categorie', TextType::class,['attr' => ['class' => 'scroll form-control'],'label_attr' =>['class'=> 'scroll'], 'label' => 'catégorie'])
 
         ;
     }
