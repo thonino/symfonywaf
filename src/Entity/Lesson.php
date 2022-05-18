@@ -30,9 +30,6 @@ class Lesson
     #[ORM\Column(type: 'string', length: 50, nullable: true)]
     private $image;
 
-    #[ORM\ManyToOne(targetEntity: Categories::class)]
-    private $categories;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -97,19 +94,4 @@ class Lesson
 
         return $this;
     }
-
-    public function getCategories(): ?Categories
-    {
-        return $this->categories;
-    }
-
-    public function setCategories(?Categories $categories): self
-    {
-        $this->categories = $categories;
-
-        return $this;
-    }
-
-
-
 }

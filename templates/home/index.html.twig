@@ -69,7 +69,7 @@
         {% for lesson in lessons %}
             <div class="scroll card m-2 text-light" style="max-width: 200px;border-radius:20px">
                 <div class="col-12">
-                    <img src="/img/{{lesson.image}}" class="card-img-top" alt="..." style="border-top-left-radius:20px;border-top-right-radius:20px">
+                    <img src="/img/{{lesson.id}}{{lesson.image}}" class="card-img-top" alt="..." style="border-top-left-radius:20px;border-top-right-radius:20px">
                     <div class=" card-body ">
                             <h5 class="card-card text-center text-warning fs-3"style="margin-top:-10px">{{ lesson.price }}€ </h5>
                             <h5 class="card-card text-white text-center fs-5"style="margin-top:-10px">{{ lesson.name }} </h5>
