@@ -12,6 +12,7 @@
         {% for lesson in lessons %}
             <div class="scroll card m-2 text-light bg-leger" style="max-width: 300px;">
                 <div class="col-12">
+                    <img src="/img/{{lesson.categorie}}.jpg" class="scroll card-img-top"  alt="logo catégorie">
                     <img src="/img/{{lesson.image}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-card text-center text-warning fs-1">{{ lesson.price }}€ </h5>
