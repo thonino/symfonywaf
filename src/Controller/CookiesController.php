@@ -17,8 +17,20 @@ class CookiesController extends AbstractController
     }  
     
 #[Route('/mentionsLegales', name: 'app_mentions_legales')]
-    public function mentionsLegales(): Response
+    public function mentionsLegales()
     {
         return $this->render('cookies/mentionsLegales.html.twig');
+    }  
+
+#[Route('/confidentialite', name: 'app_confidential')]
+    public function confidential()
+    {
+        return $this->render('cookies/confidential.html.twig');
+    }  
+
+#[Route('/cgv', name: 'app_cgv')]
+    public function cgv()
+    {
+        return $this->render('cookies/cgv.html.twig');
     }  
 }

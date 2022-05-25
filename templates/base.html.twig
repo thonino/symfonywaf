@@ -9,7 +9,7 @@
 <link href="{{ asset('css/styles.css')}}" rel="stylesheet"> 
 <link href="{{ asset('bootstrapIcons/bootstrap-icons.css')}}" rel="stylesheet"> 
 </head>
-<body class="bg-white">
+<body class="bg-white"style="margin-top:40px">
     <style>
         .font-1 {font-family: 'Poiret One';}
         .font-2 {font-family: 'Bad Script';}
@@ -17,7 +17,7 @@
         .navbar-toggler-icon{width:20px ;height:25px;}
     </style>
 {# NavBar#}
-    <nav class="navbar py-0 navbar-expand-sm navbar-dark bg-dark">
+    <nav class="navbar py-0 navbar-expand-sm navbar-dark bg-dark fixed-top">
         <div class="scroll container-fluid">
             <a class="navbar-brand" href="{{ path('app_home') }}">
             <p class="text-info d-inline font-1"style=";margin-right:-8px">W<span 
@@ -100,9 +100,13 @@
     <!-- FOOTER -->
     <footer class="scroll text-center bg-dark fixed-bottom">
         <div class="text-center ">
-            <a class="text-info text-decoration-none mx-2" href="{{ path('app_mentions_legales') }}">Mentions-Légales</a>
-            <a class="text-light text-decoration-none mx-2" href="#">CGV</a>
-            <a class="text-success text-decoration-none mx-2 bold" href="{{ path('app_home_contact') }}">Me Contacter</a>
+                <span class="text-light mx-2">WAFORMATION</span>
+                <span class="text-light mx-2">1 Rue de la joi, 75001, Paris</span>
+                <span class="text-light mx-2">contact@waformation.fr</span>
+                <a class="text-light mx-2" href="{{ path('app_mentions_legales') }}">Mentions-Légales</a>
+                <a class="text-light mx-2" href="{{ path('app_confidential') }}">Politique de confidentialité</a>
+                <a class="text-light mx-2" href="{{ path('app_cgv') }}">CGV</a>
+                <a class="text-success mx-2 bold" href="{{ path('app_home_contact') }}">Me Contacter</a>
         </div>
     </footer> 
 
