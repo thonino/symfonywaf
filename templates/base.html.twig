@@ -9,7 +9,7 @@
 <link href="{{ asset('css/styles.css')}}" rel="stylesheet"> 
 <link href="{{ asset('bootstrapIcons/bootstrap-icons.css')}}" rel="stylesheet"> 
 </head>
-<body class="bg-white"style="margin-top:40px">
+<body class="bg-white mb-5"style="margin-top:40px">
     <style>
         .font-1 {font-family: 'Poiret One';}
         .font-2 {font-family: 'Bad Script';}
@@ -73,7 +73,7 @@
                         </li>
                     {% endif %}
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">
+                        <a class="nav-link active" aria-current="page" href="/users/{{app.user.id}}">
                             <i class="bi bi-file-earmark-person"></i>
                             <p class="d-inline d-lg-inline d-md-none d-sm-none ">Compte</p>
                         </a>
@@ -98,7 +98,7 @@
     </nav>
 
     <!-- FOOTER -->
-    <footer class="scroll text-center bg-dark fixed-bottom">
+    <footer class="scroll text-center bg-dark fixed-bottom ">
         <div class="text-center ">
                 <span class="text-light mx-2">WAFORMATION</span>
                 <span class="text-light mx-2">1 Rue de la joi, 75001, Paris</span>
@@ -109,6 +109,7 @@
                 <a class="text-success mx-2 bold" href="{{ path('app_home_contact') }}">Me Contacter</a>
         </div>
     </footer> 
+    
 
 <!-- Twig Render Cookies -->
 {{ render(controller("App\\Controller\\CookiesController::cookies")) }}

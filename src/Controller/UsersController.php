@@ -47,7 +47,7 @@ class UsersController extends AbstractController
         );
         $entityManager->persist($user);
         $entityManager->flush();
-            return $this->redirectToRoute('app_users_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_tempo',);
         }
 
         return $this->renderForm('users/edit.html.twig', [

@@ -1,12 +1,25 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello AdminController!{% endblock %}
-
+{% block title %}Page Admin {% endblock %}
 {% block body %}
-<style>
 
-</style>
 
-<div class="example-wrapper">
+<div class="d-flex justify-content-center">
+    <div class="container bg-secondary m-2 pb-1"style="border-radius:10px;min-height:180px">
+        <h1 class="scroll">Page Gestion Admin</h1>
+            <div class="container">        
+                <p><a class="btn btn-success " aria-current="page" href="{{ path('app_users_index') }}"> Gérer les Utilisateurs </a></p>
+                <p><a class="btn btn-success " aria-current="page" href="{{ path('app_lesson_new') }}"> Créer un cours </a></p>
+                <p><a class="btn btn-success " aria-current="page" href="{{ path('app_booking_new') }}"> Ajouter un RDV </a></p>
+                <p><a class="btn btn-success " aria-current="page" target="_blank" href="https://mailtrap.io/inboxes"> Mailtrap</a></p>
+                <p><a class="btn btn-success " aria-current="page" target="_blank" href="https://dashboard.stripe.com/login?redirect=%2Ftest%2Fdashboard"> Stripe</a></p>
+                <p><a class="btn btn-success " aria-current="page" target="_blank" href="https://login.ionos.fr/">Ionos</a></p>
+
+            </div>
+
+
+
+
+    </div>
+</div>
 
 {% endblock %}

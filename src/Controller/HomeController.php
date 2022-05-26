@@ -36,4 +36,9 @@ class HomeController extends AbstractController
         return $this->render('home/contact.html.twig', [
         ]);
     }
+    #[Route('/tempo', name: 'app_tempo')]
+    public function tempo(): Response
+    {
+        return $this->render('home/tempo.html.twig');
+    }
 }

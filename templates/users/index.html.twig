@@ -1,51 +1,54 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}Utilisateurs{% endblock %}
-
 {% block body %}
 
-<div class="d-flex justify-content-center mx-2">
-  <div class="container bg-secondary m-2 pb-2"style="border-radius:10px">
-    <h1>Utilisateurs</h1>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Email</th>
-                    <th>Roles</th>
-                    <th>Prénom </th>
-                    <th>Nom</th>
-                    <th>Téléphone</th>
-                    <th>Adresse</th>
-                    <th>Zipcode</th>
-                    <th>Ville</th>
-                    <th>actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for user in users %}
-                <tr>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                    <td>{{ user.firstname }}</td>
-                    <td>{{ user.lastname }}</td>
-                    <td>{{ user.phone }}</td>
-                    <td>{{ user.address }}</td>
-                    <td>{{ user.zipcode }}</td>
-                    <td>{{ user.city }}</td>
-                    <td>
-                        <a class="btn btn-info"href="{{ path('app_users_show', {'id': user.id}) }}">Voir</a>
-                        <a class="btn btn-success"href="{{ path('app_users_edit', {'id': user.id}) }}">Modifier</a>
+<div class="d-flex justify-content-center">
+    <div class="container bg-secondary m-2 pb-1"style="border-radius:10px;min-height:180px">
+    <h1 class="scroll text-center">Utilisateurs</h1>
+        {% if is_granted('ROLE_ADMIN') %}
+            <table class="table table-hover table-bordered border-light border border-2 mt-2 ">
+                <thead>
+                    <tr class="scroll">
+                    <th class=""><span >Email </span></th>
+                    <th class="d-none d-lg-block"><span >Roles</span></th>
+                    <th class=""><span >Prénom </span></th>
+                    <th class=""><span >Nom</span></th>
+                    <th class="d-none d-md-block"><span >Téléphone</span></th>
+                    <th class="d-none"><span >Adresse</span></th>
+                    <th class="d-none "><span >Code Postal</span></th>
+                    <th class="d-none "><span >Ville</span></th>
+                    <th class=""><span >Actions</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                <tr class="scroll ">
+                    <td class="">{{ user.email }}</td>
+                    <td class="d-none d-lg-block">{{ user.roles ? user.roles|json_encode : '' }}</td>
+                    <td class="">{{ user.firstname }}</td>
+                    <td class="">{{ user.lastname }}</td>
+                    <td class="d-none d-md-block">{{ user.phone  }}</td>
+                    <td class="d-none ">{{ user.address  }}</td>
+                    <td class="d-none ">{{ user.zipcode  }}</td>
+                    <td class="d-none ">{{ user.city  }}</td>
+                    <td class=""><div class="d-flex justify-content-center">
+                            <a class="btn btn-info mx-2"href="{{ path('app_users_show', {'id': user.id}) }}"><i class="bi bi-three-dots-vertical"></i></a>
+                            <a class="btn btn-success d-none d-sm-block"href="{{ path('app_users_edit', {'id': user.id}) }}"><i class="bi bi-pencil"></i></a>
+                        </div>
                     </td>
                 </tr>
+                {% else %}
+                    <p>Aucun utilisateur</p>
+                {% endfor %} 
+                </tbody>
+            
+            </div>
+            </table>
+            <a class="btn btn-success mb-2"href="{{ path('app_register') }}">Nouveau</a>
             {% else %}
-                <tr>
-                    <td colspan="11">no records found</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-
-    <a class="btn btn-success"href="{{ path('app_register') }}">Nouveau</a>
+            <p class="text-center text-light">Seul l'administrateur peut accèder aux données de cette page</p>
+        {% endif %}
+        
     </div>
 </div>
 {% endblock %}

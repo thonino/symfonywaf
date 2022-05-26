@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Redirection {% endblock %}
+
+{% block body %}
+
+<div class="d-flex justify-content-center mx-2">
+  <div class="d-flex  m-2 pb-2"style="border-radius:10px">
+  {% if app.user %}
+    <a class="btn btn-lg btn-secondary mt-2" href="/users/{{app.user.id}}">Retournez sur votre compte</a>
+  {% endif %}
+  </div>
+</div>
+{% endblock %}
