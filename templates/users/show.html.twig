@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte{% endblock %}
+
+{% block body %}
+    
+<div class="d-flex justify-content-center mx-2">
+  <div class="container bg-secondary m-2 pb-2"style="border-radius:10px">
+  <h1>Compte</h1>
+        <table class="table border-none">
+            <tbody>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <th>Roles</th>
+                    <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Prénom</th>
+                    <td>{{ user.firstname }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ user.lastname }}</td>
+                </tr>
+                <tr>
+                    <th>Téléphone</th>
+                    <td>{{ user.phone }}</td>
+                </tr>
+                <tr>
+                    <th>Adresse</th>
+                    <td>{{ user.address }}</td>
+                </tr>
+                <tr>
+                    <th>Code postal</th>
+                    <td>{{ user.zipcode }}</td>
+                </tr>
+                <tr>
+                    <th>Ville</th>
+                    <td>{{ user.city }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a class="btn btn-success " href="{{ path('app_users_index') }}">Retour</a>
+        <a class="btn btn-success mx-1" href="{{ path('app_users_edit', {'id': user.id}) }}">Modifier</a>   
+         {{ include('users/_delete_form.html.twig') }}
+    </div>
+</div>
+
+    
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Users{% endblock %}
+
+{% block body %}
+<div class="d-flex justify-content-center mx-2">
+  <div class="container bg-secondary m-2 pb-2"style="border-radius:10px">
+
+    <h1>Edit Users</h1>
+
+    {{ include('users/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+    <a class="btn btn-info"href="{{ path('app_users_index') }}">Retour</a>
+
+    {{ include('users/_delete_form.html.twig') }}    
+    </div>
+</div>
+{% endblock %}

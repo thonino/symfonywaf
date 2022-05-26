@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Utilisateurs{% endblock %}
+
+{% block body %}
+
+<div class="d-flex justify-content-center mx-2">
+  <div class="container bg-secondary m-2 pb-2"style="border-radius:10px">
+    <h1>Utilisateurs</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>numero</th>
+                    <th>Email</th>
+                    <th>Roles</th>
+                    <th>Prénom </th>
+                    <th>Nom</th>
+                    <th>Téléphone</th>
+                    <th>Adresse</th>
+                    <th>Zipcode</th>
+                    <th>Ville</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>{{ user.address }}</td>
+                    <td>{{ user.zipcode }}</td>
+                    <td>{{ user.city }}</td>
+                    <td>
+                        <a class="btn btn-info"href="{{ path('app_users_show', {'id': user.id}) }}">Voir</a>
+                        <a class="btn btn-success"href="{{ path('app_users_edit', {'id': user.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="11">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    <a class="btn btn-success"href="{{ path('app_users_new') }}">Nouveau</a>
+    </div>
+</div>
+{% endblock %}
