@@ -24,16 +24,20 @@ class RegistrationFormType extends AbstractType
         ->add('phone', TextType::class,[ 'attr' => ['class' => 'form-control','placeholder' => 'Entrez votre Téléphone'],'label' => 'Téléphone'])
         ->add('city', TextType::class,[ 'attr' => ['class' => 'form-control','placeholder' => 'Entrez votre Ville'],'label' => 'Ville'])
         ->add('address', TextType::class,[ 'attr' => ['class' => 'form-control','placeholder' => 'Entrez votre adresse'],'label' => 'Adresse'])
-        ->add('zipcode', TextType::class,[ 'attr' => ['class' => 'form-control','placeholder' => '00000'],'label' => 'Code postal (5 chiffres)'])
+        ->add('zipcode', TextType::class,   ['attr'=>['class' => 'form-control','placeholder' => '00000'],'label' => 'Code postal (5 chiffres)',
+                                    'constraints' => [  new NotBlank (['message' => 'Entez le code posal',]),
+                                                        new Length(['min' => 5,'max' => 5,'exactMessage' => 'Vous etes limité à 5 caractères',])
+                                                    ],
+                                            ])
         ->add(  'RGPDConsent', CheckboxType::class, [
                 'mapped' => false,'constraints' => [ new IsTrue([
-                'message' => 'Tu dois cocher la case accepter.', ]),],
-                'label'=> 'En cochant, j\'accepte les conditions ',])
+                'message' => 'J\'accepte les conditions', ]),],
+                'label'=> 'En cochant, vous acceptez les conditions ',])
         ->add(  'plainPassword', PasswordType::class, ['mapped' => false,'attr' => ['placeholder' => 'Entrez votre Mdp',
                 'autocomplete' => 'new-password','class' => 'form-control'],'constraints' => [
-                new NotBlank(['message' => 'Entre ton MDP',]),
-                new Length(['min' => 4,'minMessage' => 'tu es limité à {{ limit }} charactères',
-                            'max' => 4096,]),],
+                new NotBlank(['message' => 'Vous n\'avez pas entré votre MDP',]),
+                new Length(['min' => 6,'minMessage' => 'Vous devez entrer 6 caractères minimum',
+                            'max' => 50,'maxMessage' => 'Vous etes limité à 50 caractères']),],
         ]);
     }
 
