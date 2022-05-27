@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        {% block head %}{% endblock %}
-        <title>{% block title %}WA Formation{% endblock %}</title>
-{# Bootstrap & css // templates/base.html.twig #}
-<link href="{{ asset('bootstrap.min.css')}}" rel="stylesheet">
-<link href="{{ asset('css/styles.css')}}" rel="stylesheet"> 
-<link href="{{ asset('bootstrapIcons/bootstrap-icons.css')}}" rel="stylesheet"> 
-</head>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+            <meta charset="UTF-8">
+            {% block head %}{% endblock %}
+            <title>{% block title %}WA Formation{% endblock %}</title>
+        {# Bootstrap & css // templates/base.html.twig #}
+        <link href="{{ asset('bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('css/styles.css')}}" rel="stylesheet"> 
+        <link href="{{ asset('bootstrapIcons/bootstrap-icons.css')}}" rel="stylesheet"> 
+    </head>
 <body class="bg-white mb-5"style="margin-top:40px">
     <style>
         .font-1 {font-family: 'Poiret One';}
@@ -101,7 +103,7 @@
     <footer class="scroll text-center bg-dark fixed-bottom ">
         <div class="text-center ">
                 <span class="text-light mx-2">WAFORMATION</span>
-                <span class="text-light mx-2">1 Rue de la joi, 75001, Paris</span>
+                <span class="text-light mx-2">1 Rue de la joie, 75001, Paris</span>
                 <span class="text-light mx-2">contact@waformation.fr</span>
                 <a class="text-light mx-2" href="{{ path('app_mentions_legales') }}">Mentions-Légales</a>
                 <a class="text-light mx-2" href="{{ path('app_confidential') }}">Politique de confidentialité</a>
