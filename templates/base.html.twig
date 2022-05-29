@@ -10,11 +10,15 @@
         <link href="{{ asset('bootstrap.min.css')}}" rel="stylesheet">
         <link href="{{ asset('css/styles.css')}}" rel="stylesheet"> 
         <link href="{{ asset('bootstrapIcons/bootstrap-icons.css')}}" rel="stylesheet"> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Poppins:wght@200&display=swap" rel="stylesheet"> 
     </head>
 <body class="bg-white mb-5"style="margin-top:40px">
     <style>
         .font-1 {font-family: 'Poiret One';}
-        .font-2 {font-family: 'Bad Script';}
+        .font-2 {font-family: 'Poppins', sans-serif;}
         .navbar-toggler {padding: 2px 4px !important;} 
         .navbar-toggler-icon{width:20px ;height:25px;}
     </style>
@@ -23,7 +27,7 @@
         <div class="scroll container-fluid">
             <a class="navbar-brand" href="{{ path('app_home') }}">
             <p class="text-info d-inline font-1"style=";margin-right:-8px">W<span 
-            class="text-success">A</span><span class="text-white">FORMATION</span></p></a>
+            class="text-success">A</span><span class="text-white font-2">FORMATION</span></p></a>
             <button class="navbar-toggler navbar-toggler-sm "type="button" data-bs-toggle="collapse"data-bs-target="#navbarSupportedContent" 
                     aria-controls="navbarSupportedContent"aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -33,25 +37,25 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ path('app_lesson_index') }}">
                         <i class="bi bi-book"></i>
-                        <p class="d-inline d-md-inline d-sm-none"> Cours</p>
+                        <p class="d-inline d-md-inline d-sm-none font-2"> Cours</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ path('app_calendar') }}">
                         <i class="bi bi-calendar-date"></i>
-                        <p class="d-inline d-md-inline d-sm-none "> Calendrier</p>
+                        <p class="d-inline d-md-inline d-sm-none font-2"> Calendrier</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ path('app_booking_index') }}">
                         <i class="bi bi-pencil"></i>
-                        <p class="d-inline d-md-inline d-sm-none "> RDV</p>
+                        <p class="d-inline d-md-inline d-sm-none font-2"> RDV</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ path('app_invoices') }}">
                         <i class="bi bi-receipt-cutoff"></i>
-                        <p class="d-inline d-md-inline d-sm-none "> Factures</p>
+                        <p class="d-inline d-md-inline d-sm-none font-2"> Factures</p>
                     </a>
                 </li>
                 {# <li class="nav-item">
@@ -62,7 +66,7 @@
                     <li class="nav-item" >
                         <a class="nav-link active" aria-current="page" href="{{ path('cart_show') }}">
                             <i class="bi-cart text-white "></i>
-                            <p class="d-inline d-md-inline d-sm-none ">Pannier</p>
+                            <p class="d-inline d-md-inline d-sm-none font-2">Pannier</p>
                         </a>
                     </li>
                 {% if app.user %}
@@ -70,25 +74,25 @@
                         <li class="nav-item" >
                             <a class="nav-link active" aria-current="page" href="{{ path('app_admin') }}">
                                 <i class="bi bi-gear-fill"></i>
-                                <p class="d-inline d-lg-inline d-md-none d-sm-none ">Admin</p>
+                                <p class="d-inline d-lg-inline d-md-none d-sm-none font-2">Admin</p>
                             </a>
                         </li>
                     {% endif %}
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/users/{{app.user.id}}">
                             <i class="bi bi-file-earmark-person"></i>
-                            <p class="d-inline d-lg-inline d-md-none d-sm-none ">Compte</p>
+                            <p class="d-inline d-lg-inline d-md-none d-sm-none font-2">Compte</p>
                         </a>
                     </li>            
                     <li class="nav-item"style="margin-left:-5px">
                         <a class="nav-link active" aria-current="page" href="{{ path('app_logout') }}">
                             <i class="bi bi-power"></i>
-                            <p class="d-inline d-lg-inline d-md-none d-sm-none ">Déconnexion</p>
+                            <p class="d-inline d-lg-inline d-md-none d-sm-none font-2">Déconnexion</p>
                         </a>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ path('app_login') }}">
+                        <a class="nav-link active font-2" aria-current="page" href="{{ path('app_login') }}">
                             <i class="bi bi-person"></i>
                             Connexion
                         </a>
@@ -100,7 +104,7 @@
     </nav>
 
     <!-- FOOTER -->
-    <footer class="scroll text-center bg-dark fixed-bottom ">
+    <footer class="scroll text-center bg-dark fixed-bottom font-2">
         <div class="text-center ">
                 <span class="text-light mx-2">WAFORMATION</span>
                 <span class="text-light mx-2">1 Rue de la joie, 75001, Paris</span>

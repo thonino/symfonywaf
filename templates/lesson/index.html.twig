@@ -3,25 +3,25 @@
 {% block body %}
 <div class="d-flex flex-column align-items-center">
     
-    <h2 class="scroll text-center text-secondary mt-2 "><i class="bi bi-book"></i><br> Acheter Un Cours </h2>
+    <h2 class="scroll text-center text-secondary mt-2 font-2"><i class="bi bi-book"></i><br> Acheter Un Cours </h2>
     {% if is_granted('ROLE_ADMIN') %}
-    <a class="scroll btn btn-success"style="max-width: 350px;" href="{{ path('app_lesson_new') }}">Créer un cours</a>
+    <a class="scroll btn btn-success font-2"style="max-width: 350px;" href="{{ path('app_lesson_new') }}">Créer un cours</a>
     {% endif %}
 </div>
     <div class="d-flex justify-content-center flex-wrap ">
         {% for lesson in lessons %}
             <div class="scroll card mx-2 bg-white mt-2" style="max-width: 300px;">
                 <div class="col-12">
-                <h5 class="card-card text-center bg-white text-warning fs-1"style="margin-bottom:-7px;margin-top:10px">{{ lesson.price }}€ </h5>
+                <h5 class="card-card text-center bg-white text-warning fs-1 font-2"style="margin-bottom:-7px;margin-top:10px">{{ lesson.price }}€ </h5>
                     <img src="/img/{{lesson.categorie}}.jpg" class="scroll card-img-top"  alt="logo catégorie">>
                     <img src="/img/{{lesson.image}}" class="card-img-top" alt="..."style="margin-top:-30px">
                     <div class="card-body">
                         
-                        <h5 class="card-card text-secondary text-center">{{ lesson.name }} </h5>
-                        <h5 class="card-text text-center text-secondary">{{ lesson.title }}</h5>
+                        <h5 class="card-card text-secondary text-center font-2">{{ lesson.name }} </h5>
+                        <h5 class="card-text text-center text-secondary font-2">{{ lesson.title }}</h5>
                         <span class="d-flex justify-content-center">
-                        <a class="btn btn-warning mb-2 mt-2 text-white" href="{{ path('cart_add', {'lesson' : lesson.id})}}">Ajouter au panier</a><br>
-                        <a class="btn btn-primary mb-2 mt-2 mx-1" href="{{ path('app_lesson_show', {'id': lesson.id}) }}">Détail</a>
+                        <a class="btn btn-warning mb-2 mt-2 text-white font-2" href="{{ path('cart_add', {'lesson' : lesson.id})}}">Ajouter au panier</a><br>
+                        <a class="btn btn-primary mb-2 mt-2 mx-1 font-2" href="{{ path('app_lesson_show', {'id': lesson.id}) }}">Détail</a>
                         </span>
                     </div>
                 </div>
