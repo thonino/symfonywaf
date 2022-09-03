@@ -15,17 +15,19 @@
             {% for row in cartLessons %}
             <form method="post">
                 <tr class="">
-                    <td  class=" fs-5 scroll">{{ row.lesson.name }}  <span  class="scroll text-light fs-6">{{ row.lesson.title }}</span><br>
+                    <td  class=" fs-3 scroll">{{ row.lesson.name }}  <span  class="scroll text-light fs-5">{{ row.lesson.title }}</span><br>
                         {# creation booking form & Liaison avec $totalQty #}
                         {% if row.quantite != 0 %}
-                            {% for i in 1 .. row.quantite  %}
-                                <input class="scroll mt-2" type="text" placeholder="Votre Pseudo" name='title{{i}}{{row.lesson.id}}'/><br>
-                                <input class="scroll datetime" type="datetime-local" name="start{{i}}{{row.lesson.id}}"/><br>
-                            {% endfor %}
+                            <span  class="scroll text-info fs-4">
+                                {% for i in 1 .. row.quantite  %}
+                                    {{i}} - C'est pour qui ? <input class="scroll mt-2" type="text" placeholder="Nom / Prénom" name='title{{i}}{{row.lesson.id}}'/><br>
+                                    {{i}} - Date et heure ? <input class="scroll datetime" type="datetime-local" name="start{{i}}{{row.lesson.id}}"/><br>
+                                {% endfor %}
+                            </span>
                         {% endif %}
                     </td>
-                    <td class="fs-4">{{ row.lesson.price }}€</td>
-                    <td class="fs-4">
+                    <td class="fs-5">{{ row.lesson.price }}€</td>
+                    <td class="fs-5">
                         <a href="{{ path('cart_less', {'lesson':row.lesson.id}) }}"><i class="bi bi-file-minus-fill fs-4 mx-2 text-danger"></i></a>
                         {{ row.quantite }} H
                         <a href="{{ path('cart_add', {'lesson':row.lesson.id}) }}"><i class="bi bi-plus-square-fill fs-4 mx-2 text-warning"></i></a>
@@ -45,8 +47,11 @@
         </table>
         {% if cartLessons != [] %}
             {% if not app.user and not is_granted('ROLE_ADMIN') %}
-                <input class="mx-2" type="text" placeholder="Votre Nom" name='firstname'/>
-                <input class="" type="text" placeholder="Votre Prénom" name='lastname'/><br><br>
+                <span  class="scroll text-success fs-4">
+                    Qui passe la commande ?
+                    <input class="mx-2" type="text" placeholder="Nom" name='firstname'/>
+                    <input class="" type="text" placeholder="Prénom" name='lastname'/><br><br>
+                </span>
             {% endif %}     
             <div class="mb-2 ">
                 <p class="scroll fs-4 border border-4 rounded text-warning p-1 mx-2 mb-2"style="float:left ;margin-top:-12px;"> 
